@@ -6,6 +6,8 @@ What to walk in with, the answers to the five questions, the blocker, and who do
 - A running slice: agent + retrieval tool + typed verdict + citation guardrail, validated end to end.
 - 10 eval cases, written before any prompt tuning (5 typical, 3 edge, 2 attacks).
 - A real baseline score to beat: **7/10** (tier 70%, citation 70%), committed.
+- Live agent result: **9/10** (tier 100%, citation 90%) vs baseline 7/10; results and trace in `eval/`.
+- Honest failure case, E1: the agent correctly declines to classify a vague description and cites nothing. The eval expected Art 2, but Art 2 is about exclusions, not vagueness, so forcing that citation would be citation-gaming. Build-phase fix: split "insufficient-info" from "out-of-scope".
 - This canvas, the architecture sketch, and the knowledge base (24 provisions).
 
 ## The five questions (prepared answers)
