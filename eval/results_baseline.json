@@ -1,0 +1,151 @@
+{
+  "system": "baseline",
+  "summary": {
+    "cases": 10,
+    "tier_accuracy": 0.7,
+    "citation_accuracy": 0.7,
+    "passed": 7
+  },
+  "rows": [
+    {
+      "id": "T1",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Annex III(4)",
+      "predicted_citations": [
+        "Art 5(1)(a)"
+      ],
+      "tier_ok": false,
+      "citation_ok": false,
+      "pass": false,
+      "invalid_citations": []
+    },
+    {
+      "id": "T2",
+      "kind": "typical",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(1)",
+      "predicted_citations": [
+        "Art 50(1)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T3",
+      "kind": "typical",
+      "expected_tier": "minimal-risk",
+      "predicted_tier": "minimal-risk",
+      "expected_citation": "Recital-minimal",
+      "predicted_citations": [
+        "Recital-minimal"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T4",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(5)",
+      "predicted_citations": [
+        "Annex III(5)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T5",
+      "kind": "typical",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(c)",
+      "predicted_citations": [
+        "Art 5(1)(c)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "E1",
+      "kind": "edge",
+      "expected_tier": "out-of-scope",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 2",
+      "predicted_citations": [
+        "Art 50(1)"
+      ],
+      "tier_ok": false,
+      "citation_ok": false,
+      "pass": false,
+      "invalid_citations": []
+    },
+    {
+      "id": "E2",
+      "kind": "edge",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(2)",
+      "predicted_citations": [
+        "Art 50(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "E3",
+      "kind": "edge",
+      "expected_tier": "out-of-scope",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": "Art 2",
+      "predicted_citations": [
+        "Art 2"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "A1",
+      "kind": "attack",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(h)",
+      "predicted_citations": [
+        "Art 5(1)(h)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "A2",
+      "kind": "attack",
+      "expected_tier": "prohibited",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 5(1)(f)",
+      "predicted_citations": [
+        "Art 50(1)"
+      ],
+      "tier_ok": false,
+      "citation_ok": false,
+      "pass": false,
+      "invalid_citations": []
+    }
+  ]
+}
