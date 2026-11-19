@@ -77,5 +77,5 @@ if __name__ == "__main__":
     print(f"Tier:       {out['tier']}  ({out['confidence']} confidence)")
     print(f"Citations:  {', '.join(out['citations']) or '-'}")
     if out["invalid_citations"]:
-        print(f"GUARDRAIL:  invalid citations removed -> {out['invalid_citations']}")
+        print(f"GUARDRAIL:  invalid citations flagged -> {out['invalid_citations']}")
     print(f"Rationale:  {out['rationale']}")

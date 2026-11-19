@@ -39,8 +39,8 @@ The live agent needs the two packages and a key:
 
 ```
 pip install -r requirements.txt
-cp .env.example .env                 # add your key; set MODEL if needed
-export ANTHROPIC_API_KEY=...
+export ANTHROPIC_API_KEY=...         # .env is not auto-loaded; export in the shell
+export MODEL=anthropic:claude-sonnet-5-5   # optional; this is the default
 python -m src.agent "A tool that screens and ranks job applicants' CVs."
 python -m eval.run_eval agent        # writes results_agent.json and trace_agent.txt
 python -m eval.run_eval compare      # baseline vs agent

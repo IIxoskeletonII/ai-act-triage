@@ -29,7 +29,8 @@ Everyone commits their own files from their own GitHub account (web UI is fine: 
 ## To generate the live agent results and trace (run once before the clinic)
 ```
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=...        # or put it in .env
+export ANTHROPIC_API_KEY=...
 python -m eval.run_eval agent       # writes results_agent.json and trace_agent.txt
 python -m eval.run_eval compare     # prints baseline vs agent
 ```
+Planned for the build phase: auto-load `.env` via python-dotenv (today the key must be exported in the shell).

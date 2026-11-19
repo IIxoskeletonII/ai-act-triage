@@ -49,7 +49,7 @@ def run_baseline():
     from src.baseline import classify
     rows = score(CASES, classify)
     out = {"system": "baseline", "summary": summary(rows), "rows": rows}
-    (ROOT / "eval" / "results_baseline.json").write_text(json.dumps(out, indent=2))
+    (ROOT / "eval" / "results_baseline.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     _print(out)
 
 
@@ -64,9 +64,10 @@ def run_agent():
 
     rows = score(CASES, predict)
     out = {"system": "agent", "summary": summary(rows), "rows": rows}
-    (ROOT / "eval" / "results_agent.json").write_text(json.dumps(out, indent=2))
+    (ROOT / "eval" / "results_agent.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
     (ROOT / "eval" / "trace_agent.txt").write_text(
-        "\n\n".join(t["description"] + "\n" + "\n".join(t["messages"]) for t in traces)
+        "\n\n".join(t["description"] + "\n" + "\n".join(t["messages"]) for t in traces),
+        encoding="utf-8",
     )
     _print(out)
 
