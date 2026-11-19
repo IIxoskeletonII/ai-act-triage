@@ -46,6 +46,16 @@ python -m eval.run_eval agent        # writes results_agent.json and trace_agent
 python -m eval.run_eval compare      # baseline vs agent
 ```
 
+## Web UI
+
+A local page for demos: paste a description, get the tier, cited provisions, rationale and guardrail status.
+
+```
+pip install -r requirements.txt
+export ANTHROPIC_API_KEY=...         # the app does not read .env
+python app.py                        # serves http://127.0.0.1:5000
+```
+
 ## Repository layout
 ```
 data/ai_act_kb.json      the curated EU AI Act subset (24 provisions)

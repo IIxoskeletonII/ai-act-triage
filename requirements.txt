@@ -1,5 +1,6 @@
 # Python 3.10+ required.
 # The baseline and the eval harness need nothing but the standard library.
-# Only the live agent (src/agent.py) needs the two packages below.
+# Only the live agent (src/agent.py) and the web UI (app.py) need the packages below.
 pydantic-ai-slim[anthropic]==2.71.0
 pydantic==2.13.5
+flask==3.1.3
