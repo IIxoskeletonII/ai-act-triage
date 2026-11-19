@@ -1,30 +1,42 @@
-"""Run the 10 evaluation cases and score tier accuracy and citation accuracy.
+"""Run the evaluation cases and score tier accuracy and citation accuracy.
 
 Usage:
   python -m eval.run_eval baseline      # no API key needed; writes results_baseline.json
   python -m eval.run_eval agent         # calls the LLM; writes results_agent.json and a trace
   python -m eval.run_eval compare       # prints baseline vs agent from the saved result files
 
+Options for baseline and agent:
+  --cases FILE   cases file in eval/ (default eval_cases.json)
+  --out FILE     results file in eval/ (default results_<system>.json); the agent
+                 trace goes to the same name with results_ -> trace_ and .txt
+
 Scoring per case:
   tier_ok      = predicted tier equals the expected tier
-  citation_ok  = the expected provision id is among the cited ids
+  citation_ok  = the expected provision id is among the cited ids;
+                 if expected_citation is null, the system must cite nothing
 A case passes when both are true.
 """
 
+import argparse
 import json
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-CASES = json.loads((ROOT / "eval" / "eval_cases.json").read_text())["cases"]
+EVAL = ROOT / "eval"
+
+
+def load_cases(name):
+    return json.loads((EVAL / name).read_text(encoding="utf-8"))["cases"]
 
 
 def score(cases, predict):
     rows = []
     for c in cases:
         pred = predict(c["description"])
+        cited = pred.get("citations", [])
         tier_ok = pred["tier"] == c["expected_tier"]
-        citation_ok = c["expected_citation"] in pred.get("citations", [])
+        expected = c["expected_citation"]
+        citation_ok = not cited if expected is None else expected in cited
         rows.append({
             "id": c["id"], "kind": c["kind"],
             "expected_tier": c["expected_tier"], "predicted_tier": pred["tier"],
@@ -45,15 +57,15 @@ def summary(rows):
     }
 
 
-def run_baseline():
+def run_baseline(cases, out_name):
     from src.baseline import classify
-    rows = score(CASES, classify)
+    rows = score(cases, classify)
     out = {"system": "baseline", "summary": summary(rows), "rows": rows}
-    (ROOT / "eval" / "results_baseline.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
+    (EVAL / out_name).write_text(json.dumps(out, indent=2), encoding="utf-8")
     _print(out)
 
 
-def run_agent():
+def run_agent(cases, out_name):
     from src.agent import classify
     traces = []
 
@@ -62,10 +74,10 @@ def run_agent():
         traces.append({"description": description, "messages": [str(m) for m in r.pop("messages")]})
         return r
 
-    rows = score(CASES, predict)
+    rows = score(cases, predict)
     out = {"system": "agent", "summary": summary(rows), "rows": rows}
-    (ROOT / "eval" / "results_agent.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
-    (ROOT / "eval" / "trace_agent.txt").write_text(
+    (EVAL / out_name).write_text(json.dumps(out, indent=2), encoding="utf-8")
+    (EVAL / Path(out_name.replace("results_", "trace_", 1)).with_suffix(".txt")).write_text(
         "\n\n".join(t["description"] + "\n" + "\n".join(t["messages"]) for t in traces),
         encoding="utf-8",
     )
@@ -91,5 +103,13 @@ def _print(out):
 
 
 if __name__ == "__main__":
-    cmd = sys.argv[1] if len(sys.argv) > 1 else "baseline"
-    {"baseline": run_baseline, "agent": run_agent, "compare": compare}[cmd]()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "compare"])
+    parser.add_argument("--cases", default="eval_cases.json")
+    parser.add_argument("--out")
+    args = parser.parse_args()
+    if args.cmd == "compare":
+        compare()
+    else:
+        run = run_baseline if args.cmd == "baseline" else run_agent
+        run(load_cases(args.cases), args.out or f"results_{args.cmd}.json")
