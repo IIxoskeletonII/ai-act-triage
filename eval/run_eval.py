@@ -8,11 +8,17 @@ Usage:
   python -m eval.run_eval compare       # prints baseline vs agent from the saved result files
   python -m eval.run_eval rescore FILE...  # re-scores saved results files in eval/ from their saved
                                            # predictions (no API calls) and rewrites them
+  python -m eval.run_eval report FILE...   # prints tier accuracy, citation accuracy and citation
+                                           # validity for saved results files in eval/
 
-Options for baseline and agent:
+Options for baseline, agent and parametric:
   --cases FILE   cases file in eval/ (default eval_cases.json)
   --out FILE     results file in eval/ (default results_<system>.json); the agent
                  trace goes to the same name with results_ -> trace_ and .txt
+  --model ID     model for agent and parametric (default: the MODEL environment variable,
+                 else the default in src/agent.py); recorded in the results file
+
+Citation validity = number of cited ids that are not provisions of the Act (data/ai_act_index.json).
 
 Scoring per case:
   tier_ok      = predicted tier equals the expected tier
@@ -90,7 +96,7 @@ def run_baseline(cases, out_name):
 
 
 def run_agent(cases, out_name, tools=True):
-    from src.agent import classify
+    from src.agent import MODEL, classify
     traces = []
 
     def predict(description):
@@ -99,13 +105,27 @@ def run_agent(cases, out_name, tools=True):
         return r
 
     rows = score(cases, predict)
-    out = {"system": "agent" if tools else "parametric", "summary": summary(rows), "rows": rows}
+    out = {"system": "agent" if tools else "parametric", "model": MODEL, "summary": summary(rows), "rows": rows}
     (EVAL / out_name).write_text(json.dumps(out, indent=2), encoding="utf-8")
     (EVAL / Path(out_name.replace("results_", "trace_", 1)).with_suffix(".txt")).write_text(
         "\n\n".join(t["description"] + "\n" + "\n".join(t["messages"]) for t in traces),
         encoding="utf-8",
     )
     _print(out)
+
+
+def report(names):
+    act = set(json.loads((ROOT / "data" / "ai_act_index.json").read_text(encoding="utf-8")))
+    print(f"{'file':<34}{'model':<30}{'passed':>7}{'tier':>7}{'cite':>7}{'invalid':>9}")
+    for name in names:
+        out = json.loads((EVAL / name).read_text(encoding="utf-8"))
+        s = out["summary"]
+        cited = [(r["id"], c) for r in out["rows"] for c in r["predicted_citations"]]
+        bad = [(case, c) for case, c in cited if c not in act]
+        print(f"{name:<34}{out.get('model', '-'):<30}{s['passed']:>4}/{s['cases']:<2}{s['tier_accuracy']:>7.0%}"
+              f"{s['citation_accuracy']:>7.0%}{len(bad):>5} of {len(cited)}")
+        for case, c in bad:
+            print(f"    invalid: {case}: {c}")
 
 
 def compare():
@@ -128,15 +148,21 @@ def _print(out):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "parametric", "compare", "rescore"])
-    parser.add_argument("files", nargs="*", help="results files in eval/ (rescore only)")
+    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "parametric", "compare", "rescore", "report"])
+    parser.add_argument("files", nargs="*", help="results files in eval/ (rescore and report only)")
     parser.add_argument("--cases", default="eval_cases.json")
     parser.add_argument("--out")
+    parser.add_argument("--model")
     args = parser.parse_args()
+    if args.model:
+        import os
+        os.environ["MODEL"] = args.model  # read by src.agent at import
     if args.cmd == "compare":
         compare()
     elif args.cmd == "rescore":
         rescore(args.files)
+    elif args.cmd == "report":
+        report(args.files)
     else:
         cases, out_name = load_cases(args.cases), args.out or f"results_{args.cmd}.json"
         if args.cmd == "baseline":

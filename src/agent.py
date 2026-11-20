@@ -22,7 +22,7 @@ Tier = Literal["prohibited", "high-risk", "limited-risk", "minimal-risk", "out-o
 class Verdict(BaseModel):
     tier: Tier = Field(description="The risk tier under the EU AI Act.")
     rationale: str = Field(description="Two or three sentences in plain English.")
-    citations: list[str] = Field(description="Provision IDs from the AI Act, e.g. 'Annex III(4)'.")
+    citations: list[str] = Field(description="Provision IDs from the AI Act, e.g. 'Art 72(1)'.")
     confidence: Literal["high", "medium", "low"]
 
 
@@ -30,7 +30,7 @@ _INTRO = "You triage AI products against the EU AI Act and return a risk tier wi
 
 _TOOLS = """
 Tools:
-- search_ai_act(query): hybrid search over the full text of the Act. Returns up to five provisions, each with its id, title, own text and parent chain (for example Annex III(4)(a) with parents Annex III > Annex III(4)).
+- search_ai_act(query): hybrid search over the full text of the Act. Returns up to five provisions, each with its id, title, own text and parent chain (for example Annex IV(1)(a) with parents Annex IV > Annex IV(1)).
 - get_provision(id): the exact text of one provision looked up by id, including all of its points, plus its parent chain. Use it to read a provision in full and to follow cross-references.
 """
 
@@ -38,7 +38,7 @@ _TOOL_RULES = """- Use search_ai_act to find the relevant provisions before deci
 - Follow cross-references with get_provision. When results cluster around provisions that refer to another point (for example a paragraph that applies to "the systems referred to in point (b) of paragraph 1"), call get_provision on the referenced point (for example "Art X(1)(b)") and check whether it is the operative provision.
 - Cite only provision IDs the tools returned, either as a result's id or in its parent chain. """
 
-_CITE_LEVEL = "Cite the operative provision at article-paragraph or annex-point level, for example Art 5(1)(h), Art 50(1) or Annex III(4).\n"
+_CITE_LEVEL = "Cite the operative provision at article-paragraph or annex-point level, for example Art 72(1), Art 99(3) or Annex IV(1).\n"
 
 _RULES = """- Tiers, most to least severe: prohibited, high-risk, limited-risk, minimal-risk. Use out-of-scope when the Act does not apply (e.g. pure research before market) or when the description is too vague to classify.
 - Do not over-classify. A system is only high-risk if its purpose falls in an Annex III area. A chatbot or a content generator is usually a transparency (limited-risk) case, not high-risk.
@@ -68,13 +68,13 @@ def search_ai_act(query: str) -> list[dict]:
 
 @agent.tool_plain
 def get_provision(id: str) -> dict:
-    """Look up one provision of the EU AI Act by its id, e.g. 'Art 5(1)(h)' or 'Annex III(4)'.
+    """Look up one provision of the EU AI Act by its id, e.g. 'Art 72(1)' or 'Annex IV(1)'.
 
     Returns its id, title, full text (its own text followed by all of its points) and parent chain.
     """
     found = rag.get_provision(id)
     if found is None:
-        return {"error": f"No provision with id {id!r}. Ids look like 'Art 5(1)(h)', 'Art 50(1)' or 'Annex III(4)'."}
+        return {"error": f"No provision with id {id!r}. Ids look like 'Art 72(1)', 'Art 99(3)' or 'Annex IV(1)'."}
     return found
 
 
