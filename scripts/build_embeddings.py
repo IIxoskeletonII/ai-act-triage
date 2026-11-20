@@ -1,8 +1,10 @@
-"""Build the persistent embedding index over the leaf chunks of the AI Act.
+"""Build the persistent embedding index over the AI Act chunks.
 
-A leaf is a chunk with no more-specific child id (Art 5(1)(h) is a leaf, Art 5(1) is not).
-Embedded text: title + the parent's lead-in line (for points) + the chunk's own text.
-Metadata keeps the chunk's own id, title and text for citation and display.
+Every chunk is embedded on its own direct text: the lines in its scope that no more-specific
+chunk covers. Each line of the Act therefore belongs to exactly one embedded unit.
+Embedded text: title + lead-in (for points: the parent's first line and the line that introduces
+the list) + the chunk's own text. A whole article or annex already starts with its heading and title.
+Metadata keeps the chunk's id, title, own text and ancestor chain for citation and display.
 Usage: python scripts/build_embeddings.py
 """
 
@@ -19,7 +21,11 @@ WHOLE = re.compile(r"^(Art \d+|Annex [IVXL]+)$")
 
 
 def parent_of(cid, ids):
-    """Nearest existing ancestor id, e.g. Art 5(1)(h) -> Art 5(1), Annex VIII Section A(1) -> Annex VIII."""
+    """Nearest existing ancestor id, e.g. Art 5(1)(h) -> Art 5(1), Annex VII(3.1) -> Annex VII(3),
+    Annex VIII Section A(1) -> Annex VIII."""
+    dotted = re.fullmatch(r"(.*\(\d+(?:\.\d+)*)\.\d+\)", cid)
+    if dotted and f"{dotted.group(1)})" in ids:
+        return f"{dotted.group(1)})"
     while True:
         cut = max(cid.rfind("("), cid.rfind(" "))
         if cut <= 0:
@@ -29,26 +35,47 @@ def parent_of(cid, ids):
             return cid
 
 
-def lead_in(parent):
-    """First line of the parent's own text, skipping the heading and title of a whole article or annex."""
-    lines = parent["text"].split("\n")
-    return lines[2] if WHOLE.match(parent["id"]) else lines[0]
-
-
-def leaf_records(chunks):
+def units(chunks):
+    """Split every whole article/annex into per-chunk own text by line position."""
+    ids = {c["id"] for c in chunks}
     by_id = {c["id"]: c for c in chunks}
-    ids = set(by_id)
-    has_child = {p for c in chunks if (p := parent_of(c["id"], ids))}
+    span, owner, cursor = {}, {}, {}
+    for c in chunks:  # document order: a parent always precedes its children
+        lines = c["text"].split("\n")
+        if WHOLE.match(c["id"]):
+            root, start, end = c["id"], 0, len(lines)
+            owner[root] = [root] * len(lines)
+        else:
+            p = parent_of(c["id"], ids)
+            root, pstart, pend = span[p]
+            whole = by_id[root]["text"].split("\n")
+            start = next(i for i in range(cursor[p], pend - len(lines) + 1) if whole[i:i + len(lines)] == lines)
+            end = start + len(lines)
+            cursor[p] = end
+            owner[root][start:end] = [c["id"]] * len(lines)
+        span[c["id"]] = (root, start, end)
+        cursor[c["id"]] = start + 1
     records = []
     for c in chunks:
-        if c["id"] in has_child:
-            continue
-        parts = [c["title"]]
-        parent = parent_of(c["id"], ids)
-        if parent and c["text"].startswith("("):
-            parts.append(lead_in(by_id[parent]))
-        parts.append(c["text"])
-        records.append({"id": c["id"], "title": c["title"], "text": c["text"], "embed": "\n".join(parts)})
+        root, start, end = span[c["id"]]
+        whole = by_id[root]["text"].split("\n")
+        own_idx = [i for i in range(start, end) if owner[root][i] == c["id"]]
+        own = "\n".join(whole[i] for i in own_idx)
+        parents, p = [], parent_of(c["id"], ids)
+        while p:
+            parents.insert(0, p)
+            p = parent_of(p, ids)
+        parts = [] if WHOLE.match(c["id"]) else [c["title"]]
+        if parents and own.startswith("("):
+            p = parents[-1]
+            pr, ps, pe = span[p]
+            p_own = [i for i in range(ps, pe) if owner[pr][i] == p and not (WHOLE.match(p) and i < ps + 2)]
+            first = whole[p_own[0]] if p_own else None
+            intro = next((whole[i] for i in reversed(p_own) if i < own_idx[0]), None)
+            parts += [x for x in dict.fromkeys([first, intro]) if x]
+        parts.append(own)
+        records.append({"id": c["id"], "title": c["title"], "text": own, "parents": parents,
+                        "embed": "\n".join(parts), "lines": len(own_idx)})
     return records
 
 
@@ -57,7 +84,8 @@ def main():
     from chromadb.config import Settings
     from sentence_transformers import SentenceTransformer
 
-    records = leaf_records(json.loads(CHUNKS.read_text(encoding="utf-8")))
+    chunks = json.loads(CHUNKS.read_text(encoding="utf-8"))
+    records = units(chunks)
     model = SentenceTransformer(MODEL)
     vectors = model.encode([r["embed"] for r in records], batch_size=64, normalize_embeddings=True,
                            show_progress_bar=False)
@@ -72,9 +100,11 @@ def main():
             ids=[r["id"] for r in batch],
             embeddings=[v.tolist() for v in vectors[i:i + 500]],
             documents=[r["embed"] for r in batch],
-            metadatas=[{"id": r["id"], "title": r["title"], "text": r["text"]} for r in batch],
+            metadatas=[{"id": r["id"], "title": r["title"], "text": r["text"], "parents": " > ".join(r["parents"])}
+                       for r in batch],
         )
-    print(f"embedded {col.count()} leaf chunks of {len(json.loads(CHUNKS.read_text(encoding='utf-8')))} "
+    total = sum(len(c["text"].split("\n")) for c in chunks if WHOLE.match(c["id"]))
+    print(f"embedded {col.count()} units covering {sum(r['lines'] for r in records)} of {total} Act lines "
           f"into {STORE.relative_to(ROOT)} (collection '{COLLECTION}', model {MODEL})")
 
 
