@@ -1,0 +1,295 @@
+{
+  "system": "agent",
+  "summary": {
+    "cases": 20,
+    "tier_accuracy": 0.9,
+    "citation_accuracy": 0.9,
+    "passed": 17
+  },
+  "rows": [
+    {
+      "id": "T1",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(4)",
+      "predicted_citations": [
+        "Annex III(4)(a)",
+        "Annex III(4)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T2",
+      "kind": "typical",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(1)",
+      "predicted_citations": [
+        "Art 50(1)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T3",
+      "kind": "typical",
+      "expected_tier": "minimal-risk",
+      "predicted_tier": "minimal-risk",
+      "expected_citation": null,
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T4",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(5)",
+      "predicted_citations": [
+        "Annex III(5)(b)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "T5",
+      "kind": "typical",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(c)",
+      "predicted_citations": [
+        "Art 5(1)(c)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N1",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(3)",
+      "predicted_citations": [
+        "Annex III(3)(b)",
+        "Annex III(3)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N2",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(7)",
+      "predicted_citations": [
+        "Annex III(7)",
+        "Annex III(7)(b)",
+        "Annex III(7)(c)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N3",
+      "kind": "typical",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(4)",
+      "predicted_citations": [
+        "Art 50(2)",
+        "Art 50(4)",
+        "Art 3(60)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "E1",
+      "kind": "edge",
+      "expected_tier": "needs-info",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": null,
+      "predicted_citations": [],
+      "tier_ok": false,
+      "citation_ok": true,
+      "pass": false,
+      "invalid_citations": []
+    },
+    {
+      "id": "E2",
+      "kind": "edge",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(2)",
+      "predicted_citations": [
+        "Art 50(2)",
+        "Art 50(4)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "E3",
+      "kind": "edge",
+      "expected_tier": "out-of-scope",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": "Art 2",
+      "predicted_citations": [
+        "Art 2(8)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N6",
+      "kind": "edge",
+      "expected_tier": "minimal-risk",
+      "predicted_tier": "minimal-risk",
+      "expected_citation": "Art 6(3)",
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": false,
+      "pass": false,
+      "invalid_citations": []
+    },
+    {
+      "id": "N7",
+      "kind": "edge",
+      "expected_tier": "needs-info",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": null,
+      "predicted_citations": [
+        "Annex III(4)(a)"
+      ],
+      "tier_ok": false,
+      "citation_ok": false,
+      "pass": false,
+      "invalid_citations": []
+    },
+    {
+      "id": "N8",
+      "kind": "edge",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(4)",
+      "predicted_citations": [
+        "Annex III(4)(a)",
+        "Annex III(4)",
+        "Art 50(1)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N4",
+      "kind": "critic",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(d)",
+      "predicted_citations": [
+        "Art 5(1)(d)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N5",
+      "kind": "critic",
+      "expected_tier": "minimal-risk",
+      "predicted_tier": "minimal-risk",
+      "expected_citation": null,
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "A1",
+      "kind": "attack",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(h)",
+      "predicted_citations": [
+        "Art 5(1)(h)",
+        "Art 5(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "A2",
+      "kind": "attack",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(f)",
+      "predicted_citations": [
+        "Art 5(1)(f)",
+        "Art 3(39)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N9",
+      "kind": "attack",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(5)",
+      "predicted_citations": [
+        "Annex III(5)(b)",
+        "Art 6(3)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    },
+    {
+      "id": "N10",
+      "kind": "attack",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(g)",
+      "predicted_citations": [
+        "Art 5(1)(g)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": []
+    }
+  ]
+}

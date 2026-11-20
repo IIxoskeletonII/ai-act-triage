@@ -1,15 +1,19 @@
 """Hybrid retrieval over the AI Act (units built by scripts/build_embeddings.py).
 
 Dense (all-MiniLM-L6-v2 in Chroma) and BM25 rankings over the same embedded units,
-fused with reciprocal rank fusion. The keyword search in knowledge_base.py stays as the
-retrieval baseline over the curated KB.
+fused with reciprocal rank fusion. get_provision looks a provision up by id in the chunked Act.
+The keyword search in knowledge_base.py stays as the retrieval baseline over the curated KB.
 """
 
+import json
 import re
 from functools import lru_cache
 from pathlib import Path
 
-STORE = Path(__file__).resolve().parent.parent / "data" / "chroma"
+from .provision_ids import parse, within
+
+DATA = Path(__file__).resolve().parent.parent / "data"
+STORE = DATA / "chroma"
 COLLECTION = "ai_act"
 MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 CANDIDATES = 50  # depth of each ranking fed into the fusion
@@ -63,6 +67,30 @@ def search(query, k=5):
          "parents": meta[c]["parents"].split(" > ") if meta[c]["parents"] else [], "score": round(fused[c], 5)}
         for c in best
     ]
+
+
+@lru_cache(maxsize=1)
+def valid_ids():
+    """Every provision id in the Act (data/ai_act_index.json)."""
+    return frozenset(json.loads((DATA / "ai_act_index.json").read_text(encoding="utf-8")))
+
+
+@lru_cache(maxsize=1)
+def _chunks():
+    return {c["id"]: c for c in json.loads((DATA / "ai_act_chunks.json").read_text(encoding="utf-8"))}
+
+
+def get_provision(cid):
+    """Return one provision as {id, title, text, parents}, or None for an unknown id.
+
+    text is the provision's full scope as chunked from the official text: its own lines followed by
+    all of its points. parents is its ancestor chain, outermost first.
+    """
+    chunk = _chunks().get(cid)
+    if chunk is None:
+        return None
+    parents = sorted((p for p in _chunks() if p != cid and within(cid, p)), key=lambda p: len(parse(p)[1]))
+    return {"id": cid, "title": chunk["title"], "text": chunk["text"], "parents": parents}
 
 
 if __name__ == "__main__":
