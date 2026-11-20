@@ -3,6 +3,8 @@
 Usage:
   python -m eval.run_eval baseline      # no API key needed; writes results_baseline.json
   python -m eval.run_eval agent         # calls the LLM; writes results_agent.json and a trace
+  python -m eval.run_eval parametric    # the same agent with no tools (memory only); writes
+                                        # results_parametric.json and a trace
   python -m eval.run_eval compare       # prints baseline vs agent from the saved result files
   python -m eval.run_eval rescore FILE...  # re-scores saved results files in eval/ from their saved
                                            # predictions (no API calls) and rewrites them
@@ -87,17 +89,17 @@ def run_baseline(cases, out_name):
     _print(out)
 
 
-def run_agent(cases, out_name):
+def run_agent(cases, out_name, tools=True):
     from src.agent import classify
     traces = []
 
     def predict(description):
-        r = classify(description)
+        r = classify(description, tools=tools)
         traces.append({"description": description, "messages": [str(m) for m in r.pop("messages")]})
         return r
 
     rows = score(cases, predict)
-    out = {"system": "agent", "summary": summary(rows), "rows": rows}
+    out = {"system": "agent" if tools else "parametric", "summary": summary(rows), "rows": rows}
     (EVAL / out_name).write_text(json.dumps(out, indent=2), encoding="utf-8")
     (EVAL / Path(out_name.replace("results_", "trace_", 1)).with_suffix(".txt")).write_text(
         "\n\n".join(t["description"] + "\n" + "\n".join(t["messages"]) for t in traces),
@@ -126,7 +128,7 @@ def _print(out):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "compare", "rescore"])
+    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "parametric", "compare", "rescore"])
     parser.add_argument("files", nargs="*", help="results files in eval/ (rescore only)")
     parser.add_argument("--cases", default="eval_cases.json")
     parser.add_argument("--out")
@@ -136,5 +138,8 @@ if __name__ == "__main__":
     elif args.cmd == "rescore":
         rescore(args.files)
     else:
-        run = run_baseline if args.cmd == "baseline" else run_agent
-        run(load_cases(args.cases), args.out or f"results_{args.cmd}.json")
+        cases, out_name = load_cases(args.cases), args.out or f"results_{args.cmd}.json"
+        if args.cmd == "baseline":
+            run_baseline(cases, out_name)
+        else:
+            run_agent(cases, out_name, tools=args.cmd == "agent")

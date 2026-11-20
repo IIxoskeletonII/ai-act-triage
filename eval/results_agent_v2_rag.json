@@ -55,7 +55,8 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
-        "Annex III(5)(b)"
+        "Annex III(5)(b)",
+        "Annex III(5)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -84,7 +85,7 @@
       "expected_citation": "Annex III(3)",
       "predicted_citations": [
         "Annex III(3)(b)",
-        "Annex III(3)"
+        "Annex III(3)(c)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -114,9 +115,9 @@
       "predicted_tier": "limited-risk",
       "expected_citation": "Art 50(4)",
       "predicted_citations": [
+        "Art 3(60)",
         "Art 50(2)",
-        "Art 50(4)",
-        "Art 3(60)"
+        "Art 50(4)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -270,7 +271,7 @@
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
         "Annex III(5)(b)",
-        "Art 6(3)"
+        "Annex III(5)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -284,7 +285,8 @@
       "predicted_tier": "prohibited",
       "expected_citation": "Art 5(1)(g)",
       "predicted_citations": [
-        "Art 5(1)(g)"
+        "Art 5(1)(g)",
+        "Art 3(40)"
       ],
       "tier_ok": true,
       "citation_ok": true,
