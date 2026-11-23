@@ -10,6 +10,10 @@ Usage:
                                            # predictions (no API calls) and rewrites them
   python -m eval.run_eval report FILE...   # prints tier accuracy, citation accuracy and citation
                                            # validity for saved results files in eval/
+  python -m eval.run_eval test             # held-out set (test_cases.json), run ONCE: the RAG agent
+                                           # and the parametric agent, writing results_test_rag.json,
+                                           # results_test_parametric.json and their traces. Refuses to
+                                           # run if either results file already exists.
 
 Options for baseline, agent and parametric:
   --cases FILE   cases file in eval/ (default eval_cases.json)
@@ -115,6 +119,16 @@ def run_agent(cases, out_name, tools=True):
     _print(out)
 
 
+def run_test():
+    outs = {"results_test_rag.json": True, "results_test_parametric.json": False}
+    existing = [name for name in outs if (EVAL / name).exists()]
+    if existing:
+        raise SystemExit(f"held-out results already exist ({', '.join(existing)}); the test set is run once only")
+    cases = load_cases("test_cases.json")
+    for name, tools in outs.items():
+        run_agent(cases, name, tools=tools)
+
+
 def report(names):
     act = set(json.loads((ROOT / "data" / "ai_act_index.json").read_text(encoding="utf-8")))
     print(f"{'file':<34}{'model':<30}{'passed':>7}{'tier':>7}{'cite':>7}{'invalid':>9}")
@@ -149,7 +163,7 @@ def _print(out):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "parametric", "compare", "rescore", "report"])
+    parser.add_argument("cmd", nargs="?", default="baseline", choices=["baseline", "agent", "parametric", "compare", "rescore", "report", "test"])
     parser.add_argument("files", nargs="*", help="results files in eval/ (rescore and report only)")
     parser.add_argument("--cases", default="eval_cases.json")
     parser.add_argument("--out")
@@ -164,6 +178,8 @@ if __name__ == "__main__":
         rescore(args.files)
     elif args.cmd == "report":
         report(args.files)
+    elif args.cmd == "test":
+        run_test()
     else:
         cases, out_name = load_cases(args.cases), args.out or f"results_{args.cmd}.json"
         if args.cmd == "baseline":

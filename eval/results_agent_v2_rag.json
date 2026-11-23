@@ -15,8 +15,7 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
-        "Annex III(4)(a)",
-        "Art 6(3)"
+        "Annex III(4)(a)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -60,7 +59,7 @@
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
         "Annex III(5)(b)",
-        "Art 6(3)"
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -122,8 +121,7 @@
       "expected_citation": "Art 50(4)",
       "predicted_citations": [
         "Art 50(2)",
-        "Art 50(4)",
-        "Art 3(60)"
+        "Art 50(4)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -142,7 +140,7 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What is the specific intended purpose of the tool, meaning what task it performs, what decisions or outputs it produces, and who is affected by them (e.g. employees, job candidates, customers)?"
+      "clarifying_question": "What is the specific intended purpose of the tool, meaning what task it performs and on whom or what it acts (for example screening job applicants, answering customer questions, or summarising internal documents)?"
     },
     {
       "id": "E2",
@@ -201,7 +199,7 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What specific task does the AI perform in your hiring process? For example, does it target job ads, screen or rank applications, evaluate candidates in interviews or tests, or does it only handle scheduling or answer candidate questions?"
+      "clarifying_question": "What specific task does the AI perform in your hiring process? For example, does it write job ads, target ads, screen or rank CVs, score or evaluate candidates in interviews or tests, or only handle scheduling or administration?"
     },
     {
       "id": "N8",
@@ -210,8 +208,7 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
-        "Annex III(4)(a)",
-        "Art 6(2)"
+        "Annex III(4)(a)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -301,8 +298,7 @@
       "predicted_tier": "prohibited",
       "expected_citation": "Art 5(1)(g)",
       "predicted_citations": [
-        "Art 5(1)(g)",
-        "Art 3(40)"
+        "Art 5(1)(g)"
       ],
       "tier_ok": true,
       "citation_ok": true,

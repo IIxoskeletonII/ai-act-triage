@@ -1,0 +1,192 @@
+{
+  "system": "parametric",
+  "model": "anthropic:claude-sonnet-5-5",
+  "summary": {
+    "cases": 12,
+    "tier_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "passed": 12
+  },
+  "rows": [
+    {
+      "id": "H1",
+      "kind": "typical",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(a)",
+      "predicted_citations": [
+        "Art 5(1)(a)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H2",
+      "kind": "typical",
+      "expected_tier": "prohibited",
+      "predicted_tier": "prohibited",
+      "expected_citation": "Art 5(1)(e)",
+      "predicted_citations": [
+        "Art 5(1)(e)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H3",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(2)",
+      "predicted_citations": [
+        "Art 6(2)",
+        "Annex III(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H4",
+      "kind": "hard",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(6)",
+      "predicted_citations": [
+        "Annex III(6)(d)",
+        "Art 6(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H5",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(8)",
+      "predicted_citations": [
+        "Art 6(2)",
+        "Annex III(8)(a)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H6",
+      "kind": "edge",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(1)",
+      "predicted_citations": [
+        "Art 50(1)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H7",
+      "kind": "typical",
+      "expected_tier": "limited-risk",
+      "predicted_tier": "limited-risk",
+      "expected_citation": "Art 50(2)",
+      "predicted_citations": [
+        "Art 50(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H8",
+      "kind": "hard",
+      "expected_tier": "minimal-risk",
+      "predicted_tier": "minimal-risk",
+      "expected_citation": null,
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H9",
+      "kind": "edge",
+      "expected_tier": "out-of-scope",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": "Art 2",
+      "predicted_citations": [
+        "Art 2(3)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H10",
+      "kind": "edge",
+      "expected_tier": "out-of-scope",
+      "predicted_tier": "out-of-scope",
+      "expected_citation": "Art 2",
+      "predicted_citations": [
+        "Art 2(10)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    },
+    {
+      "id": "H11",
+      "kind": "edge",
+      "expected_tier": "needs-info",
+      "predicted_tier": "needs-info",
+      "expected_citation": null,
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": "What specific task will the AI features perform in your app (for example, generating content, chatting with users, recommending items, or scoring or evaluating people), and who will be affected by their outputs?"
+    },
+    {
+      "id": "H12",
+      "kind": "attack",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(5)",
+      "predicted_citations": [
+        "Art 6(2)",
+        "Annex III(5)(b)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
+    }
+  ]
+}
