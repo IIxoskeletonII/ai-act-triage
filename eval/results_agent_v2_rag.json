@@ -15,13 +15,52 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
-        "Annex III(4)(a)"
+        "Annex III(4)(a)",
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Develop the system using training, validation and testing data sets that meet the data governance quality criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation (containing at least the Annex IV elements) before placing the system on the market.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system to be transparent enough for deployers to interpret its output and use it appropriately, with information provided to them.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so natural persons (recruiters) can effectively oversee it while it is in use.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI), with no notified body, before placing the system on the market.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register yourself and the system in the EU database before placing it on the market or putting it into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "T2",
@@ -36,7 +75,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Design and develop the chatbot so that shoppers are informed they are interacting with an AI system, unless this is obvious from context.",
+          "citation": "Art 50(1)"
+        }
+      ]
     },
     {
       "id": "T3",
@@ -49,7 +94,17 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Take measures to ensure a sufficient level of AI literacy among staff operating or using the system (the only general duty; no high-risk obligations apply).",
+          "citation": "Art 4"
+        },
+        {
+          "text": "Optionally follow voluntary codes of conduct for AI systems that are not high-risk.",
+          "citation": null
+        }
+      ]
     },
     {
       "id": "T4",
@@ -65,7 +120,45 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Develop the model on training, validation and testing data sets that meet the data quality and governance criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation containing at least the Annex IV elements before market placement or putting into service.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Design the system to automatically record events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Make the system transparent enough that deployers can interpret its output and use it appropriately, and give them instructions for use.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Achieve and maintain appropriate accuracy, robustness and cybersecurity throughout the lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "T5",
@@ -80,7 +173,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "The system must not be developed, placed on the market, put into service or used.",
+          "citation": "Art 5(1)(c)"
+        }
+      ]
     },
     {
       "id": "N1",
@@ -89,13 +188,52 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(3)",
       "predicted_citations": [
-        "Annex III(3)(b)"
+        "Annex III(3)(b)",
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the grading system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation (Annex IV content) before placing on the market or putting into service.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system to be transparent enough for deployers to interpret its outputs and use them appropriately, with information provided to them.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so natural persons can effectively oversee it while in use, for example by reviewing and overriding grades.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Achieve and maintain an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "N2",
@@ -104,14 +242,53 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(7)",
       "predicted_citations": [
-        "Annex III(7)(c)",
-        "Annex III(7)(b)"
+        "Art 6(2)",
+        "Annex III(7)(b)",
+        "Annex III(7)(c)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Train, validate and test the system on data sets that meet the data quality and governance criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation, containing at least the Annex IV elements, before placing the system on the market or putting it into service.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Design the system so it automatically records events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system so it is transparent enough for deployers to interpret its output and use it appropriately, and give them instructions for use.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Design the system to achieve appropriate accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market or putting it into service.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register the provider and the system in the EU database before placing the system on the market or putting it into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "N3",
@@ -120,14 +297,25 @@
       "predicted_tier": "limited-risk",
       "expected_citation": "Art 50(4)",
       "predicted_citations": [
+        "Art 50(4)",
         "Art 50(2)",
-        "Art 50(4)"
+        "Art 3(60)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Deployers must disclose that the video content is a deep fake that has been artificially generated or manipulated.",
+          "citation": "Art 50(4)"
+        },
+        {
+          "text": "Providers must ensure the generated video outputs are marked in a machine-readable format and are detectable as artificially generated or manipulated.",
+          "citation": "Art 50(2)"
+        }
+      ]
     },
     {
       "id": "E1",
@@ -140,7 +328,8 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What is the specific intended purpose of the tool, meaning what task it performs and on whom or what it acts (for example screening job applicants, answering customer questions, or summarising internal documents)?"
+      "clarifying_question": "What specific task will the AI tool perform, and who will its outputs affect? For example, does it screen job candidates, evaluate or monitor employees, answer customer questions, generate content, or help with internal documents?",
+      "obligations": []
     },
     {
       "id": "E2",
@@ -156,7 +345,17 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "As provider, ensure the synthetic image and text outputs are marked in a machine-readable format and detectable as artificially generated or manipulated, using effective, interoperable, robust and reliable technical solutions as far as technically feasible.",
+          "citation": "Art 50(2)"
+        },
+        {
+          "text": "As deployer, disclose that image content constituting a deep fake has been artificially generated or manipulated. Disclosure is limited to noting the content's existence where the work is evidently artistic, creative or fictional.",
+          "citation": "Art 50(4)"
+        }
+      ]
     },
     {
       "id": "E3",
@@ -165,13 +364,15 @@
       "predicted_tier": "out-of-scope",
       "expected_citation": "Art 2",
       "predicted_citations": [
-        "Art 2(8)"
+        "Art 2(8)",
+        "Art 2(6)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": []
     },
     {
       "id": "N6",
@@ -180,13 +381,20 @@
       "predicted_tier": "minimal-risk",
       "expected_citation": "Art 6(3)",
       "predicted_citations": [
-        "Art 6(3)"
+        "Art 6(3)",
+        "Annex III(4)(a)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "No mandatory obligations apply, but the organisation should still ensure staff AI literacy and may follow voluntary codes of conduct.",
+          "citation": null
+        }
+      ]
     },
     {
       "id": "N7",
@@ -199,7 +407,8 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What specific task does the AI perform in your hiring process? For example, does it write job ads, target ads, screen or rank CVs, score or evaluate candidates in interviews or tests, or only handle scheduling or administration?"
+      "clarifying_question": "What specific task does the AI perform in your hiring process? For example, does it target job ads, screen, filter or rank applications or CVs, evaluate candidates in interviews or tests, or only handle scheduling or answer candidate questions? And does its output influence decisions about who is shortlisted, interviewed or hired?",
+      "obligations": []
     },
     {
       "id": "N8",
@@ -208,13 +417,52 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
-        "Annex III(4)(a)"
+        "Annex III(4)(a)",
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the screening system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Train, validate and test the models on data sets that meet the data quality and governance criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system to be transparent enough for deployers to interpret its output, and provide information to them.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so natural persons can effectively oversee it while it is in use, including the decision on who advances to interview.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Achieve and maintain an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing on the market or putting into service.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "N4",
@@ -229,7 +477,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "The system must not be developed, placed on the market, put into service or used for predicting criminal offending based solely on profiling or personality traits.",
+          "citation": "Art 5(1)(d)"
+        }
+      ]
     },
     {
       "id": "N5",
@@ -242,7 +496,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Take measures to ensure a sufficient level of AI literacy among staff and others who operate or use the system (good practice; there are no other mandatory duties at this tier). Voluntary codes of conduct may also be adopted.",
+          "citation": "Art 4"
+        }
+      ]
     },
     {
       "id": "A1",
@@ -251,14 +511,19 @@
       "predicted_tier": "prohibited",
       "expected_citation": "Art 5(1)(h)",
       "predicted_citations": [
-        "Art 5(1)(h)",
-        "Art 5(2)"
+        "Art 5(1)(h)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "The system must not be developed, placed on the market, put into service or used for real-time remote biometric identification in publicly accessible spaces for law enforcement, outside the narrow exceptions in Art 5(1)(h).",
+          "citation": "Art 5(1)(h)"
+        }
+      ]
     },
     {
       "id": "A2",
@@ -274,7 +539,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "The system must not be developed, placed on the market, put into service or used for inferring employees' emotions in the workplace.",
+          "citation": "Art 5(1)(f)"
+        }
+      ]
     },
     {
       "id": "N9",
@@ -283,13 +554,52 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
-        "Annex III(5)(b)"
+        "Annex III(5)(b)",
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Develop the system using training, validation and testing data sets that meet the data quality and governance criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation (containing at least the Annex IV elements) before placing the system on the market or putting it into service.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system to be transparent enough for deployers to interpret its output and use it appropriately, and give deployers the information they need.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Design the system so that natural persons can effectively oversee it while it is in use.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Design the system to achieve an appropriate level of accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register the provider and the system in the EU database before placing it on the market or putting it into service.",
+          "citation": "Art 49(1)"
+        }
+      ]
     },
     {
       "id": "N10",
@@ -304,7 +614,13 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": null
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "The system must not be developed, placed on the market, put into service or used.",
+          "citation": "Art 5(1)(g)"
+        }
+      ]
     }
   ]
 }
