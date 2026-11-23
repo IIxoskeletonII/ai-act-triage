@@ -62,6 +62,7 @@ def score(cases, predict):
             "expected_citation": c["expected_citation"], "predicted_citations": cited,
             **judge(c["expected_tier"], c["expected_citation"], pred["tier"], cited),
             "invalid_citations": pred.get("invalid_citations", []),
+            "clarifying_question": pred.get("clarifying_question"),
         })
     return rows
 

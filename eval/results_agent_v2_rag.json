@@ -1,10 +1,11 @@
 {
   "system": "agent",
+  "model": "anthropic:claude-sonnet-5-5",
   "summary": {
     "cases": 20,
-    "tier_accuracy": 0.9,
-    "citation_accuracy": 0.9,
-    "passed": 17
+    "tier_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "passed": 20
   },
   "rows": [
     {
@@ -15,12 +16,13 @@
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
         "Annex III(4)(a)",
-        "Annex III(4)"
+        "Art 6(3)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "T2",
@@ -34,7 +36,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "T3",
@@ -46,7 +49,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "T4",
@@ -56,12 +60,13 @@
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
         "Annex III(5)(b)",
-        "Annex III(5)"
+        "Art 6(3)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "T5",
@@ -75,7 +80,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N1",
@@ -84,13 +90,13 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(3)",
       "predicted_citations": [
-        "Annex III(3)(b)",
-        "Annex III(3)(c)"
+        "Annex III(3)(b)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N2",
@@ -99,14 +105,14 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(7)",
       "predicted_citations": [
-        "Annex III(7)",
-        "Annex III(7)(b)",
-        "Annex III(7)(c)"
+        "Annex III(7)(c)",
+        "Annex III(7)(b)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N3",
@@ -115,26 +121,28 @@
       "predicted_tier": "limited-risk",
       "expected_citation": "Art 50(4)",
       "predicted_citations": [
-        "Art 3(60)",
         "Art 50(2)",
-        "Art 50(4)"
+        "Art 50(4)",
+        "Art 3(60)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "E1",
       "kind": "edge",
       "expected_tier": "needs-info",
-      "predicted_tier": "out-of-scope",
+      "predicted_tier": "needs-info",
       "expected_citation": null,
       "predicted_citations": [],
-      "tier_ok": false,
+      "tier_ok": true,
       "citation_ok": true,
-      "pass": false,
-      "invalid_citations": []
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": "What is the specific intended purpose of the tool, meaning what task it performs, what decisions or outputs it produces, and who is affected by them (e.g. employees, job candidates, customers)?"
     },
     {
       "id": "E2",
@@ -149,7 +157,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "E3",
@@ -163,7 +172,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N6",
@@ -171,25 +181,27 @@
       "expected_tier": "minimal-risk",
       "predicted_tier": "minimal-risk",
       "expected_citation": "Art 6(3)",
-      "predicted_citations": [],
+      "predicted_citations": [
+        "Art 6(3)"
+      ],
       "tier_ok": true,
-      "citation_ok": false,
-      "pass": false,
-      "invalid_citations": []
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N7",
       "kind": "edge",
       "expected_tier": "needs-info",
-      "predicted_tier": "out-of-scope",
+      "predicted_tier": "needs-info",
       "expected_citation": null,
-      "predicted_citations": [
-        "Annex III(4)(a)"
-      ],
-      "tier_ok": false,
-      "citation_ok": false,
-      "pass": false,
-      "invalid_citations": []
+      "predicted_citations": [],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": "What specific task does the AI perform in your hiring process? For example, does it target job ads, screen or rank applications, evaluate candidates in interviews or tests, or does it only handle scheduling or answer candidate questions?"
     },
     {
       "id": "N8",
@@ -199,13 +211,13 @@
       "expected_citation": "Annex III(4)",
       "predicted_citations": [
         "Annex III(4)(a)",
-        "Annex III(4)",
-        "Art 50(1)"
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N4",
@@ -219,7 +231,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N5",
@@ -231,7 +244,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "A1",
@@ -246,7 +260,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "A2",
@@ -261,7 +276,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N9",
@@ -270,13 +286,13 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
-        "Annex III(5)(b)",
-        "Annex III(5)"
+        "Annex III(5)(b)"
       ],
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     },
     {
       "id": "N10",
@@ -291,7 +307,8 @@
       "tier_ok": true,
       "citation_ok": true,
       "pass": true,
-      "invalid_citations": []
+      "invalid_citations": [],
+      "clarifying_question": null
     }
   ]
 }
