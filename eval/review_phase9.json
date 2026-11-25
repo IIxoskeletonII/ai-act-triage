@@ -1,0 +1,22 @@
+{
+  "meta": {
+    "note": "Judgements made by reading the text of each provision in data/ai_act_chunks.json, not from memory. passage_supports: does the cited provision's text support the verdict claim (gold support_note)? critic_flags: is each critic flag a TRUE flag (a real error against the gold and the chunk text) or a FALSE flag (a substantively correct obligation wrongly flagged)? The Art 43 'before placing on the market' timing is treated as substantively correct, per the project decision in Phase 7.5.",
+    "sources": ["eval/results_passages.json", "eval/results_critic_passages.json", "eval/passage_gold.json"]
+  },
+  "passage_supports": [
+    {"id": "PG1", "cited": "Annex III(4)(a)", "supports": true, "quote": "AI systems intended to be used for the recruitment or selection of natural persons, in particular ... to analyse and filter job applications, and to evaluate candidates"},
+    {"id": "PG1", "cited": "Art 6(2)", "supports": true, "quote": "AI systems referred to in Annex III shall be considered to be high-risk."},
+    {"id": "PG2", "cited": "Art 50(1)", "supports": true, "quote": "Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system"},
+    {"id": "PG3", "cited": "Art 5(1)(c)", "supports": true, "quote": "the use of AI systems for the evaluation or classification of natural persons ... based on their social behaviour ... with the social score leading to ... detrimental or unfavourable treatment"},
+    {"id": "PG4", "cited": "Annex III(5)(b)", "supports": true, "quote": "AI systems intended to be used to evaluate the creditworthiness of natural persons or establish their credit score"},
+    {"id": "PG4", "cited": "Art 6(2)", "supports": true, "quote": "AI systems referred to in Annex III shall be considered to be high-risk."},
+    {"id": "PG5", "cited": "Art 5(1)(h)", "supports": true, "quote": "the use of 'real-time' remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives"},
+    {"id": "PG6", "cited": "Art 2(8)", "supports": true, "quote": "This Regulation does not apply to any research, testing or development activity regarding AI systems or AI models prior to their being placed on the market or put into service."}
+  ],
+  "critic_flags": [
+    {"id": "PG1", "index": 9, "citation": "Art 43(2)", "judgement": "FALSE", "reason": "Internal control under Annex VI for an Annex III point 4 system is what Art 43(2) states; the flag rests only on the 'before placing on the market' timing, which is substantively correct (project decision, Phase 7.5)."},
+    {"id": "PG3", "index": 1, "citation": "Art 5(1)(c)", "judgement": "TRUE", "reason": "Art 5(1)(c) prohibits 'the placing on the market, the putting into service or the use'; it does not prohibit development. The obligation adds 'develop'. The wording comes from our prohibited-tier obligation rule ('must not be developed, placed on the market, put into service or used')."},
+    {"id": "PG4", "index": 9, "citation": "Art 43(2)", "judgement": "FALSE", "reason": "Same as PG1: Art 43(2) covers Annex III points 2 to 8 with internal control; the flag is the over-literal timing point."},
+    {"id": "PG5", "index": 1, "citation": "Art 5(1)(h)", "judgement": "TRUE", "reason": "Art 5(1)(h) prohibits only 'the use of' real-time remote biometric identification for law enforcement, and only 'unless and in so far as' one of objectives (i) to (iii) applies. The obligation adds develop, placing on the market and putting into service, and states the ban as absolute. Same origin as PG3: our prohibited-tier obligation rule."}
+  ]
+}

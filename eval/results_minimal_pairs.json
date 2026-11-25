@@ -1,0 +1,500 @@
+{
+  "pairs": [
+    {
+      "id": "MP1",
+      "ambiguous": "We use AI to summarise job applications.",
+      "tier": "needs-info",
+      "clarifying_question": "How is the summary output used in your hiring process, and who acts on it? For example, does a recruiter read the summaries alongside the full applications, or are they used to rank, score, filter out or shortlist candidates before a person looks at the application?",
+      "probes_use": true,
+      "probes_actor": true,
+      "ambiguous_ok": true,
+      "output": {
+        "tier": "needs-info",
+        "key_facts": [
+          "The AI is used to summarise job applications"
+        ],
+        "rationale": "Recruitment is an Annex III area, and this system could be high-risk if it is used to analyse, filter or evaluate candidates. The description doesn't say how the summaries are used or who acts on them. A summary that only supports a human reviewer could fall under the Art 6(3) derogation, but one that ranks or screens candidates would not. The tier can't be settled without knowing this.",
+        "citations": [],
+        "confidence": "low",
+        "clarifying_question": "How is the summary output used in your hiring process, and who acts on it? For example, does a recruiter read the summaries alongside the full applications, or are they used to rank, score, filter out or shortlist candidates before a person looks at the application?",
+        "obligations": [],
+        "to_confirm": [
+          "Whether the system profiles candidates, which would rule out the Art 6(3) derogation",
+          "Whether the summaries influence who is shortlisted or rejected"
+        ],
+        "invalid_citations": []
+      },
+      "resolutions": [
+        {
+          "id": "MP1-A",
+          "clarification": "A recruiter reads every application in full alongside the summary, and the AI does not rank, score or filter candidates.",
+          "expected_tier": "minimal-risk",
+          "expected_citation": "Art 6(3)",
+          "tier": "minimal-risk",
+          "citations": [
+            "Annex III(4)(a)",
+            "Art 6(3)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "reads every application": true,
+            "does not rank": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "minimal-risk",
+            "key_facts": [
+              "The AI summarises job applications, which is a recruitment use.",
+              "A recruiter reads every application in full alongside the summary.",
+              "The AI does not rank, score or filter candidates."
+            ],
+            "rationale": "Recruitment is an Annex III area, so the system starts out as potentially high-risk. It only produces summaries, and a recruiter reads each full application. It does not rank, score, filter or profile candidates, so it plausibly performs a narrow procedural or preparatory task without materially influencing the hiring decision. On that basis the Art 6(3) derogation applies and the system is not high-risk. No transparency provision applies either, so it is minimal-risk.",
+            "citations": [
+              "Annex III(4)(a)",
+              "Art 6(3)"
+            ],
+            "confidence": "medium",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "No mandatory obligations apply to a minimal-risk system, but you should take measures to ensure sufficient AI literacy of staff who operate and use the system.",
+                "citation": "Art 4"
+              },
+              {
+                "text": "If you are the provider, document your assessment that the system is not high-risk before placing it on the market or putting it into service, and provide it to authorities on request.",
+                "citation": "Art 6(4)"
+              }
+            ],
+            "to_confirm": [
+              "Confirm the system does not profile natural persons, because profiling would make it high-risk regardless of the derogation.",
+              "Confirm in practice that recruiters do not rely on the summaries in place of reading the full applications, because that could mean the summaries materially influence hiring outcomes.",
+              "Confirm the summaries do not evaluate, grade or highlight candidates' suitability, because that would go beyond a narrow or preparatory task.",
+              "If you are the provider, you must also register the system under Art 49(2), as Art 6(4) requires of any provider who relies on the derogation."
+            ],
+            "invalid_citations": []
+          }
+        },
+        {
+          "id": "MP1-B",
+          "clarification": "The system also ranks candidates and only the top ten are reviewed by a recruiter.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "tier": "high-risk",
+          "citations": [
+            "Art 6(2)",
+            "Annex III(4)(a)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "rank": true,
+            "top ten": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "high-risk",
+            "key_facts": [
+              "The AI system summarises job applications.",
+              "It ranks candidates.",
+              "Only the top ten ranked candidates are reviewed by a recruiter."
+            ],
+            "rationale": "The system analyses and ranks job applicants, and that ranking decides who a recruiter sees. This is recruitment and selection of natural persons under Annex III point 4(a), so it is high-risk. The Art 6(3) derogation is unlikely to help, because ranking materially influences the outcome and probably amounts to profiling.",
+            "citations": [
+              "Art 6(2)",
+              "Annex III(4)(a)"
+            ],
+            "confidence": "high",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "Establish, implement, document and maintain a risk management system.",
+                "citation": "Art 9(1)"
+              },
+              {
+                "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+                "citation": "Art 10(1)"
+              },
+              {
+                "text": "Draw up and keep up to date technical documentation before placing the system on the market or putting it into service.",
+                "citation": "Art 11(1)"
+              },
+              {
+                "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+                "citation": "Art 12(1)"
+              },
+              {
+                "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+                "citation": "Art 13(1)"
+              },
+              {
+                "text": "Accompany the system with instructions for use containing the required information for deployers.",
+                "citation": "Art 13(2)"
+              },
+              {
+                "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+                "citation": "Art 14(1)"
+              },
+              {
+                "text": "Achieve an appropriate level of accuracy, robustness and cybersecurity throughout the system's lifecycle.",
+                "citation": "Art 15(1)"
+              },
+              {
+                "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market or putting it into service.",
+                "citation": "Art 43(2)"
+              },
+              {
+                "text": "Register yourself and the system in the EU database before placing it on the market or putting it into service.",
+                "citation": "Art 49(1)"
+              }
+            ],
+            "to_confirm": [
+              "Confirm whether the ranking builds profiles of applicants. If it does, the system is always high-risk.",
+              "Confirm your role. A provider carries the obligations listed here. A deployer has separate deployer duties that this triage did not look up."
+            ],
+            "invalid_citations": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "MP2",
+      "ambiguous": "We use AI to review loan applications.",
+      "tier": "needs-info",
+      "clarifying_question": "How is the AI's output used and who acts on it? For example, does it score or assess the creditworthiness of individual applicants, and does a loan officer or an automated process make the final decision?",
+      "probes_use": true,
+      "probes_actor": true,
+      "ambiguous_ok": true,
+      "output": {
+        "tier": "needs-info",
+        "key_facts": [
+          "AI is used to review loan applications"
+        ],
+        "rationale": "Reviewing loan applications could fall under the Annex III creditworthiness category if the system evaluates natural persons' creditworthiness or sets a credit score. The description doesn't say what the AI outputs, whether applicants are individuals or businesses, or whether a person acts on the output. The tier depends on those facts.",
+        "citations": [],
+        "confidence": "low",
+        "clarifying_question": "How is the AI's output used and who acts on it? For example, does it score or assess the creditworthiness of individual applicants, and does a loan officer or an automated process make the final decision?",
+        "obligations": [],
+        "to_confirm": [
+          "Whether the applicants are natural persons or only businesses",
+          "Whether the system is used only to detect financial fraud"
+        ],
+        "invalid_citations": []
+      },
+      "resolutions": [
+        {
+          "id": "MP2-A",
+          "clarification": "The AI only writes a plain-language summary of each application; a loan officer reads the full application and decides independently.",
+          "expected_tier": "minimal-risk",
+          "expected_citation": "Art 6(3)",
+          "tier": "minimal-risk",
+          "citations": [
+            "Art 6(3)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "summary": true,
+            "officer": true,
+            "decides": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "minimal-risk",
+            "key_facts": [
+              "The AI is used in reviewing loan applications",
+              "It only writes a plain-language summary of each application",
+              "A loan officer reads the full application and decides independently"
+            ],
+            "rationale": "Evaluating the creditworthiness of natural persons is an Annex III use case. Here the AI only produces a summary, which is a preparatory task. The loan officer reads the full application and decides independently, so the output should not materially influence the decision. On those facts the Art 6(3) derogation applies and the system is not high-risk. No transparency provision applies either.",
+            "citations": [
+              "Art 6(3)"
+            ],
+            "confidence": "medium",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "Take measures to ensure a sufficient level of AI literacy among staff and others who operate or use the system.",
+                "citation": "Art 4"
+              }
+            ],
+            "to_confirm": [
+              "Confirm the summary does not score, rank, or recommend an outcome, and does not profile applicants, because profiling would make the system high-risk regardless of the derogation.",
+              "Confirm loan officers genuinely review the full application and do not rely on the summary in practice.",
+              "Confirm the applicants are natural persons; if they are not, Annex III(5)(b) would not apply at all.",
+              "Document the Art 6(3) assessment before putting the system into use."
+            ],
+            "invalid_citations": []
+          }
+        },
+        {
+          "id": "MP2-B",
+          "clarification": "The AI assigns each applicant a creditworthiness score that determines whether the loan is approved.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(5)",
+          "tier": "high-risk",
+          "citations": [
+            "Art 6(2)",
+            "Annex III(5)(b)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "credit": true,
+            "score": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "high-risk",
+            "key_facts": [
+              "The AI reviews loan applications",
+              "It assigns each applicant a creditworthiness score",
+              "The score determines whether the loan is approved"
+            ],
+            "rationale": "The system evaluates the creditworthiness of applicants and scores them, and that score decides loan approval. This falls under the Annex III credit-scoring use case, so it is high-risk. It is not a fraud-detection system, which is the only exception in that point. Because the score drives the decision, the Art 6(3) derogation does not fit.",
+            "citations": [
+              "Art 6(2)",
+              "Annex III(5)(b)"
+            ],
+            "confidence": "high",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "Establish, implement, document and maintain a risk management system.",
+                "citation": "Art 9(1)"
+              },
+              {
+                "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+                "citation": "Art 10(1)"
+              },
+              {
+                "text": "Draw up and keep up to date technical documentation before placing the system on the market or putting it into service.",
+                "citation": "Art 11(1)"
+              },
+              {
+                "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+                "citation": "Art 12(1)"
+              },
+              {
+                "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+                "citation": "Art 13(1)"
+              },
+              {
+                "text": "Accompany the system with instructions for use containing the required information for deployers.",
+                "citation": "Art 13(2)"
+              },
+              {
+                "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+                "citation": "Art 14(1)"
+              },
+              {
+                "text": "Ensure appropriate accuracy, robustness and cybersecurity, performing consistently throughout the lifecycle.",
+                "citation": "Art 15(1)"
+              },
+              {
+                "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market.",
+                "citation": "Art 43(2)"
+              },
+              {
+                "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+                "citation": "Art 49(1)"
+              }
+            ],
+            "to_confirm": [
+              "Confirm the applicants are natural persons (consumers or individuals), not only businesses.",
+              "Confirm the system is not used solely for detecting financial fraud.",
+              "Confirm whether you are the provider (built the system) or a deployer using a third-party system, since the obligations differ."
+            ],
+            "invalid_citations": []
+          }
+        }
+      ]
+    },
+    {
+      "id": "MP3",
+      "ambiguous": "We use AI in our workforce management.",
+      "tier": "needs-info",
+      "clarifying_question": "What specific task does the AI perform in workforce management (for example scheduling, task allocation, performance monitoring or evaluation, or hiring, promotion or termination decisions)? How is its output used, and who acts on it: does a manager or HR person review it and decide, or does it trigger decisions or actions automatically?",
+      "probes_use": true,
+      "probes_actor": true,
+      "ambiguous_ok": true,
+      "output": {
+        "tier": "needs-info",
+        "key_facts": [
+          "The company uses AI in workforce management"
+        ],
+        "rationale": "The description doesn't say what the AI does or how its output is used. Workforce management could mean anything from shift scheduling to decisions on hiring, promotion, task allocation, monitoring or termination. The tier depends on that purpose, so I can't classify it yet.",
+        "citations": [],
+        "confidence": "low",
+        "clarifying_question": "What specific task does the AI perform in workforce management (for example scheduling, task allocation, performance monitoring or evaluation, or hiring, promotion or termination decisions)? How is its output used, and who acts on it: does a manager or HR person review it and decide, or does it trigger decisions or actions automatically?",
+        "obligations": [],
+        "to_confirm": [],
+        "invalid_citations": []
+      },
+      "resolutions": [
+        {
+          "id": "MP3-A",
+          "clarification": "It screens and ranks external job applicants to shortlist them for recruiters.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "tier": "high-risk",
+          "citations": [
+            "Art 6(2)",
+            "Annex III(4)(a)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "applicants": true,
+            "recruitment or screening": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "high-risk",
+            "key_facts": [
+              "The system screens and ranks external job applicants",
+              "It shortlists applicants for recruiters"
+            ],
+            "rationale": "Screening, ranking and shortlisting job applicants is AI used to recruit or select people, by analysing and filtering applications and evaluating candidates. That use is listed in Annex III point 4(a), so it is high-risk. The Art 6(3) derogation is unlikely to apply. Ranking applicants evaluates personal aspects of people, which probably counts as profiling, and profiling always makes an Annex III system high-risk.",
+            "citations": [
+              "Art 6(2)",
+              "Annex III(4)(a)"
+            ],
+            "confidence": "high",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "Establish, implement, document and maintain a risk management system.",
+                "citation": "Art 9(1)"
+              },
+              {
+                "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+                "citation": "Art 10(1)"
+              },
+              {
+                "text": "Draw up and keep up to date technical documentation before placing the system on the market or putting it into service.",
+                "citation": "Art 11(1)"
+              },
+              {
+                "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+                "citation": "Art 12(1)"
+              },
+              {
+                "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+                "citation": "Art 13(1)"
+              },
+              {
+                "text": "Accompany the system with instructions for use containing the required information for deployers.",
+                "citation": "Art 13(2)"
+              },
+              {
+                "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+                "citation": "Art 14(1)"
+              },
+              {
+                "text": "Design the system to achieve an appropriate level of accuracy, robustness and cybersecurity throughout its lifecycle.",
+                "citation": "Art 15(1)"
+              },
+              {
+                "text": "Complete the conformity assessment based on internal control (Annex VI) before placing the system on the market or putting it into service.",
+                "citation": "Art 43(2)"
+              },
+              {
+                "text": "Register the provider and the system in the EU database before placing it on the market or putting it into service.",
+                "citation": "Art 49(1)"
+              }
+            ],
+            "to_confirm": [
+              "Whether your company is the provider (develops or places the system on the market) or only a deployer, since the obligations differ.",
+              "Whether the ranking involves profiling of applicants, which would rule out the Art 6(3) derogation."
+            ],
+            "invalid_citations": []
+          }
+        },
+        {
+          "id": "MP3-B",
+          "clarification": "It evaluates current employees' performance to inform promotion and termination decisions.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "tier": "high-risk",
+          "citations": [
+            "Annex III(4)(b)",
+            "Art 6(2)"
+          ],
+          "tier_ok": true,
+          "citation_ok": true,
+          "must_reflect": {
+            "performance": true,
+            "promotion or termination": true
+          },
+          "reflect_ok": true,
+          "output": {
+            "tier": "high-risk",
+            "key_facts": [
+              "The AI system evaluates the performance of current employees",
+              "Its output informs promotion and termination decisions"
+            ],
+            "rationale": "The system is used to monitor and evaluate the performance of people in work-related relationships. It also informs promotion and termination decisions. That falls squarely within the Annex III employment and workers' management area, so it is high-risk.",
+            "citations": [
+              "Annex III(4)(b)",
+              "Art 6(2)"
+            ],
+            "confidence": "high",
+            "clarifying_question": null,
+            "obligations": [
+              {
+                "text": "Establish, implement, document and maintain a risk management system.",
+                "citation": "Art 9(1)"
+              },
+              {
+                "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+                "citation": "Art 10(1)"
+              },
+              {
+                "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service.",
+                "citation": "Art 11(1)"
+              },
+              {
+                "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+                "citation": "Art 12(1)"
+              },
+              {
+                "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+                "citation": "Art 13(1)"
+              },
+              {
+                "text": "Accompany the system with instructions for use containing the required information for deployers.",
+                "citation": "Art 13(2)"
+              },
+              {
+                "text": "Design the system so natural persons can effectively oversee it while in use.",
+                "citation": "Art 14(1)"
+              },
+              {
+                "text": "Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+                "citation": "Art 15(1)"
+              },
+              {
+                "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing on the market or putting into service.",
+                "citation": "Art 43(2)"
+              },
+              {
+                "text": "Register yourself and the system in the EU database before placing on the market or putting into service.",
+                "citation": "Art 49(1)"
+              },
+              {
+                "text": "As an employer-deployer, inform workers' representatives and affected workers before using the system at the workplace.",
+                "citation": "Art 26(7)"
+              }
+            ],
+            "to_confirm": [
+              "Whether you are the provider (developer) or only the deployer, since the obligations differ.",
+              "Whether the system is used to make or inform decisions on real employees, i.e. it is not limited to a narrow procedural or preparatory task."
+            ],
+            "invalid_citations": []
+          }
+        }
+      ]
+    }
+  ]
+}

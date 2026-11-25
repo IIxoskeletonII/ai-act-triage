@@ -1,0 +1,104 @@
+{
+  "critic_model": "anthropic:claude-sonnet-5-5",
+  "cases": [
+    {
+      "id": "PG1",
+      "obligations": 10,
+      "flagged": 1,
+      "flags": [
+        {
+          "index": 9,
+          "verdict": "misstated",
+          "note": "Art 43(2) applies to systems in points 2 to 8 of Annex III; CV screening is point 4 (employment), so internal control under Annex VI applies. The 'before placing on the market' timing is not in the cited text, though, so the obligation adds a condition the provision does not state.",
+          "obligation": {
+            "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing on the market.",
+            "citation": "Art 43(2)"
+          }
+        }
+      ],
+      "missing": [],
+      "all_grounded": false,
+      "consistent": true,
+      "summary": "Nine of ten obligations are grounded in their cited text. Obligation 9 is misstated, because Art 43(2) as provided does not state the 'before placing on the market' timing it adds.",
+      "input": "Product description:\nA tool that screens and ranks job applicants' CVs and shortlists the top candidates for recruiters.\n\nVerdict: tier=high-risk; citations=['Annex III(4)(a)', 'Art 6(2)']\n\nObligations:\n\n[1] Establish, implement, document and maintain a risk management system.\nCites: Art 9(1)\nProvision text (Art 9(1)):\n<<<\n1. A risk management system shall be established, implemented, documented and maintained in relation to high-risk AI systems.\n>>>\n\n[2] Develop the system using training, validation and testing data sets that meet the data quality criteria.\nCites: Art 10(1)\nProvision text (Art 10(1)):\n<<<\n1. High-risk AI systems which make use of techniques involving the training of AI models with data shall be developed on the basis of training, validation and testing data sets that meet the quality criteria referred to in paragraphs 2 to 5 whenever such data sets are used.\n>>>\n\n[3] Draw up and keep up to date technical documentation before placing on the market or putting into service.\nCites: Art 11(1)\nProvision text (Art 11(1)):\n<<<\n1. The technical documentation of a high-risk AI system shall be drawn up before that system is placed on the market or put into service and shall be kept up-to date.\nThe technical documentation shall be drawn up in such a way as to demonstrate that the high-risk AI system complies with the requirements set out in this Section and to provide national competent authorities and notified bodies with the necessary information in a clear and comprehensive form to assess the compliance of the AI system with those requirements. It shall contain, at a minimum, the elements set out in Annex IV. SMEs, including start-ups, may provide the elements of the technical documentation specified in Annex IV in a simplified manner. To that end, the Commission shall establish a simplified technical documentation form targeted at the needs of small and microenterprises. Where an SME, including a start-up, opts to provide the information required in Annex IV in a simplified manner, it shall use the form referred to in this paragraph. Notified bodies shall accept the form for the purposes of the conformity assessment.\n>>>\n\n[4] Ensure the system technically allows automatic recording of events (logs) over its lifetime.\nCites: Art 12(1)\nProvision text (Art 12(1)):\n<<<\n1. High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system.\n>>>\n\n[5] Design the system to be sufficiently transparent for deployers to interpret and use its output.\nCites: Art 13(1)\nProvision text (Art 13(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system’s output and use it appropriately. An appropriate type and degree of transparency shall be ensured with a view to achieving compliance with the relevant obligations of the provider and deployer set out in Section 3.\n>>>\n\n[6] Accompany the system with instructions for use containing the required information for deployers.\nCites: Art 13(2)\nProvision text (Art 13(2)):\n<<<\n2. High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.\n>>>\n\n[7] Design the system so natural persons can effectively oversee it while in use.\nCites: Art 14(1)\nProvision text (Art 14(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use.\n>>>\n\n[8] Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.\nCites: Art 15(1)\nProvision text (Art 15(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle.\n>>>\n\n[9] Complete the internal-control conformity assessment procedure (Annex VI) before placing on the market.\nCites: Art 43(2)\nProvision text (Art 43(2)):\n<<<\n2. For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow the conformity assessment procedure based on internal control as referred to in Annex VI, which does not provide for the involvement of a notified body.\n>>>\n\n[10] Register the provider and the system in the EU database before placing on the market or putting into service.\nCites: Art 49(1)\nProvision text (Art 49(1)):\n<<<\n1. Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III, the provider or, where applicable, the authorised representative shall register themselves and their system in the EU database referred to in Article 71.\n>>>"
+    },
+    {
+      "id": "PG2",
+      "obligations": 1,
+      "flagged": 0,
+      "flags": [],
+      "missing": [],
+      "all_grounded": true,
+      "consistent": true,
+      "summary": "Every obligation is grounded: the single obligation accurately reflects the Art 50(1) disclosure duty and its 'obvious from context' exception.",
+      "input": "Product description:\nA customer-service chatbot on our e-commerce website that answers shopper questions in natural language.\n\nVerdict: tier=limited-risk; citations=['Art 50(1)']\n\nObligations:\n\n[1] Design and develop the chatbot so users are informed they are interacting with an AI system, unless this is obvious to a reasonably well-informed person from the context.\nCites: Art 50(1)\nProvision text (Art 50(1)):\n<<<\n1. Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect, taking into account the circumstances and the context of use. This obligation shall not apply to AI systems authorised by law to detect, prevent, investigate or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms of third parties, unless those systems are available for the public to report a criminal offence.\n>>>"
+    },
+    {
+      "id": "PG3",
+      "obligations": 1,
+      "flagged": 1,
+      "flags": [
+        {
+          "index": 1,
+          "verdict": "misstated",
+          "note": "The text prohibits \"the placing on the market, the putting into service or the use\" of such AI systems. It does not mention \"develop\", so the obligation adds a prohibited activity the provision does not state.",
+          "obligation": {
+            "text": "Do not develop, place on the market, put into service or use this social scoring system.",
+            "citation": "Art 5(1)(c)"
+          }
+        }
+      ],
+      "missing": [],
+      "all_grounded": false,
+      "consistent": true,
+      "summary": "The one obligation is not fully grounded. It correctly covers placing on the market, putting into service and use, but adds \"develop\", which Art 5(1)(c) does not mention.",
+      "input": "Product description:\nA government system that scores each citizen's trustworthiness from their everyday behaviour and uses it to grant or deny access to public services.\n\nVerdict: tier=prohibited; citations=['Art 5(1)(c)']\n\nObligations:\n\n[1] Do not develop, place on the market, put into service or use this social scoring system.\nCites: Art 5(1)(c)\nProvision text (Art 5(1)(c)):\n<<<\n(c) the placing on the market, the putting into service or the use of AI systems for the evaluation or classification of natural persons or groups of persons over a certain period of time based on their social behaviour or known, inferred or predicted personal or personality characteristics, with the social score leading to either or both of the following:\n(i) detrimental or unfavourable treatment of certain natural persons or groups of persons in social contexts that are unrelated to the contexts in which the data was originally generated or collected;\n(ii) detrimental or unfavourable treatment of certain natural persons or groups of persons that is unjustified or disproportionate to their social behaviour or its gravity;\n>>>"
+    },
+    {
+      "id": "PG4",
+      "obligations": 10,
+      "flagged": 1,
+      "flags": [
+        {
+          "index": 9,
+          "verdict": "misstated",
+          "note": "Art 43(2) applies to systems in 'points 2 to 8 of Annex III' and uses Annex VI internal control; the credit scoring system (Annex III point 5(b)) fits that range, but the text does not state the 'before placing on the market or putting into service' timing the obligation adds.",
+          "obligation": {
+            "text": "Complete the conformity assessment based on internal control (Annex VI) before placing on the market or putting into service.",
+            "citation": "Art 43(2)"
+          }
+        }
+      ],
+      "missing": [],
+      "all_grounded": false,
+      "consistent": true,
+      "summary": "Nine of ten obligations are grounded in their cited text. Obligation 9 is misstated because it adds a timing condition that Art 43(2) does not contain.",
+      "input": "Product description:\nA model that scores loan applicants' creditworthiness so the bank can decide who gets a loan.\n\nVerdict: tier=high-risk; citations=['Art 6(2)', 'Annex III(5)(b)']\n\nObligations:\n\n[1] Establish, implement, document and maintain a risk management system.\nCites: Art 9(1)\nProvision text (Art 9(1)):\n<<<\n1. A risk management system shall be established, implemented, documented and maintained in relation to high-risk AI systems.\n>>>\n\n[2] Develop the model using training, validation and testing data sets that meet the data quality criteria.\nCites: Art 10(1)\nProvision text (Art 10(1)):\n<<<\n1. High-risk AI systems which make use of techniques involving the training of AI models with data shall be developed on the basis of training, validation and testing data sets that meet the quality criteria referred to in paragraphs 2 to 5 whenever such data sets are used.\n>>>\n\n[3] Draw up and keep up to date technical documentation before placing on the market or putting into service.\nCites: Art 11(1)\nProvision text (Art 11(1)):\n<<<\n1. The technical documentation of a high-risk AI system shall be drawn up before that system is placed on the market or put into service and shall be kept up-to date.\nThe technical documentation shall be drawn up in such a way as to demonstrate that the high-risk AI system complies with the requirements set out in this Section and to provide national competent authorities and notified bodies with the necessary information in a clear and comprehensive form to assess the compliance of the AI system with those requirements. It shall contain, at a minimum, the elements set out in Annex IV. SMEs, including start-ups, may provide the elements of the technical documentation specified in Annex IV in a simplified manner. To that end, the Commission shall establish a simplified technical documentation form targeted at the needs of small and microenterprises. Where an SME, including a start-up, opts to provide the information required in Annex IV in a simplified manner, it shall use the form referred to in this paragraph. Notified bodies shall accept the form for the purposes of the conformity assessment.\n>>>\n\n[4] Technically allow automatic recording of events (logs) over the system's lifetime.\nCites: Art 12(1)\nProvision text (Art 12(1)):\n<<<\n1. High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system.\n>>>\n\n[5] Design the system to be sufficiently transparent for deployers to interpret and use its output.\nCites: Art 13(1)\nProvision text (Art 13(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system’s output and use it appropriately. An appropriate type and degree of transparency shall be ensured with a view to achieving compliance with the relevant obligations of the provider and deployer set out in Section 3.\n>>>\n\n[6] Accompany the system with instructions for use containing the required information for deployers.\nCites: Art 13(2)\nProvision text (Art 13(2)):\n<<<\n2. High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.\n>>>\n\n[7] Design the system so natural persons can effectively oversee it while in use.\nCites: Art 14(1)\nProvision text (Art 14(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use.\n>>>\n\n[8] Achieve an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.\nCites: Art 15(1)\nProvision text (Art 15(1)):\n<<<\n1. High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects throughout their lifecycle.\n>>>\n\n[9] Complete the conformity assessment based on internal control (Annex VI) before placing on the market or putting into service.\nCites: Art 43(2)\nProvision text (Art 43(2)):\n<<<\n2. For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow the conformity assessment procedure based on internal control as referred to in Annex VI, which does not provide for the involvement of a notified body.\n>>>\n\n[10] Register the provider and the system in the EU database before placing on the market or putting into service.\nCites: Art 49(1)\nProvision text (Art 49(1)):\n<<<\n1. Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III, the provider or, where applicable, the authorised representative shall register themselves and their system in the EU database referred to in Article 71.\n>>>"
+    },
+    {
+      "id": "PG5",
+      "obligations": 1,
+      "flagged": 1,
+      "flags": [
+        {
+          "index": 1,
+          "verdict": "misstated",
+          "note": "The text prohibits only \"the use of\" real-time remote biometric identification in publicly accessible spaces for law enforcement. It does not mention developing, placing on the market or putting into service. It also makes the ban conditional (\"unless and in so far as such use is strictly necessary\" for objectives (i)-(iii)), and the obligation states it as absolute.",
+          "obligation": {
+            "text": "Do not develop, place on the market, put into service or use this system for real-time remote biometric identification in public spaces for law enforcement.",
+            "citation": "Art 5(1)(h)"
+          }
+        }
+      ],
+      "missing": [],
+      "all_grounded": false,
+      "consistent": true,
+      "summary": "The single obligation is misstated: it extends the prohibition to development, placing on the market and putting into service, which the cited text does not mention, and it omits the exceptions in (i)-(iii).",
+      "input": "Product description:\nA system that does real-time facial recognition of people in public squares and streams it to the police.\n\nVerdict: tier=prohibited; citations=['Art 5(1)(h)']\n\nObligations:\n\n[1] Do not develop, place on the market, put into service or use this system for real-time remote biometric identification in public spaces for law enforcement.\nCites: Art 5(1)(h)\nProvision text (Art 5(1)(h)):\n<<<\n(h) the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives:\n(i) the targeted search for specific victims of abduction, trafficking in human beings or sexual exploitation of human beings, as well as the search for missing persons;\n(ii) the prevention of a specific, substantial and imminent threat to the life or physical safety of natural persons or a genuine and present or genuine and foreseeable threat of a terrorist attack;\n(iii) the localisation or identification of a person suspected of having committed a criminal offence, for the purpose of conducting a criminal investigation or prosecution or executing a criminal penalty for offences referred to in Annex II and punishable in the Member State concerned by a custodial sentence or a detention order for a maximum period of at least four years.\n>>>"
+    },
+    {
+      "id": "PG6",
+      "skipped": "no obligations"
+    }
+  ]
+}

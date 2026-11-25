@@ -1,0 +1,80 @@
+{
+  "meta": {
+    "note": "Minimal-pair cases for Professor Di Somma's point 2. Each pair gives an AMBIGUOUS description plus two RESOLUTIONS that differ by a single fact about how the output is used. The tool should (a) return needs-info on the ambiguous input with a question that probes how the output is used and who acts on it, and (b) via the clarify loop, update the assessment for each resolution. Two pairs flip the tier; MP3 keeps the tier (high-risk) but changes the sub-provision, facts and rationale — covering both of the professor's scenarios. Derogation variants are boundary cases: the primary check is that the reasoning invokes Art 6(3) and the key_facts reflect the human-review fact; the tier label (minimal-risk) is secondary. Scoring uses the descendant rule (a child/parent id satisfies the expected id). must_reflect phrases are checked case-insensitively against key_facts + rationale.",
+    "scoring": "ambiguous: tier == needs-info AND clarifying_question mentions how the output is used / who acts on it. resolution: expected_citation present (descendant rule) AND all must_reflect phrases appear in key_facts or rationale. Tier is a secondary check for derogation (minimal-risk) variants."
+  },
+  "pairs": [
+    {
+      "id": "MP1",
+      "domain": "recruitment",
+      "ambiguous": "We use AI to summarise job applications.",
+      "question_must_probe": ["how the summaries are used", "whether a human reviews the applications / who makes the decision"],
+      "resolutions": [
+        {
+          "id": "MP1-A",
+          "clarification": "A recruiter reads every application in full alongside the summary, and the AI does not rank, score or filter candidates.",
+          "expected_tier": "minimal-risk",
+          "expected_citation": "Art 6(3)",
+          "must_reflect": ["reads every application", "does not rank"],
+          "note": "Boundary: Annex III(4) area, but the Art 6(3) derogation applies because the summary is a preparatory aid that does not materially influence the decision. Primary check: rationale invokes Art 6(3)."
+        },
+        {
+          "id": "MP1-B",
+          "clarification": "The system also ranks candidates and only the top ten are reviewed by a recruiter.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "must_reflect": ["rank", "top ten"],
+          "note": "Ranking materially influences who is considered, so the derogation does not apply; high-risk under Annex III(4)."
+        }
+      ]
+    },
+    {
+      "id": "MP2",
+      "domain": "credit",
+      "ambiguous": "We use AI to review loan applications.",
+      "question_must_probe": ["whether the AI scores or decides", "who makes the lending decision"],
+      "resolutions": [
+        {
+          "id": "MP2-A",
+          "clarification": "The AI only writes a plain-language summary of each application; a loan officer reads the full application and decides independently.",
+          "expected_tier": "minimal-risk",
+          "expected_citation": "Art 6(3)",
+          "must_reflect": ["summary", "officer", "decides"],
+          "note": "Boundary: essential-services area, but a preparatory summary where a human decides from the full file can fall under the Art 6(3) derogation. Primary check: rationale invokes Art 6(3)."
+        },
+        {
+          "id": "MP2-B",
+          "clarification": "The AI assigns each applicant a creditworthiness score that determines whether the loan is approved.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(5)",
+          "must_reflect": ["credit", "score"],
+          "note": "Credit scoring that determines access to a loan is high-risk under Annex III(5)."
+        }
+      ]
+    },
+    {
+      "id": "MP3",
+      "domain": "workforce",
+      "ambiguous": "We use AI in our workforce management.",
+      "question_must_probe": ["whether it is for hiring/recruitment or for managing existing employees", "what decision it supports"],
+      "resolutions": [
+        {
+          "id": "MP3-A",
+          "clarification": "It screens and ranks external job applicants to shortlist them for recruiters.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "must_reflect": ["applicants", "recruitment or screening"],
+          "note": "Recruitment/selection of applicants: Annex III(4)(a)."
+        },
+        {
+          "id": "MP3-B",
+          "clarification": "It evaluates current employees' performance to inform promotion and termination decisions.",
+          "expected_tier": "high-risk",
+          "expected_citation": "Annex III(4)",
+          "must_reflect": ["performance", "promotion or termination"],
+          "note": "Management of workers (promotion/termination/performance): Annex III(4)(b). Same tier as MP3-A, but a different sub-provision, facts and rationale — the professor's 'label stays, explanation changes' case."
+        }
+      ]
+    }
+  ]
+}

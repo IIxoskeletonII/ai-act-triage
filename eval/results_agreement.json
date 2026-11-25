@@ -1,0 +1,249 @@
+{
+  "configs": {
+    "sonnet-rag": "results_sonnet_rag.json",
+    "sonnet-parametric": "results_sonnet_parametric.json",
+    "haiku-rag": "results_haiku_rag.json",
+    "haiku-parametric": "results_haiku_parametric.json"
+  },
+  "agree": 17,
+  "cases": 20,
+  "rows": [
+    {
+      "id": "T1",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "T2",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "T3",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "T4",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "T5",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N1",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N2",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N3",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "E1",
+      "pass": {
+        "sonnet-rag": false,
+        "sonnet-parametric": false,
+        "haiku-rag": false,
+        "haiku-parametric": false
+      },
+      "all_agree": true,
+      "failures": {
+        "sonnet-rag": "structural: needs-info tier not yet available",
+        "sonnet-parametric": "structural: needs-info tier not yet available",
+        "haiku-rag": "structural: needs-info tier not yet available",
+        "haiku-parametric": "structural: needs-info tier not yet available"
+      }
+    },
+    {
+      "id": "E2",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "E3",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N6",
+      "pass": {
+        "sonnet-rag": false,
+        "sonnet-parametric": true,
+        "haiku-rag": false,
+        "haiku-parametric": true
+      },
+      "all_agree": false,
+      "failures": {
+        "sonnet-rag": "structural: derogation not cited (minimal-risk rule said cite nothing)",
+        "haiku-rag": "structural: derogation not cited (minimal-risk rule said cite nothing)"
+      }
+    },
+    {
+      "id": "N7",
+      "pass": {
+        "sonnet-rag": false,
+        "sonnet-parametric": false,
+        "haiku-rag": false,
+        "haiku-parametric": false
+      },
+      "all_agree": true,
+      "failures": {
+        "sonnet-rag": "structural: needs-info tier not yet available",
+        "sonnet-parametric": "structural: needs-info tier not yet available",
+        "haiku-rag": "structural: needs-info tier not yet available",
+        "haiku-parametric": "structural: needs-info tier not yet available"
+      }
+    },
+    {
+      "id": "N8",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N4",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N5",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": false,
+        "haiku-parametric": true
+      },
+      "all_agree": false,
+      "failures": {
+        "haiku-rag": "content: cited ['Art 50(2)'] on a minimal-risk verdict"
+      }
+    },
+    {
+      "id": "A1",
+      "pass": {
+        "sonnet-rag": false,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": false,
+      "failures": {
+        "sonnet-rag": "structural: cited the parent ['Art 5(1)'] not the point (point-level rule came later)"
+      }
+    },
+    {
+      "id": "A2",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N9",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    },
+    {
+      "id": "N10",
+      "pass": {
+        "sonnet-rag": true,
+        "sonnet-parametric": true,
+        "haiku-rag": true,
+        "haiku-parametric": true
+      },
+      "all_agree": true,
+      "failures": {}
+    }
+  ]
+}

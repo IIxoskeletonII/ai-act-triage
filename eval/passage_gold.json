@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "note": "Passage-level gold standard for Professor Di Somma's point 3, written BEFORE running the models. For each case the expected provision IS the supporting passage (each chunk in data/ai_act_chunks.json is one provision's text). support_note states why that passage supports the verdict. For high-risk cases, expected_core_obligations lists the provisions whose obligations should appear. Measurement: (i) passage-found = the agent cites expected_provision (exact or descendant/ancestor under the id-tree rule); (ii) passage-supports = the ACTUAL text of the cited provision in data/ai_act_chunks.json supports the claim; (iii) missed-obligation = any expected_core_obligation absent from the obligations output.",
+    "verifier_note": "For point 3's verifier analysis, run the critic over these cases' obligations and classify each flag as TRUE (a real error vs this gold + the chunk text) or FALSE (a substantively-correct obligation wrongly flagged)."
+  },
+  "cases": [
+    {
+      "id": "PG1",
+      "description": "A tool that screens and ranks job applicants' CVs and shortlists the top candidates for recruiters.",
+      "expected_tier": "high-risk",
+      "expected_provision": "Annex III(4)",
+      "support_note": "Annex III(4)(a) lists AI used to analyse and filter job applications and evaluate candidates as high-risk recruitment use.",
+      "expected_core_obligations": ["Art 9", "Art 10", "Art 11", "Art 12", "Art 13", "Art 14", "Art 15", "Art 43", "Art 49"]
+    },
+    {
+      "id": "PG2",
+      "description": "A customer-service chatbot on our e-commerce website that answers shopper questions in natural language.",
+      "expected_tier": "limited-risk",
+      "expected_provision": "Art 50(1)",
+      "support_note": "Art 50(1) requires systems that interact directly with natural persons to inform them they are dealing with an AI.",
+      "expected_core_obligations": ["Art 50(1)"]
+    },
+    {
+      "id": "PG3",
+      "description": "A government system that scores each citizen's trustworthiness from their everyday behaviour and uses it to grant or deny access to public services.",
+      "expected_tier": "prohibited",
+      "expected_provision": "Art 5(1)(c)",
+      "support_note": "Art 5(1)(c) prohibits social scoring that leads to detrimental or unfavourable treatment in unrelated contexts or disproportionate to the behaviour.",
+      "expected_core_obligations": ["Art 5(1)(c)"]
+    },
+    {
+      "id": "PG4",
+      "description": "A model that scores loan applicants' creditworthiness so the bank can decide who gets a loan.",
+      "expected_tier": "high-risk",
+      "expected_provision": "Annex III(5)",
+      "support_note": "Annex III(5)(b) lists AI used to evaluate creditworthiness or establish credit scores as high-risk.",
+      "expected_core_obligations": ["Art 9", "Art 10", "Art 11", "Art 12", "Art 13", "Art 14", "Art 15", "Art 43", "Art 49"]
+    },
+    {
+      "id": "PG5",
+      "description": "A system that does real-time facial recognition of people in public squares and streams it to the police.",
+      "expected_tier": "prohibited",
+      "expected_provision": "Art 5(1)(h)",
+      "support_note": "Art 5(1)(h) prohibits real-time remote biometric identification in publicly accessible spaces for law enforcement, outside its narrow exceptions.",
+      "expected_core_obligations": ["Art 5(1)(h)"]
+    },
+    {
+      "id": "PG6",
+      "description": "An internal research model we train and test in our lab only, never placed on the market or used on real users.",
+      "expected_tier": "out-of-scope",
+      "expected_provision": "Art 2",
+      "support_note": "Art 2 excludes AI used solely for scientific research and development, and activity prior to being placed on the market.",
+      "expected_core_obligations": []
+    }
+  ]
+}

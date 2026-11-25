@@ -27,7 +27,7 @@ class Obligation(BaseModel):
 class Verdict(BaseModel):
     tier: Tier = Field(description="The risk tier under the EU AI Act.")
     key_facts: list[str] = Field(
-        default_factory=list, description="The specific facts from the user's description that drove the tier.")
+        default_factory=list, description="Only facts stated in the user's description that drove the tier.")
     rationale: str = Field(description="Two or three sentences in plain English.")
     citations: list[str] = Field(description="Provision IDs from the AI Act, e.g. 'Art 72(1)'.")
     confidence: Literal["high", "medium", "low"]
@@ -58,7 +58,7 @@ _RULES = """- Tiers, most to least severe: prohibited, high-risk, limited-risk, 
 - Do not over-classify. A system is only high-risk if its purpose falls in an Annex III area. A chatbot or a content generator is usually a transparency (limited-risk) case, not high-risk.
 - If no prohibited, high-risk or transparency provision applies, classify minimal-risk and cite nothing. Cite Art 6(3) only when the Art 6(3) derogation is the reason an Annex III system is minimal-risk. Do not cite Art 6(3) on a high-risk or any other verdict.
 - If the description does not state the system's intended purpose or use well enough to classify it, return needs-info, cite nothing, and put one specific question about the purpose in clarifying_question. Use needs-info only when the purpose is genuinely unspecified. If the description can be classified, classify it and leave clarifying_question empty. When the purpose is unclear because the description does not say how the output is used or whether a person acts on it (for example in employment or credit), the question must ask specifically how the output is used and who acts on it.
-- List key_facts: the specific facts from the product description that drove the tier, in the description's own terms. Draw them from the actual input, not from generic statements about the tier.
+- List key_facts: only facts stated in the product description (including any clarification) that drove the tier, lightly paraphrased. Never put conclusions, legal classifications, provision ids or statements about what the description does not say in key_facts; those belong in the rationale or to_confirm. A fact the description itself states in the negative (for example that the system does not do something) is a stated fact.
 - List to_confirm: open questions or assumptions the user should verify even when a tier is assigned, such as a fact the tier or an exception depends on that the description does not settle. Leave it empty when nothing material is open.
 - Also list obligations: each is one concrete thing the provider or deployer must do, in one concise sentence, citing the id of the provision that imposes it. Obligation citations go in obligations only; they do not change the verdict citations. By tier:
   - prohibited: one obligation, that the system must not be developed, placed on the market, put into service or used, citing the same prohibition point as the verdict.

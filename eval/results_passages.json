@@ -1,0 +1,393 @@
+{
+  "model": "anthropic:claude-sonnet-5-5",
+  "cases": [
+    {
+      "id": "PG1",
+      "expected_tier": "high-risk",
+      "expected_provision": "Annex III(4)",
+      "tier": "high-risk",
+      "citations": [
+        "Annex III(4)(a)",
+        "Art 6(2)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Annex III(4)(a)"
+      ],
+      "cited_text": {
+        "Annex III(4)(a)": "(a) AI systems intended to be used for the recruitment or selection of natural persons, in particular to place targeted job advertisements, to analyse and filter job applications, and to evaluate candidates;",
+        "Art 6(2)": "2. In addition to the high-risk AI systems referred to in paragraph 1, AI systems referred to in Annex III shall be considered to be high-risk."
+      },
+      "expected_core_obligations": [
+        "Art 9",
+        "Art 10",
+        "Art 11",
+        "Art 12",
+        "Art 13",
+        "Art 14",
+        "Art 15",
+        "Art 43",
+        "Art 49"
+      ],
+      "obligation_citations": [
+        "Art 9(1)",
+        "Art 10(1)",
+        "Art 11(1)",
+        "Art 12(1)",
+        "Art 13(1)",
+        "Art 13(2)",
+        "Art 14(1)",
+        "Art 15(1)",
+        "Art 43(2)",
+        "Art 49(1)"
+      ],
+      "missed_obligations": [],
+      "output": {
+        "tier": "high-risk",
+        "key_facts": [
+          "The tool screens and ranks job applicants' CVs",
+          "It shortlists the top candidates for recruiters"
+        ],
+        "rationale": "The tool analyses and filters job applications and evaluates candidates for recruitment, which is a listed Annex III employment use case. That makes it high-risk. Recruiters act on the shortlist, but the use case is listed regardless of that human step.",
+        "citations": [
+          "Annex III(4)(a)",
+          "Art 6(2)"
+        ],
+        "confidence": "high",
+        "clarifying_question": null,
+        "obligations": [
+          {
+            "text": "Establish, implement, document and maintain a risk management system.",
+            "citation": "Art 9(1)"
+          },
+          {
+            "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+            "citation": "Art 10(1)"
+          },
+          {
+            "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service.",
+            "citation": "Art 11(1)"
+          },
+          {
+            "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+            "citation": "Art 12(1)"
+          },
+          {
+            "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+            "citation": "Art 13(1)"
+          },
+          {
+            "text": "Accompany the system with instructions for use containing the required information for deployers.",
+            "citation": "Art 13(2)"
+          },
+          {
+            "text": "Design the system so natural persons can effectively oversee it while in use.",
+            "citation": "Art 14(1)"
+          },
+          {
+            "text": "Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+            "citation": "Art 15(1)"
+          },
+          {
+            "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing on the market.",
+            "citation": "Art 43(2)"
+          },
+          {
+            "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+            "citation": "Art 49(1)"
+          }
+        ],
+        "to_confirm": [
+          "Confirm the tool is placed on the market or put into service in the EU, or its output is used in the EU.",
+          "Confirm whether you are the provider (developer) or only a deployer, as the obligations differ."
+        ],
+        "invalid_citations": []
+      }
+    },
+    {
+      "id": "PG2",
+      "expected_tier": "limited-risk",
+      "expected_provision": "Art 50(1)",
+      "tier": "limited-risk",
+      "citations": [
+        "Art 50(1)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Art 50(1)"
+      ],
+      "cited_text": {
+        "Art 50(1)": "1. Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect, taking into account the circumstances and the context of use. This obligation shall not apply to AI systems authorised by law to detect, prevent, investigate or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms of third parties, unless those systems are available for the public to report a criminal offence."
+      },
+      "expected_core_obligations": [
+        "Art 50(1)"
+      ],
+      "obligation_citations": [
+        "Art 50(1)"
+      ],
+      "missed_obligations": [],
+      "output": {
+        "tier": "limited-risk",
+        "key_facts": [
+          "Customer-service chatbot on an e-commerce website",
+          "Answers shopper questions in natural language",
+          "Interacts directly with shoppers"
+        ],
+        "rationale": "The chatbot talks directly with people, so it falls under the transparency rules for AI systems that interact with natural persons. Answering shopper questions on an e-commerce site is not an Annex III high-risk purpose, and nothing in the description suggests a prohibited practice. The main duty is to make sure users know they are talking to an AI, unless that is obvious from the context.",
+        "citations": [
+          "Art 50(1)"
+        ],
+        "confidence": "high",
+        "clarifying_question": null,
+        "obligations": [
+          {
+            "text": "Design and develop the chatbot so users are informed they are interacting with an AI system, unless this is obvious to a reasonably well-informed person from the context.",
+            "citation": "Art 50(1)"
+          }
+        ],
+        "to_confirm": [
+          "Confirm the chatbot is not also used for high-risk purposes, such as credit assessment of shoppers.",
+          "Confirm the chatbot does not use manipulative or exploitative techniques.",
+          "Confirm whether the chatbot generates synthetic text that is published to inform the public, which would trigger further transparency duties."
+        ],
+        "invalid_citations": []
+      }
+    },
+    {
+      "id": "PG3",
+      "expected_tier": "prohibited",
+      "expected_provision": "Art 5(1)(c)",
+      "tier": "prohibited",
+      "citations": [
+        "Art 5(1)(c)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Art 5(1)(c)"
+      ],
+      "cited_text": {
+        "Art 5(1)(c)": "(c) the placing on the market, the putting into service or the use of AI systems for the evaluation or classification of natural persons or groups of persons over a certain period of time based on their social behaviour or known, inferred or predicted personal or personality characteristics, with the social score leading to either or both of the following:\n(i) detrimental or unfavourable treatment of certain natural persons or groups of persons in social contexts that are unrelated to the contexts in which the data was originally generated or collected;\n(ii) detrimental or unfavourable treatment of certain natural persons or groups of persons that is unjustified or disproportionate to their social behaviour or its gravity;"
+      },
+      "expected_core_obligations": [
+        "Art 5(1)(c)"
+      ],
+      "obligation_citations": [
+        "Art 5(1)(c)"
+      ],
+      "missed_obligations": [],
+      "output": {
+        "tier": "prohibited",
+        "key_facts": [
+          "Government system scores each citizen's trustworthiness from everyday behaviour",
+          "The score is used to grant or deny access to public services"
+        ],
+        "rationale": "The system evaluates people over time based on their social behaviour and uses the resulting score to deny them public services. That is social scoring, which Art 5(1)(c) prohibits. Denial of services is detrimental treatment, and it can occur in contexts unrelated to where the data was collected or can be disproportionate to the behaviour.",
+        "citations": [
+          "Art 5(1)(c)"
+        ],
+        "confidence": "high",
+        "clarifying_question": null,
+        "obligations": [
+          {
+            "text": "Do not develop, place on the market, put into service or use this social scoring system.",
+            "citation": "Art 5(1)(c)"
+          }
+        ],
+        "to_confirm": [
+          "Confirm that the score does lead to detrimental treatment that is unrelated to the original data context or is disproportionate to the behaviour. Denial of public services on this basis would meet that test."
+        ],
+        "invalid_citations": []
+      }
+    },
+    {
+      "id": "PG4",
+      "expected_tier": "high-risk",
+      "expected_provision": "Annex III(5)",
+      "tier": "high-risk",
+      "citations": [
+        "Art 6(2)",
+        "Annex III(5)(b)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Annex III(5)(b)"
+      ],
+      "cited_text": {
+        "Art 6(2)": "2. In addition to the high-risk AI systems referred to in paragraph 1, AI systems referred to in Annex III shall be considered to be high-risk.",
+        "Annex III(5)(b)": "(b) AI systems intended to be used to evaluate the creditworthiness of natural persons or establish their credit score, with the exception of AI systems used for the purpose of detecting financial fraud;"
+      },
+      "expected_core_obligations": [
+        "Art 9",
+        "Art 10",
+        "Art 11",
+        "Art 12",
+        "Art 13",
+        "Art 14",
+        "Art 15",
+        "Art 43",
+        "Art 49"
+      ],
+      "obligation_citations": [
+        "Art 9(1)",
+        "Art 10(1)",
+        "Art 11(1)",
+        "Art 12(1)",
+        "Art 13(1)",
+        "Art 13(2)",
+        "Art 14(1)",
+        "Art 15(1)",
+        "Art 43(2)",
+        "Art 49(1)"
+      ],
+      "missed_obligations": [],
+      "output": {
+        "tier": "high-risk",
+        "key_facts": [
+          "The model scores loan applicants' creditworthiness",
+          "The bank uses the score to decide who gets a loan"
+        ],
+        "rationale": "The system evaluates the creditworthiness of natural persons, which is an Annex III high-risk use case. The use is credit scoring rather than fraud detection, so the fraud exception does not apply. The full high-risk requirements apply.",
+        "citations": [
+          "Art 6(2)",
+          "Annex III(5)(b)"
+        ],
+        "confidence": "high",
+        "clarifying_question": null,
+        "obligations": [
+          {
+            "text": "Establish, implement, document and maintain a risk management system.",
+            "citation": "Art 9(1)"
+          },
+          {
+            "text": "Develop the model using training, validation and testing data sets that meet the data quality criteria.",
+            "citation": "Art 10(1)"
+          },
+          {
+            "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service.",
+            "citation": "Art 11(1)"
+          },
+          {
+            "text": "Technically allow automatic recording of events (logs) over the system's lifetime.",
+            "citation": "Art 12(1)"
+          },
+          {
+            "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+            "citation": "Art 13(1)"
+          },
+          {
+            "text": "Accompany the system with instructions for use containing the required information for deployers.",
+            "citation": "Art 13(2)"
+          },
+          {
+            "text": "Design the system so natural persons can effectively oversee it while in use.",
+            "citation": "Art 14(1)"
+          },
+          {
+            "text": "Achieve an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
+            "citation": "Art 15(1)"
+          },
+          {
+            "text": "Complete the conformity assessment based on internal control (Annex VI) before placing on the market or putting into service.",
+            "citation": "Art 43(2)"
+          },
+          {
+            "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
+            "citation": "Art 49(1)"
+          }
+        ],
+        "to_confirm": [
+          "Confirm the system scores natural persons (individual applicants), not only businesses.",
+          "Confirm the system is not used solely to detect financial fraud."
+        ],
+        "invalid_citations": []
+      }
+    },
+    {
+      "id": "PG5",
+      "expected_tier": "prohibited",
+      "expected_provision": "Art 5(1)(h)",
+      "tier": "prohibited",
+      "citations": [
+        "Art 5(1)(h)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Art 5(1)(h)"
+      ],
+      "cited_text": {
+        "Art 5(1)(h)": "(h) the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives:\n(i) the targeted search for specific victims of abduction, trafficking in human beings or sexual exploitation of human beings, as well as the search for missing persons;\n(ii) the prevention of a specific, substantial and imminent threat to the life or physical safety of natural persons or a genuine and present or genuine and foreseeable threat of a terrorist attack;\n(iii) the localisation or identification of a person suspected of having committed a criminal offence, for the purpose of conducting a criminal investigation or prosecution or executing a criminal penalty for offences referred to in Annex II and punishable in the Member State concerned by a custodial sentence or a detention order for a maximum period of at least four years."
+      },
+      "expected_core_obligations": [
+        "Art 5(1)(h)"
+      ],
+      "obligation_citations": [
+        "Art 5(1)(h)"
+      ],
+      "missed_obligations": [],
+      "output": {
+        "tier": "prohibited",
+        "key_facts": [
+          "The system does real-time facial recognition of people in public squares",
+          "The feed is streamed to the police"
+        ],
+        "rationale": "This is a 'real-time' remote biometric identification system used in publicly accessible spaces for law enforcement. Art 5(1)(h) prohibits that unless the use is strictly necessary for a narrow listed objective, such as searching for victims or missing persons, preventing an imminent threat, or locating a suspect of a serious Annex II offence. The description describes general streaming of public squares to police, not a targeted use within those exceptions, so it falls under the prohibition.",
+        "citations": [
+          "Art 5(1)(h)"
+        ],
+        "confidence": "medium",
+        "clarifying_question": null,
+        "obligations": [
+          {
+            "text": "Do not develop, place on the market, put into service or use this system for real-time remote biometric identification in public spaces for law enforcement.",
+            "citation": "Art 5(1)(h)"
+          }
+        ],
+        "to_confirm": [
+          "Whether any use is strictly limited to one of the Art 5(1)(h) objectives (targeted search for victims or missing persons, imminent threat, or a serious Annex II suspect). Such use would also need national-law authorisation, a fundamental rights impact assessment and EU database registration under Art 5(2).",
+          "Whether the system identifies people continuously and indiscriminately, or only confirms the identity of a specifically targeted individual."
+        ],
+        "invalid_citations": []
+      }
+    },
+    {
+      "id": "PG6",
+      "expected_tier": "out-of-scope",
+      "expected_provision": "Art 2",
+      "tier": "out-of-scope",
+      "citations": [
+        "Art 2(8)"
+      ],
+      "passage_found": true,
+      "found_ids": [
+        "Art 2(8)"
+      ],
+      "cited_text": {
+        "Art 2(8)": "8. This Regulation does not apply to any research, testing or development activity regarding AI systems or AI models prior to their being placed on the market or put into service. Such activities shall be conducted in accordance with applicable Union law. Testing in real world conditions shall not be covered by that exclusion."
+      },
+      "expected_core_obligations": [],
+      "obligation_citations": [],
+      "missed_obligations": [],
+      "output": {
+        "tier": "out-of-scope",
+        "key_facts": [
+          "Internal research model trained and tested in the lab only",
+          "Never placed on the market",
+          "Never used on real users"
+        ],
+        "rationale": "The Act does not apply to research, testing or development of AI systems or models before they are placed on the market or put into service. Your model stays in the lab and is not tested on real users, so the exclusion applies. The exclusion would no longer cover it if it were released, put into service, or tested in real-world conditions.",
+        "citations": [
+          "Art 2(8)"
+        ],
+        "confidence": "high",
+        "clarifying_question": null,
+        "obligations": [],
+        "to_confirm": [
+          "The model stays internal and is never put into service, including for your own operational use.",
+          "No testing in real-world conditions is planned, because that is not covered by the exclusion.",
+          "The research and development activity still complies with other applicable Union law, such as data protection."
+        ],
+        "invalid_citations": []
+      }
+    }
+  ]
+}
