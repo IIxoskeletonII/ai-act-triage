@@ -25,15 +25,15 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Establish, implement, document and maintain a risk management system throughout the system's lifecycle.",
+          "text": "Establish, implement, document and maintain a risk management system.",
           "citation": "Art 9(1)"
         },
         {
-          "text": "Develop the system using training, validation and testing data sets that meet the data governance and quality criteria, including bias examination and mitigation.",
-          "citation": "Art 10(2)"
+          "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+          "citation": "Art 10(1)"
         },
         {
-          "text": "Draw up and keep up to date technical documentation, containing at least the Annex IV elements, before placing the system on the market or putting it into service.",
+          "text": "Draw up and keep up to date technical documentation before placing the system on the market or putting it into service.",
           "citation": "Art 11(1)"
         },
         {
@@ -49,15 +49,15 @@
           "citation": "Art 13(2)"
         },
         {
-          "text": "Design the system so natural persons can effectively oversee it, including being able to disregard or override its output.",
+          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
           "citation": "Art 14(1)"
         },
         {
-          "text": "Design the system to achieve an appropriate level of accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "text": "Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
           "citation": "Art 15(1)"
         },
         {
-          "text": "Carry out the conformity assessment based on internal control (Annex VI) before placing the system on the market.",
+          "text": "Carry out the conformity assessment based on internal control (Annex VI), with no notified body involved.",
           "citation": "Art 43(2)"
         },
         {
@@ -70,8 +70,9 @@
         "It shortlists the top candidates for recruiters."
       ],
       "to_confirm": [
-        "Confirm the tool is intended for recruitment or selection in the EU, or its output is used in the EU.",
-        "Confirm whether the tool is a safety component or otherwise falls under other Union product legislation. This is unlikely for a CV screener."
+        "Confirm the tool is placed on the market or used in the EU, or that its output is used in the EU.",
+        "Confirm whether you are the provider (you built it) and whether any customer deployers will rebrand or substantially modify it.",
+        "Confirm the shortlisting is not purely a narrow procedural task. Ranking candidates is profiling, so the Art 6(3) derogation is unlikely to apply."
       ]
     },
     {
@@ -90,7 +91,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Design the chatbot so shoppers are told they are interacting with an AI system, unless this is obvious to a reasonably well-informed, observant and circumspect person.",
+          "text": "Design and develop the chatbot so shoppers are informed they are interacting with an AI system, unless that is obvious to a reasonably well-informed, observant and circumspect person.",
           "citation": "Art 50(1)"
         }
       ],
@@ -100,8 +101,8 @@
         "Interacts directly with shoppers"
       ],
       "to_confirm": [
-        "The chatbot only answers shopper questions and does not make decisions such as credit or eligibility assessments, which could change the tier.",
-        "The chatbot does not generate synthetic content that would trigger separate marking duties."
+        "The chatbot only answers shopper questions and does not make decisions such as credit, eligibility or pricing assessments on individuals.",
+        "Whether the chatbot also generates synthetic text content that triggers further marking duties."
       ]
     },
     {
@@ -118,7 +119,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Take measures to ensure a sufficient level of AI literacy among staff who operate or use the system (no other mandatory obligations; voluntary codes of conduct are optional).",
+          "text": "No mandatory obligations apply. You may take measures to ensure AI literacy of staff operating the system, and you may follow voluntary codes of conduct.",
           "citation": "Art 4"
         }
       ],
@@ -127,7 +128,7 @@
         "Sorts incoming company email into inbox or junk"
       ],
       "to_confirm": [
-        "The filter is used only for spam sorting and not to evaluate or monitor employees or to make decisions about people."
+        "The filter is used only to sort email. It is not used to evaluate or monitor employees, or for any other Annex III purpose."
       ]
     },
     {
@@ -137,7 +138,8 @@
       "predicted_tier": "high-risk",
       "expected_citation": "Annex III(5)",
       "predicted_citations": [
-        "Annex III(5)(b)"
+        "Annex III(5)(b)",
+        "Art 6(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -154,11 +156,11 @@
           "citation": "Art 10(1)"
         },
         {
-          "text": "Draw up and keep up to date the technical documentation before placing on the market or putting into service.",
+          "text": "Draw up and keep up to date technical documentation, containing at least the Annex IV elements, before placing on the market or putting into service.",
           "citation": "Art 11(1)"
         },
         {
-          "text": "Design the system to technically allow automatic recording of events (logs) over its lifetime.",
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
           "citation": "Art 12(1)"
         },
         {
@@ -174,11 +176,11 @@
           "citation": "Art 14(1)"
         },
         {
-          "text": "Design the system to achieve appropriate accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "text": "Achieve an appropriate level of accuracy, robustness and cybersecurity, and keep it consistent throughout the lifecycle.",
           "citation": "Art 15(1)"
         },
         {
-          "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing the system on the market or putting it into service.",
+          "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing on the market or putting into service.",
           "citation": "Art 43(2)"
         },
         {
@@ -187,12 +189,12 @@
         }
       ],
       "key_facts": [
-        "The model scores loan applicants' creditworthiness",
-        "The bank uses the score to decide who gets a loan"
+        "The model scores loan applicants' creditworthiness.",
+        "The bank uses the score to decide who gets a loan."
       ],
       "to_confirm": [
-        "The system is used to score natural persons (consumers or individual applicants), not only businesses.",
-        "The system is not used solely to detect financial fraud."
+        "Confirm the system scores natural persons (individual applicants) and not only businesses.",
+        "Confirm the system is not used solely to detect financial fraud."
       ]
     },
     {
@@ -211,7 +213,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Do not place this social scoring system on the market, put it into service or use it. The ban covers scoring that leads to detrimental treatment in unrelated social contexts or treatment that is unjustified or disproportionate, and no exception applies to denying public services on the basis of a behaviour score.",
+          "text": "Do not place on the market, put into service or use AI systems that evaluate or classify people over time based on social behaviour or personal characteristics, where the resulting social score leads to detrimental treatment in unrelated social contexts or treatment that is unjustified or disproportionate; no exception applies to this described use.",
           "citation": "Art 5(1)(c)"
         }
       ],
@@ -221,7 +223,7 @@
         "The score is used to grant or deny access to public services"
       ],
       "to_confirm": [
-        "Confirm that the denial of services is either in a context unrelated to where the behavioural data was collected or disproportionate to the behaviour. Both are likely on the facts described."
+        "Confirm that the behavioural data comes from contexts unrelated to the public services where access is denied, or that the denial is disproportionate. Either condition is enough for the prohibition to apply, and both are likely met here."
       ]
     },
     {
@@ -249,73 +251,6 @@
           "citation": "Art 10(1)"
         },
         {
-          "text": "Draw up and keep up to date technical documentation, containing at least the Annex IV elements, before placing the system on the market or putting it into service.",
-          "citation": "Art 11(1)"
-        },
-        {
-          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
-          "citation": "Art 12(1)"
-        },
-        {
-          "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
-          "citation": "Art 13(1)"
-        },
-        {
-          "text": "Accompany the system with instructions for use containing the required information for deployers.",
-          "citation": "Art 13(2)"
-        },
-        {
-          "text": "Design the system so that natural persons can effectively oversee it while it is in use.",
-          "citation": "Art 14(1)"
-        },
-        {
-          "text": "Design the system to achieve an appropriate level of accuracy, robustness and cybersecurity throughout its lifecycle.",
-          "citation": "Art 15(1)"
-        },
-        {
-          "text": "Carry out the conformity assessment based on internal control (Annex VI), which involves no notified body.",
-          "citation": "Art 43(2)"
-        },
-        {
-          "text": "Register the provider and the system in the EU database before placing the system on the market or putting it into service.",
-          "citation": "Art 49(1)"
-        }
-      ],
-      "key_facts": [
-        "The AI system evaluates students' exam answers.",
-        "It assigns the grades that decide whether students progress to the next year."
-      ],
-      "to_confirm": [
-        "Confirm the system is intended to be used for the grading that decides progression, not only as a preparatory aid.",
-        "Confirm whether a human teacher reviews and can override the grades."
-      ]
-    },
-    {
-      "id": "N2",
-      "kind": "typical",
-      "expected_tier": "high-risk",
-      "predicted_tier": "high-risk",
-      "expected_citation": "Annex III(7)",
-      "predicted_citations": [
-        "Art 6(2)",
-        "Annex III(7)(b)",
-        "Annex III(7)(c)"
-      ],
-      "tier_ok": true,
-      "citation_ok": true,
-      "pass": true,
-      "invalid_citations": [],
-      "clarifying_question": null,
-      "obligations": [
-        {
-          "text": "Establish, implement, document and maintain a risk management system throughout the system's lifecycle.",
-          "citation": "Art 9(1)"
-        },
-        {
-          "text": "Develop the system on training, validation and testing data sets that meet the data quality criteria, where the system is trained on data.",
-          "citation": "Art 10(1)"
-        },
-        {
           "text": "Draw up and keep up to date technical documentation, containing at least the Annex IV elements, before placing on the market or putting into service.",
           "citation": "Art 11(1)"
         },
@@ -332,7 +267,7 @@
           "citation": "Art 13(2)"
         },
         {
-          "text": "Design the system so that natural persons can effectively oversee it while it is in use.",
+          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
           "citation": "Art 14(1)"
         },
         {
@@ -340,7 +275,7 @@
           "citation": "Art 15(1)"
         },
         {
-          "text": "Follow the internal-control conformity assessment procedure (Annex VI), with no notified body involved.",
+          "text": "Follow the internal-control conformity assessment procedure (Annex VI) before placing on the market or putting into service.",
           "citation": "Art 43(2)"
         },
         {
@@ -349,14 +284,81 @@
         }
       ],
       "key_facts": [
-        "The AI assesses asylum seekers' applications",
-        "It flags a risk level for each applicant",
-        "Border officials receive the output"
+        "The AI system evaluates students' exam answers",
+        "It assigns grades",
+        "The grades decide whether students progress to the next year"
       ],
       "to_confirm": [
-        "Confirm the system is used by or on behalf of competent public authorities, such as border or asylum officials.",
-        "Confirm that its use is permitted under relevant Union or national law, because Annex III point 7 applies only so far as that is the case.",
-        "Confirm the risk flag does not amount to a prohibited practice, for example profiling-based criminal risk prediction or biometric categorisation."
+        "Confirm the system is used in an educational or vocational training institution, as the description implies.",
+        "Confirm whether a teacher reviews or can override the grades, which matters for the human oversight design."
+      ]
+    },
+    {
+      "id": "N2",
+      "kind": "typical",
+      "expected_tier": "high-risk",
+      "predicted_tier": "high-risk",
+      "expected_citation": "Annex III(7)",
+      "predicted_citations": [
+        "Annex III(7)(b)",
+        "Annex III(7)(c)",
+        "Art 6(2)"
+      ],
+      "tier_ok": true,
+      "citation_ok": true,
+      "pass": true,
+      "invalid_citations": [],
+      "clarifying_question": null,
+      "obligations": [
+        {
+          "text": "Establish, implement, document and maintain a risk management system for the system.",
+          "citation": "Art 9(1)"
+        },
+        {
+          "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
+          "citation": "Art 10(1)"
+        },
+        {
+          "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service, containing at least the Annex IV elements.",
+          "citation": "Art 11(1)"
+        },
+        {
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
+          "citation": "Art 12(1)"
+        },
+        {
+          "text": "Design the system to be sufficiently transparent for deployers to interpret and use its output.",
+          "citation": "Art 13(1)"
+        },
+        {
+          "text": "Accompany the system with instructions for use containing the required information for deployers.",
+          "citation": "Art 13(2)"
+        },
+        {
+          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+          "citation": "Art 14(1)"
+        },
+        {
+          "text": "Design the system to achieve appropriate accuracy, robustness and cybersecurity, performing consistently throughout its lifecycle.",
+          "citation": "Art 15(1)"
+        },
+        {
+          "text": "Carry out the conformity assessment based on internal control (Annex VI), with no notified body involvement.",
+          "citation": "Art 43(2)"
+        },
+        {
+          "text": "Register yourself and the system in the EU database before placing it on the market or putting it into service.",
+          "citation": "Art 49(1)"
+        }
+      ],
+      "key_facts": [
+        "The AI assesses asylum seekers' applications",
+        "It flags a risk level for each applicant",
+        "The output goes to border officials"
+      ],
+      "to_confirm": [
+        "Confirm the system is used by or on behalf of competent public authorities (e.g. border or asylum authorities).",
+        "Confirm the use is permitted under relevant Union or national law, as Annex III(7) applies only in so far as it is."
       ]
     },
     {
@@ -367,8 +369,7 @@
       "expected_citation": "Art 50(4)",
       "predicted_citations": [
         "Art 50(2)",
-        "Art 50(4)",
-        "Art 3(60)"
+        "Art 50(4)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -377,7 +378,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "As provider, ensure the app's synthetic video outputs are marked in a machine-readable format and detectable as artificially generated or manipulated.",
+          "text": "As provider, ensure the app's video outputs are marked in a machine-readable format and detectable as artificially generated or manipulated.",
           "citation": "Art 50(2)"
         },
         {
@@ -387,13 +388,13 @@
       ],
       "key_facts": [
         "The app generates realistic AI videos of real public figures",
-        "The videos show those figures saying things they never said",
+        "The videos show them saying things they never said",
         "The videos are used for advertising campaigns"
       ],
       "to_confirm": [
-        "Whether the public figures have consented to use of their likeness. The Act does not remove national law duties on personality rights, data protection, advertising or consumer protection.",
-        "Whether any campaign could be used for election or political influence, or to deceive in ways that engage other rules.",
-        "Whether the content is evidently artistic, satirical or fictional, which would limit the disclosure duty to disclosing that the content exists in a way that does not hamper enjoyment of the work."
+        "Whether the public figures have consented. The Act does not address this, but other EU law may apply, such as personality, image, data protection and advertising law.",
+        "Whether any campaign content is used to manipulate people in a way that could engage the Art 5 prohibitions, for example by materially distorting behaviour.",
+        "Whether any content is evidently artistic, satirical or fictional, since that would limit the form the disclosure must take."
       ]
     },
     {
@@ -407,7 +408,7 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What is the specific intended purpose of the AI tool: what task does it perform, what data does it process, and who uses or acts on its output (for example, is it used for HR or employment decisions, credit assessments, customer chat, content generation, or something else)?",
+      "clarifying_question": "What is the tool's specific intended purpose, meaning what task does it perform, what data does it process, and (if it produces scores, rankings or recommendations about people) how is its output used and who acts on it?",
       "obligations": [],
       "key_facts": [],
       "to_confirm": []
@@ -419,8 +420,7 @@
       "predicted_tier": "limited-risk",
       "expected_citation": "Art 50(2)",
       "predicted_citations": [
-        "Art 50(2)",
-        "Art 50(4)"
+        "Art 50(2)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -429,22 +429,19 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Ensure the system's synthetic image and text outputs are marked in a machine-readable format and detectable as artificially generated or manipulated.",
+          "text": "Ensure the generator's image and text outputs are marked in a machine-readable format and detectable as artificially generated or manipulated, using effective, interoperable, robust and reliable technical solutions as far as technically feasible.",
           "citation": "Art 50(2)"
-        },
-        {
-          "text": "If deployed content is a deep fake, disclose that it has been artificially generated or manipulated. Where the work is evidently creative or artistic, disclose in a way that does not hamper its display.",
-          "citation": "Art 50(4)"
         }
       ],
       "key_facts": [
         "The system generates marketing images and ad copy from a text brief",
-        "The output is intended for the company's social media"
+        "The output is for the company's social media"
       ],
       "to_confirm": [
-        "Whether you are the provider of the generator, or only a deployer using a third-party tool. The marking duty falls on the provider, and the disclosure duty falls on the deployer.",
-        "Whether any images depict realistic people, places or events and so would count as deep fakes.",
-        "Whether the ad copy is published to inform the public on matters of public interest. Ordinary marketing copy normally is not."
+        "Whether you are the provider of the generator (building it) or only a deployer using a third-party tool. The marking duty falls on the provider.",
+        "Whether any images depict realistic people, places or events that could count as a deep fake. If so, the deployer must disclose that they are AI-generated (Art 50(4)).",
+        "Whether the ad copy is published to inform the public on matters of public interest. Ordinary marketing copy normally is not.",
+        "Whether the tool only assists with standard editing or doesn't substantially alter the input. The marking duty doesn't apply in that case."
       ]
     },
     {
@@ -454,7 +451,8 @@
       "predicted_tier": "out-of-scope",
       "expected_citation": "Art 2",
       "predicted_citations": [
-        "Art 2(8)"
+        "Art 2(8)",
+        "Art 2(6)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -463,14 +461,14 @@
       "clarifying_question": null,
       "obligations": [],
       "key_facts": [
-        "Internal research model trained and tested in the lab only",
+        "Internal research model trained and tested in a lab only",
         "Never placed on the market",
-        "Never used on real users"
+        "Not used on real users"
       ],
       "to_confirm": [
-        "The model is never deployed internally for real operational use, which could count as putting it into service.",
-        "No testing in real-world conditions is planned.",
-        "Other Union law, such as GDPR, still applies to the research activity."
+        "The model is never placed on the market or put into service, including internal deployment for real use.",
+        "No testing in real-world conditions outside the lab is planned, because that is not covered by the exclusion.",
+        "If the model is later commercialised or deployed, the classification must be redone."
       ]
     },
     {
@@ -480,8 +478,7 @@
       "predicted_tier": "minimal-risk",
       "expected_citation": "Art 6(3)",
       "predicted_citations": [
-        "Art 6(3)",
-        "Annex III(4)(a)"
+        "Art 6(3)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -490,7 +487,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "No mandatory obligations apply; the AI literacy duty and voluntary codes of conduct are optional good practice.",
+          "text": "No mandatory obligations apply. You may note the AI literacy duty and voluntary codes of conduct.",
           "citation": null
         }
       ],
@@ -501,8 +498,8 @@
       ],
       "to_confirm": [
         "Confirm the system performs no profiling of natural persons, because profiling would make it high-risk regardless of the derogation.",
-        "Confirm that duplicate detection does not influence which candidates are advanced or rejected beyond removing exact duplicates.",
-        "A provider relying on the Art 6(3) derogation should document that assessment before placing the system on the market."
+        "Confirm the duplicate flag does not feed into any ranking, filtering or evaluation of candidates, and that a recruiter makes every removal decision.",
+        "Document the Art 6(3) assessment before placing the system on the market, because providers who rely on the derogation must record it."
       ]
     },
     {
@@ -516,11 +513,9 @@
       "citation_ok": true,
       "pass": true,
       "invalid_citations": [],
-      "clarifying_question": "What specifically does the AI do in your hiring process (for example targeting job ads, filtering or ranking applications, scoring or evaluating candidates, scheduling), how is its output used, and who acts on it (for example a recruiter who decides, or an automatic rejection)?",
+      "clarifying_question": "What specifically does the AI do in your hiring process (for example ranking or filtering applications, scoring or evaluating candidates, targeting job ads, or only scheduling or drafting text), how is its output used, and who acts on it?",
       "obligations": [],
-      "key_facts": [
-        "AI is used somewhere in the hiring process, with no further detail"
-      ],
+      "key_facts": [],
       "to_confirm": []
     },
     {
@@ -544,7 +539,7 @@
           "citation": "Art 9(1)"
         },
         {
-          "text": "Develop the system on training, validation and testing data sets that meet the data quality criteria.",
+          "text": "Develop the system using training, validation and testing data sets that meet the data quality criteria.",
           "citation": "Art 10(1)"
         },
         {
@@ -568,38 +563,27 @@
           "citation": "Art 14(1)"
         },
         {
-          "text": "Design the system to achieve appropriate accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "text": "Achieve an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
           "citation": "Art 15(1)"
         },
         {
-          "text": "Complete the internal-control conformity assessment procedure (Annex VI) before placing the system on the market or putting it into service.",
+          "text": "Complete the conformity assessment based on internal control (Annex VI) before placing on the market or putting into service.",
           "citation": "Art 43(2)"
         },
         {
           "text": "Register the provider and the system in the EU database before placing on the market or putting into service.",
           "citation": "Art 49(1)"
-        },
-        {
-          "text": "Deployers must use the system according to its instructions for use and assign human oversight to competent, trained and authorised people.",
-          "citation": "Art 26(1)"
-        },
-        {
-          "text": "Deployers must inform applicants that they are subject to the use of the high-risk AI system.",
-          "citation": "Art 26(11)"
-        },
-        {
-          "text": "Make sure applicants are told they are interacting with an AI system, unless that is obvious.",
-          "citation": "Art 50(1)"
         }
       ],
       "key_facts": [
-        "The system screens job applicants",
-        "It decides who advances to interview",
-        "It runs as a chatbot on a careers page"
+        "AI chatbot on a careers page",
+        "It screens applicants",
+        "It decides who advances to interview"
       ],
       "to_confirm": [
-        "Confirm whether you are the provider (built the system) or only the deployer (use a third-party tool), as the obligations differ.",
-        "Confirm whether a human reviews or can override the interview-advancement decisions."
+        "Whether a human reviews or can override the AI's interview-advancement decisions.",
+        "Whether you are the provider (built or branded the system) or a deployer using a third-party tool, since the obligations differ.",
+        "Whether the chatbot also interacts directly with candidates, which would add a duty to tell them they are talking to an AI."
       ]
     },
     {
@@ -618,7 +602,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Do not place on the market, put into service for this purpose, or use an AI system that predicts the risk of a person committing a criminal offence based solely on profiling or personality traits. The exception for supporting human assessment based on objective, verifiable facts directly linked to a criminal activity does not apply here.",
+          "text": "Do not place on the market, put into service for this specific purpose, or use an AI system that predicts the risk of a person committing a criminal offence based solely on profiling or personality traits; the exception for supporting human assessment based on objective, verifiable facts directly linked to a criminal activity does not apply here.",
           "citation": "Art 5(1)(d)"
         }
       ],
@@ -628,7 +612,7 @@
         "Police use it to decide who to watch"
       ],
       "to_confirm": [
-        "Confirm that no objective and verifiable facts directly linked to a criminal activity feed the assessment, and that it is not only a support tool for a human assessment of a person's involvement in a specific criminal activity."
+        "Confirm that no objective and verifiable facts directly linked to a criminal activity feed the system, and that it does not merely support a human assessment built on such facts."
       ]
     },
     {
@@ -645,7 +629,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "No mandatory obligations apply, but providers and deployers should take measures to ensure sufficient AI literacy of their staff (Art 4), and may follow voluntary codes of conduct.",
+          "text": "No mandatory obligations apply, but providers and deployers should take measures to ensure sufficient AI literacy of their staff.",
           "citation": "Art 4"
         }
       ],
@@ -654,8 +638,8 @@
         "Suggests fixes while the user types in a word processor"
       ],
       "to_confirm": [
-        "Confirm the tool only corrects or suggests edits and does not generate substantial new text or substantially change the meaning of the user's text. If it did, Art 50(2) marking could apply.",
-        "Confirm it is not used for an Annex III purpose, for example grading exams or screening job applicants."
+        "Confirm the tool only corrects or suggests edits and does not generate substantial new text or rewrite meaning; if it does, re-check the Art 50 transparency duties.",
+        "Confirm it is not marketed for a high-risk purpose, such as assessing candidates or students."
       ]
     },
     {
@@ -674,18 +658,16 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Do not place on the market, put into service or use real-time remote biometric identification in publicly accessible spaces for law enforcement, unless and in so far as strictly necessary for a listed objective: (i) targeted search for abduction, trafficking or sexual exploitation victims or missing persons, (ii) preventing a specific, substantial and imminent threat to life or safety or a genuine terrorist threat, or (iii) locating or identifying a suspect of an Annex II offence punishable by at least four years' custody. The exceptions do not cover general, untargeted facial recognition of people in public squares.",
+          "text": "Do not use the real-time remote biometric identification system in publicly accessible spaces for law enforcement, unless and in so far as the use is strictly necessary for a targeted search for victims or missing persons, preventing a specific imminent threat or terrorist attack, or locating a suspect of an Annex II offence punishable by at least four years' custody. Blanket scanning of people in public squares does not fall within these exceptions.",
           "citation": "Art 5(1)(h)"
         }
       ],
       "key_facts": [
-        "Real-time facial recognition of people in public squares",
-        "Output is streamed to the police"
+        "The system does real-time facial recognition of people in public squares",
+        "The feed is streamed to the police"
       ],
       "to_confirm": [
-        "Whether any use is limited to one of the narrow objectives in Art 5(1)(h)(i)-(iii) and targeted at a specific individual.",
-        "Whether each use is authorised under national law, with a fundamental rights impact assessment and EU database registration as Art 5(2) requires.",
-        "Whether the recognition is truly real-time, as opposed to post-event."
+        "Whether any use is limited to one of the three narrow exceptions, targeting a specific individual, with the required authorisation under national law, a fundamental rights impact assessment and EU database registration."
       ]
     },
     {
@@ -695,8 +677,7 @@
       "predicted_tier": "prohibited",
       "expected_citation": "Art 5(1)(f)",
       "predicted_citations": [
-        "Art 5(1)(f)",
-        "Art 3(39)"
+        "Art 5(1)(f)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -705,18 +686,18 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Do not place this system on the market, put it into service for this purpose, or use it to infer employees' emotions in the workplace; the exception for medical or safety reasons does not apply to mood scoring in meetings.",
+          "text": "Do not place on the market, put into service for this purpose, or use an AI system to infer employees' emotions in the workplace; the exception for medical or safety reasons does not apply to mood scoring in meetings.",
           "citation": "Art 5(1)(f)"
         }
       ],
       "key_facts": [
         "The tool reads employees' facial expressions during meetings",
-        "It scores employee mood, which means inferring emotions",
-        "The setting is the workplace"
+        "It scores employees' mood, which means inferring their emotions",
+        "It is used on employees in a workplace"
       ],
       "to_confirm": [
-        "Check whether the tool is really intended for a medical or safety purpose. Nothing in the description suggests that it is.",
-        "Check whether the tool infers emotions from biometric data such as facial images."
+        "Confirm that no genuine medical or safety purpose underlies the tool. Mood scoring for meetings or management would not qualify.",
+        "Confirm whether the tool is used only on employees or also elsewhere, for example with job candidates or in education settings."
       ]
     },
     {
@@ -744,11 +725,11 @@
           "citation": "Art 10(1)"
         },
         {
-          "text": "Draw up technical documentation before placing on the market or putting into service and keep it up to date.",
+          "text": "Draw up and keep up to date technical documentation before placing on the market or putting into service.",
           "citation": "Art 11(1)"
         },
         {
-          "text": "Design the system to technically allow automatic recording of events (logs) over its lifetime.",
+          "text": "Ensure the system technically allows automatic recording of events (logs) over its lifetime.",
           "citation": "Art 12(1)"
         },
         {
@@ -760,19 +741,19 @@
           "citation": "Art 13(2)"
         },
         {
-          "text": "Design the system so natural persons can effectively oversee it while it is in use.",
+          "text": "Design the system so natural persons can effectively oversee it while in use.",
           "citation": "Art 14(1)"
         },
         {
-          "text": "Design the system to achieve an appropriate level of accuracy, robustness and cybersecurity throughout its lifecycle.",
+          "text": "Ensure an appropriate level of accuracy, robustness and cybersecurity throughout the lifecycle.",
           "citation": "Art 15(1)"
         },
         {
-          "text": "Carry out the conformity assessment based on internal control (Annex VI), with no notified body involved.",
+          "text": "Carry out the internal-control conformity assessment procedure (Annex VI) before market placement.",
           "citation": "Art 43(2)"
         },
         {
-          "text": "Register yourself and the system in the EU database before placing it on the market or putting it into service.",
+          "text": "Register yourself and the system in the EU database before placing on the market or putting into service.",
           "citation": "Art 49(1)"
         }
       ],
@@ -781,8 +762,8 @@
         "The credit scores decide loan approvals"
       ],
       "to_confirm": [
-        "Confirm the scores are used to evaluate natural persons (consumers or individual applicants), not only companies.",
-        "Confirm the system is not used solely to detect financial fraud, which is the only exception in Annex III(5)(b)."
+        "Confirm the system scores natural persons (consumers or individual applicants), not only businesses.",
+        "Confirm the system is not used solely to detect financial fraud, which is the only exception in Annex III point 5(b)."
       ]
     },
     {
@@ -792,8 +773,7 @@
       "predicted_tier": "prohibited",
       "expected_citation": "Art 5(1)(g)",
       "predicted_citations": [
-        "Art 5(1)(g)",
-        "Art 3(40)"
+        "Art 5(1)(g)"
       ],
       "tier_ok": true,
       "citation_ok": true,
@@ -802,7 +782,7 @@
       "clarifying_question": null,
       "obligations": [
         {
-          "text": "Do not place on the market, put into service for this purpose, or use a biometric categorisation system that categorises individuals by biometric data to infer race, religious beliefs or similar attributes. The exceptions for labelling or filtering lawfully acquired biometric datasets and for law-enforcement categorisation of biometric data do not apply to the described use.",
+          "text": "Do not place on the market, put into service for this specific purpose, or use this biometric categorisation system that infers race or religious beliefs from biometric data. The exceptions (labelling or filtering lawfully acquired biometric datasets, and categorising biometric data in law enforcement) do not apply to the described real-time inference of ethnicity and religion from faces.",
           "citation": "Art 5(1)(g)"
         }
       ],
@@ -811,8 +791,7 @@
         "It infers people's ethnicity and religion from their faces"
       ],
       "to_confirm": [
-        "Confirm the tool is not used only to label or filter lawfully acquired biometric datasets.",
-        "Confirm the tool is not used in the area of law enforcement, which the prohibition does not cover."
+        "Check whether the use is limited to labelling or filtering lawfully acquired biometric datasets, or to law enforcement. Neither is stated, so the exceptions are assumed not to apply."
       ]
     }
   ]
