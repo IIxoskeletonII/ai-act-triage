@@ -43,7 +43,10 @@ python app.py                          # http://127.0.0.1:5000
 
 The first start after launch loads the embedding model and the search index, which can take up
 to a minute; the page says so and an assessment started meanwhile waits for it. Before a live
-demo, start the app a few minutes early. The web app reads `.env` itself; variables already set
+demo, start the app a few minutes early. Assessments run one at a time: one started while another
+is still running (a second tab, or a run abandoned with *Edit description*) waits its turn and says
+so, and a call that gets no answer within 150 s (`AGENT_TIMEOUT`) is reported as an error rather
+than left spinning. The web app reads `.env` itself; variables already set
 in the shell take precedence. Without a
 key the page still loads and explains what is missing. There is no front-end build step: every
 script, stylesheet and font is served from `static/`, so the model API is the only network call

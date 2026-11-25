@@ -316,6 +316,7 @@ kbd { font: 500 0.72rem/1 var(--font-id); padding: 3px 5px 2px; border-radius: 4
   transition: border-color .2s, box-shadow .2s;
 }
 .composer__card:focus-within { border-color: var(--line-2); box-shadow: var(--shadow-lift); }
+.composer__card:has(textarea:focus) { border-color: var(--focus); box-shadow: var(--shadow-lift), 0 0 0 3px color-mix(in srgb, var(--focus) 18%, transparent); }
 .composer__edit { padding: 20px 22px 16px; }
 .composer__label { display: block; margin-bottom: 10px; font-weight: 640; font-size: 0.98rem; }
 .composer textarea {
@@ -607,7 +608,7 @@ button.chip:hover, a.chip:hover { border-color: var(--ink-3); background: var(--
 .question__why li { padding-left: 14px; position: relative; }
 .question__why li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--t-info); }
 .answer { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; margin-top: 18px; padding: 14px 16px; border-radius: var(--r-md); background: var(--surface); border: 1px solid color-mix(in srgb, var(--t-info) 30%, var(--line)); box-shadow: var(--shadow); }
-.answer:focus-within { border-color: var(--t-info); }
+.answer:has(textarea:focus) { border-color: var(--t-info); box-shadow: var(--shadow), 0 0 0 3px color-mix(in srgb, var(--t-info) 20%, transparent); }
 .answer__mark { font: 760 var(--step-2)/1.35 var(--font-ui); font-stretch: 120%; color: var(--t-info-fg); }
 .answer textarea { display: block; width: 100%; min-height: 64px; resize: none; padding: 2px 0 0; border: 0; background: transparent; font: 470 var(--step-1)/1.5 var(--font-ui); color: var(--ink); }
 .answer textarea:focus { outline: none; }

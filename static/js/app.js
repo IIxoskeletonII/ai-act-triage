@@ -114,6 +114,7 @@ function toIdle({ keep = true } = {}) {
 // ---------------------------------------------------------------- the flow
 
 function start(description) {
+  if (state.running) return; // a second Ctrl+Enter before the view switches
   if (!description) {
     el.field.focus();
     el.card.animate?.([{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(5px)" }, { transform: "translateX(0)" }], { duration: M.reduced() ? 1 : 260 });
@@ -313,6 +314,13 @@ function createConsult(turn) {
           const wait = $(".feed__wait", feed);
           if (wait) wait.firstChild.textContent = "First start after launch: loading the search index over the Act. This happens once, then the agent starts reading";
         }
+        return;
+      }
+      if (ev.type === "queued") {
+        // Assessments run one at a time; this one waits for an earlier one (another tab, or one just abandoned).
+        $(".consult__label", panel).textContent = "Waiting for an earlier assessment";
+        const wait = $(".feed__wait", feed);
+        if (wait) wait.firstChild.textContent = "Another assessment is still running on the server. This one starts as soon as it finishes";
         return;
       }
       queue.push(ev);

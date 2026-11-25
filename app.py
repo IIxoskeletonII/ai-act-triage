@@ -12,7 +12,9 @@ import queue
 import re
 import threading
 import time
-from contextvars import ContextVar
+from concurrent.futures import CancelledError, ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FutureTimeout
+from contextvars import ContextVar, copy_context
 from functools import lru_cache
 from pathlib import Path
 
@@ -299,6 +301,10 @@ def _read_input(payload):
 
 
 def _friendly_error(exc):
+    if isinstance(exc, AgentTimeout):
+        return "The model took too long to answer. Try again."
+    if isinstance(exc, CancelledError):
+        return "The assessment was interrupted by an earlier one that stalled. Try again."
     seen = exc
     while seen is not None:
         status = getattr(seen, "status_code", None)
@@ -328,13 +334,55 @@ def _run(description, clarification, emit):
     if not _ready.wait(timeout=300) or _index_error:
         raise RuntimeError(_index_error or "The retrieval index did not load.")
     token = _emit.set(record)
-    started = time.perf_counter()
     try:
-        result = classify(description, clarification=clarification)
+        result, elapsed = _call_agent(description, clarification, emit)
     finally:
         _emit.reset(token)
-    elapsed = round(time.perf_counter() - started, 1)
     return _payload(result, description, clarification, events, elapsed)
+
+
+# The agent's synchronous entry point drives an event loop over a shared HTTP client, and two calls
+# running at once on different threads break each other (one fails, the other can hang). Every call
+# therefore runs on one long-lived worker thread, one at a time, with a deadline.
+AGENT_TIMEOUT = int(os.environ.get("AGENT_TIMEOUT", "150"))
+_agent_pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="agent")
+_agent_jobs = 0
+_agent_jobs_lock = threading.Lock()
+
+
+class AgentTimeout(Exception):
+    pass
+
+
+def _call_agent(description, clarification, emit):
+    global _agent_jobs, _agent_pool
+    with _agent_jobs_lock:
+        waiting = _agent_jobs
+        _agent_jobs += 1
+        pool = _agent_pool
+    if waiting:
+        emit({"type": "queued", "ahead": waiting})
+
+    def job():
+        started = time.perf_counter()
+        try:
+            return classify(description, clarification=clarification), round(time.perf_counter() - started, 1)
+        finally:
+            global _agent_jobs
+            with _agent_jobs_lock:
+                _agent_jobs = max(0, _agent_jobs - 1)
+
+    future = pool.submit(copy_context().run, job)
+    try:
+        return future.result(timeout=AGENT_TIMEOUT)
+    except FutureTimeout:
+        # A stuck call would block every later one, so leave it on its own thread and start a new one.
+        with _agent_jobs_lock:
+            if _agent_pool is pool:
+                _agent_pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="agent")
+                _agent_jobs = 0
+        pool.shutdown(wait=False, cancel_futures=True)
+        raise AgentTimeout(f"no answer after {AGENT_TIMEOUT} s")
 
 
 def _payload(result, description, clarification, events, elapsed):
