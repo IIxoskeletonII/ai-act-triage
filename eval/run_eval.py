@@ -68,6 +68,8 @@ def score(cases, predict):
             "invalid_citations": pred.get("invalid_citations", []),
             "clarifying_question": pred.get("clarifying_question"),
             "obligations": pred.get("obligations", []),  # recorded, not scored
+            "key_facts": pred.get("key_facts", []),      # recorded, not scored
+            "to_confirm": pred.get("to_confirm", []),    # recorded, not scored
         })
     return rows
 
