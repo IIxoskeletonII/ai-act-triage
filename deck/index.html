@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Act Triage · first-pass EU AI Act triage for product teams</title>
+<meta name="description" content="AI Act Triage: a grounded, interrogable first-pass EU AI Act triage tool, and an honest evaluation of whether each layer earned its place. AI Frontiers: Large Language Models (EM84), LUISS.">
+<meta name="color-scheme" content="dark">
+<link rel="stylesheet" href="vendor/reveal/reset.css">
+<link rel="stylesheet" href="vendor/reveal/reveal.css">
+<link rel="stylesheet" href="assets/css/deck.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='2' width='20' height='28' rx='4' fill='%23ECEDF6'/%3E%3Ccircle cx='16' cy='7.5' r='2.2' fill='%230C0E1B'/%3E%3Ctext x='16' y='24' font-family='Georgia,serif' font-size='13' text-anchor='middle' fill='%230C0E1B'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<script>
+  // Before first paint: print mode, reduced motion (system setting or ?motion=reduce, as in the tool).
+  (function () {
+    var r = document.documentElement, s = location.search;
+    if (/print-pdf/i.test(s)) r.classList.add("print-pdf");
+    var reduce = /[?&]motion=reduce\b/.test(s) || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+    if (reduce) r.classList.add("reduce-motion");
+    if (/receiver/i.test(s)) r.classList.add("is-receiver");
+  })();
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="g-stop" viewBox="0 0 24 24"><path d="M8.3 2.5h7.4l5.8 5.8v7.4l-5.8 5.8H8.3l-5.8-5.8V8.3z"/><path d="M7.5 12h9"/></symbol>
+    <symbol id="g-triangle" viewBox="0 0 24 24"><path d="M12 3.2 2.6 19.8h18.8z"/><path d="M12 9.8v4.6"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="g-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="g-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="m7.6 12.3 3 3 5.9-6.2"/></symbol>
+    <symbol id="g-outside" viewBox="0 0 24 24"><circle cx="11" cy="13" r="8.3" stroke-dasharray="2.4 2.6"/><path d="M12.5 11.5 21 3M15.5 3H21v5.5"/></symbol>
+    <symbol id="g-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M9.4 9.3a2.7 2.7 0 1 1 3.8 2.5c-.8.4-1.2 1-1.2 1.8v.5"/><circle cx="12" cy="17" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="g-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.2"/><path d="m15.2 15.2 5 5"/></symbol>
+    <symbol id="g-read" viewBox="0 0 24 24"><path d="M3.5 5.5c3-1.2 5.8-1 8.5.8 2.7-1.8 5.5-2 8.5-.8v13c-3-1.2-5.8-1-8.5.8-2.7-1.8-5.5-2-8.5-.8z"/><path d="M12 6.3v13"/></symbol>
+    <symbol id="g-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.6c0 4.5 3.1 8 7.5 9.4 4.4-1.4 7.5-4.9 7.5-9.4V6z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.6"/></symbol>
+    <symbol id="g-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7.5l4 4v13H6.5z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15.5h6"/></symbol>
+    <symbol id="g-docs" viewBox="0 0 24 24"><path d="M8.5 6.5h7l3.5 3.5v10.5H8.5z"/><path d="M5 17.5V3.5h7.5"/><path d="M11.5 13.5h5M11.5 17h5"/></symbol>
+    <symbol id="g-tick" viewBox="0 0 24 24"><path d="m5.5 12.5 4.2 4.2L18.5 7.5"/></symbol>
+    <symbol id="g-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+    <symbol id="g-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9.5L5 19.5v-4H4z"/></symbol>
+    <symbol id="g-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></symbol>
+    <symbol id="g-minus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.3"/><path d="M7.8 12h8.4"/></symbol>
+    <symbol id="g-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></symbol>
+    <symbol id="g-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3.5"/><circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none"/><circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none"/><circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="g-arrow" viewBox="0 0 24 24"><path d="M5 12h13M13 6.5l5.5 5.5-5.5 5.5"/></symbol>
+    <symbol id="g-flask" viewBox="0 0 24 24"><path d="M9.5 3.5h5M10.5 3.5v6L5 19a1.5 1.5 0 0 0 1.3 2.2h11.4A1.5 1.5 0 0 0 19 19l-5.5-9.5v-6"/><path d="M7.5 15h9"/></symbol>
+    <symbol id="g-rocket" viewBox="0 0 24 24"><path d="M14.5 4.5c2.5-1 4.5-1 5-1 0 .5 0 2.5-1 5L13 14l-3-3z"/><path d="M10 11 6.5 10.5 4 13l4 1M13 14l.5 3.5L11 20l-1-4"/><path d="M5.5 18.5 4 20"/></symbol>
+  </defs>
+</svg>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ======================================================= 01 TITLE -->
+<section class="s-title" data-id="title" data-part="I" data-chrome="none" data-timing="40">
+  <div class="frame">
+    <div class="title-map" aria-hidden="true"><div class="amap" data-map="outline"></div></div>
+    <div class="title-tag" aria-hidden="true">
+      <div class="tag" data-state="question" data-tier="needs-info">
+        <span class="tag__string"><svg viewBox="0 0 4 2000" preserveAspectRatio="none"><path d="M2 0V2000"/></svg></span>
+        <div class="tag__body">
+          <span class="tag__ring"></span>
+          <div class="tag__top"><span class="tag__brand">AI Act Triage</span><span class="tag__no">No. EM84</span></div>
+          <div class="tag__main">
+            <span class="tag__glyph"><svg class="g"><use href="#g-question"/></svg></span>
+            <div><p class="tag__tier">Needs info</p><p class="tag__meaning">Waiting for your answer</p></div>
+          </div>
+          <dl class="tag__meta">
+            <div><dt>Confidence</dt><dd><span class="pips" data-level="0"><i></i><i></i><i></i></span>—</dd></div>
+            <div><dt>Basis</dt><dd class="mono">—</dd></div>
+          </dl>
+        </div>
+        <ol class="tag__strips">
+          <li class="tag__strip" data-level="4"><span>Prohibited</span><span>Art 5</span></li>
+          <li class="tag__strip" data-level="3"><span>High-risk</span><span>Art 6</span></li>
+          <li class="tag__strip" data-level="2"><span>Limited</span><span>Art 50</span></li>
+          <li class="tag__strip" data-level="1"><span>Minimal</span><span>Art 4</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="title-copy">
+      <p class="eyebrow" data-in>AI Frontiers: Large Language Models <span class="id">EM84</span> · LUISS</p>
+      <div class="wordmark">
+        <span class="mark" data-in aria-hidden="true"><span>§</span></span>
+        <h1 class="display" data-split>AI Act Triage</h1>
+      </div>
+      <p class="title-sub" data-in>First-pass EU AI Act triage for product teams</p>
+      <ul class="team" data-team data-in></ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 1 of 15 · 0:40 · clock at 0:40</p>
+    <ul>
+      <li>Introduce the team by name. "This is AI Act Triage: a first-pass EU AI Act triage for product teams."</li>
+      <li>Point at the tag: it says <em>Needs info</em>. That is the point of the whole talk. Keep it in mind.</li>
+      <li>Speakers: <b data-speaker="E"></b> 1–3, <b data-speaker="A"></b> 4–5, <b data-speaker="B"></b> 6–8, <b data-speaker="C"></b> 9–12, <b data-speaker="E"></b> 13–15 and Q&amp;A backstop.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 02 PROBLEM -->
+<section class="s-problem" data-id="problem" data-part="I" data-timing="60">
+  <div class="frame">
+    <p class="eyebrow" data-in>The problem</p>
+    <p class="statement" data-split>A product manager is about to ship an AI feature. Does the EU AI Act apply, and how?</p>
+    <div class="problem-grid">
+      <div class="card cost fragment rise" data-build="cost" data-tier="prohibited">
+        <div class="cost__top">
+          <p class="caps">Getting it wrong is expensive</p>
+          <span class="tchip"><svg class="g"><use href="#g-stop"/></svg>Prohibited practices · Art 5</span>
+        </div>
+        <div class="cost__fig"><span class="big-num">€35M</span><span>or 7% of global turnover</span></div>
+        <p class="cost__law law">“…administrative fines of up to <mark>EUR 35 000 000</mark> or, if the offender is an undertaking, up to <mark>7 %</mark> of its total worldwide annual turnover for the preceding financial year, whichever is higher.”<span class="idchip">Art 99(3)</span></p>
+      </div>
+      <div class="today fragment rise" data-build="today">
+        <p class="caps">Today they</p>
+        <ul>
+          <li><svg class="g"><use href="#g-dice"/></svg>guess,</li>
+          <li><svg class="g"><use href="#g-docs"/></svg>read scattered PDFs,</li>
+          <li><svg class="g"><use href="#g-clock"/></svg>or wait days for a lawyer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 2 · 1:00 · clock at 1:40</p>
+    <ul>
+      <li>Say the sentence on screen, then stop. Let it breathe.</li>
+      <li>Click: the cost. The figure is Art 99(3), quoted verbatim (serif means verbatim law, here and in the tool): up to €35M or 7% of worldwide annual turnover, whichever is higher, for prohibited practices.</li>
+      <li>Click: today they guess, read scattered PDFs, or wait days for a lawyer.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 03 HOOK -->
+<section class="s-hook" data-id="hook" data-part="I" data-timing="50">
+  <div class="frame">
+    <div class="hook-q" aria-hidden="true"><svg class="g"><use href="#g-question"/></svg></div>
+    <div class="hook-copy">
+      <p class="eyebrow" data-in>The question that frames the project</p>
+      <p class="hook-pre" data-split>A frontier model can already guess the risk tier from memory.</p>
+      <p class="hook-main fragment" data-build="hook">So why build a tool at all?</p>
+      <p class="hook-foot fragment rise" data-build="hookfoot"><span class="rule"></span>Our experiment answers it. Hold the question.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 3 · 0:50 · clock at 2:30</p>
+    <ul>
+      <li>"A frontier model can already guess the risk tier from memory." Click. "So why build a tool at all?"</li>
+      <li>Click. "This is the question our experiment answers. Hold it." Leave it on screen for a beat.</li>
+      <li>Handoff: "<b data-speaker="A"></b> will show you what the tool does."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 04 WHAT IT DOES -->
+<section class="s-what" data-id="what" data-part="I" data-timing="100">
+  <div class="frame" style="padding-top:150px">
+    <div class="what">
+      <div>
+        <p class="eyebrow" data-in>What it does</p>
+        <h2 class="h1" data-split style="font-size:68px">Describe a feature in plain English.</h2>
+        <div class="card composer" data-in style="margin-top:44px">
+          <p class="composer__label">Describe the feature you’re reviewing</p>
+          <p class="composer__text"><span data-type>We use AI to summarise job applications.</span><span class="caret" aria-hidden="true"></span></p>
+          <div class="composer__foot"><span>Plain English.</span><span class="btn">Assess feature</span></div>
+        </div>
+        <p class="composer__note" data-in>Examples on the right are real outputs from our eval runs.</p>
+      </div>
+      <ol class="outs">
+        <li class="out fragment rise" data-build="out">
+          <span class="out__n">01</span>
+          <div>
+            <p class="out__label"><b>A risk tier</b>, one of six, with a plain-English rationale</p>
+            <div class="out__ex">
+              <span class="tchip" data-tier="prohibited"><svg class="g"><use href="#g-stop"/></svg>Prohibited</span>
+              <span class="tchip" data-tier="high-risk"><svg class="g"><use href="#g-triangle"/></svg>High-risk</span>
+              <span class="tchip" data-tier="limited-risk"><svg class="g"><use href="#g-eye"/></svg>Limited-risk</span>
+              <span class="tchip" data-tier="minimal-risk"><svg class="g"><use href="#g-check"/></svg>Minimal-risk</span>
+              <span class="tchip" data-tier="out-of-scope"><svg class="g"><use href="#g-outside"/></svg>Out of scope</span>
+              <span class="tchip" data-tier="needs-info"><svg class="g"><use href="#g-question"/></svg>Needs info</span>
+            </div>
+          </div>
+        </li>
+        <li class="out fragment rise" data-build="out">
+          <span class="out__n">02</span>
+          <div>
+            <p class="out__label"><b>The exact provisions</b> it rests on, grounded in the real Act text</p>
+            <div class="out__ex"><span class="idchip idchip--tier" data-tier="high-risk">Annex III(4)(a)</span><span class="law">“…<mark>to analyse and filter job applications, and to evaluate candidates</mark>;”</span></div>
+          </div>
+        </li>
+        <li class="out fragment rise" data-build="out">
+          <span class="out__n">03</span>
+          <div>
+            <p class="out__label"><b>The facts</b> in your description that drove it, and what you still need to confirm</p>
+            <div class="out__ex" style="display:grid;gap:8px">
+              <span><span class="fact-q">“</span>It shortlists the top candidates for recruiters</span>
+              <span><span class="ring"></span>Confirm whether you are the provider (developer) or only a deployer, as the obligations differ.</span>
+            </div>
+          </div>
+        </li>
+        <li class="out fragment rise" data-build="out">
+          <span class="out__n">04</span>
+          <div>
+            <p class="out__label"><b>The concrete obligations</b> that follow</p>
+            <div class="out__ex"><span><span class="box"></span>Establish, implement, document and maintain a risk management system.</span><span class="idchip">Art 9(1)</span></div>
+          </div>
+        </li>
+        <li class="out fragment rise" data-build="out">
+          <span class="out__n">05</span>
+          <div>
+            <p class="out__label">When usage is ambiguous: <b>one clarifying question</b> before it commits</p>
+            <div class="out__ex"><span class="qcard"><b>?</b>How is the summary output used in your hiring process, and who acts on it?</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="A"></b> · slide 4 · 1:40 · clock at 4:10 · start of your block</p>
+    <ul>
+      <li>The user's journey: describe a feature in plain English. Each click adds one thing it gives back.</li>
+      <li>01: a tier, one of six, with a rationale. Needs info is the sixth: the tool can say "I can't tell yet".</li>
+      <li>02: the exact provision, and its real text. Serif on these slides means verbatim law, exactly like the tool.</li>
+      <li>03: the facts from your description that drove the call, and the open points you still have to confirm.</li>
+      <li>04: the obligations that follow, each tied to the provision that imposes it.</li>
+      <li>05: if usage is ambiguous, it asks one question first. This is what <b data-speaker="E"></b> will demo live.</li>
+      <li>The examples are real outputs: the job-application summariser (minimal pair MP1) and the CV ranker (passage case PG1).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 05 RELATED WORK -->
+<section class="s-related" data-id="related" data-part="II" data-timing="80">
+  <div class="frame">
+    <p class="eyebrow" data-in>Related work</p>
+    <h2 class="h1" data-split>What exists, and the gap we fill</h2>
+    <div class="rel">
+      <div class="card" data-in>
+        <p class="rel__kind">Existing AI Act tools</p>
+        <h3>Static checklists and compliance-checker flowcharts</h3>
+        <ul>
+          <li><svg class="g"><use href="#g-x"/></svg>Generic, not per feature</li>
+          <li><svg class="g"><use href="#g-x"/></svg>Not grounded in the text</li>
+        </ul>
+      </div>
+      <div class="card" data-in>
+        <p class="rel__kind">General legal tools</p>
+        <h3>Legal RAG and “chat with a document”</h3>
+        <ul>
+          <li><svg class="g"><use href="#g-x"/></svg>Not decision-oriented</li>
+          <li><svg class="g"><use href="#g-x"/></svg>No obligations</li>
+          <li><svg class="g"><use href="#g-x"/></svg>No interrogation</li>
+        </ul>
+      </div>
+      <div class="card card--course" data-in>
+        <p class="rel__kind">Course concepts we build on</p>
+        <h3>From the lectures and labs</h3>
+        <ul>
+          <li><svg class="g"><use href="#g-tick"/></svg><span>RAG <span class="lec">L9</span></span></li>
+          <li><svg class="g"><use href="#g-tick"/></svg><span>Agentic tool use <span class="lec">labs</span></span></li>
+          <li><svg class="g"><use href="#g-tick"/></svg><span>LLM-as-judge and contamination <span class="lec">L17</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="gap fragment rise" data-build="gap">
+      <p class="gap__k">The gap we fill</p>
+      <p class="gap__t">A <b>grounded</b>, <b>interrogable</b>, <b>actionable</b> first-pass triage for <b>one specific feature</b>.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="A"></b> · slide 5 · 1:20 · clock at 5:30</p>
+    <ul>
+      <li>Existing AI Act tools are static checklists and compliance-checker flowcharts: generic, not specific to your feature, and not grounded in the text.</li>
+      <li>General legal RAG and "chat with a document" tools answer questions, but they don't decide anything, give no obligations and don't interrogate you.</li>
+      <li>From the course we build on RAG (L9), agentic tool use (labs), and LLM-as-judge and contamination (L17).</li>
+      <li>Click: the gap. Grounded, interrogable, actionable, for one specific feature.</li>
+      <li>Handoff: "<b data-speaker="B"></b> will show how it's built."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 06 ARCHITECTURE -->
+<section class="s-arch" data-id="arch" data-part="III" data-timing="105">
+  <div class="frame">
+    <p class="eyebrow" data-in>Methodology · the architecture</p>
+    <h2 class="h1" data-split>Agentic RAG, ladder level 3</h2>
+    <div class="arch" data-arch>
+      <svg class="arch__svg" viewBox="0 0 1696 657" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head" d="M0 0 10 5 0 10z"/></marker>
+          <marker id="ahl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="head head--loop" d="M0 0 10 5 0 10z"/></marker>
+        </defs>
+        <path class="flow" data-draw="1" pathLength="1" d="M322 185 H404" marker-end="url(#ah)"/>
+        <path class="flow" data-draw="2" pathLength="1" d="M520 292 V356" marker-end="url(#ah)"/>
+        <path class="flow" data-draw="3" pathLength="1" d="M640 356 V292" marker-end="url(#ah)"/>
+        <path class="flow" data-draw="4" pathLength="1" d="M752 185 H834" marker-end="url(#ah)"/>
+        <path class="flow" data-draw="5" pathLength="1" d="M1182 185 H1264" marker-end="url(#ah)"/>
+        <path class="flow" data-draw="6" pathLength="1" d="M1435 296 V368"/>
+        <g class="added-svg">
+          <path class="loop" data-draw="7" pathLength="1" d="M1010 76 V40 Q1010 22 992 22 H178 Q160 22 160 40 V70" marker-end="url(#ahl)"/>
+          <path class="adv" data-draw="8" pathLength="1" d="M1010 296 V364"/>
+        </g>
+      </svg>
+
+      <div class="node" style="left:0;top:76px;width:322px">
+        <p class="node__k">Input</p>
+        <p class="node__t">Feature description</p>
+        <p class="node__d">Plain English, treated as <b>data</b>, never as instructions</p>
+      </div>
+      <div class="node node--agent" style="left:410px;top:76px;width:342px">
+        <p class="node__k"><span class="mark" aria-hidden="true"><span>§</span></span>One agent</p>
+        <p class="node__t">Triage agent</p>
+        <p class="node__d">Pydantic AI. Decides when to search and which provisions to read</p>
+      </div>
+      <span class="tool" style="left:96px;top:306px"><span class="mono">search_ai_act</span><small>hybrid dense + BM25</small></span>
+      <span class="tool" style="left:662px;top:306px"><span class="mono">get_provision</span><small>exact text by id</small></span>
+      <div class="node node--act" style="left:330px;top:368px;width:520px">
+        <p class="node__k">Retrieval over the full Act</p>
+        <p class="node__t" style="font-size:26px">Regulation (EU) 2024/1689</p>
+        <p class="node__d"><b>1,246</b> provision-level chunks · 113 articles · 13 annexes</p>
+        <div class="flatmap" data-map="flat"></div>
+      </div>
+      <div class="node" style="left:840px;top:76px;width:342px">
+        <p class="node__k">Structured output</p>
+        <p class="node__t">Typed verdict</p>
+        <p class="node__d">Tier, rationale, key facts, citations<span class="added"><br><b>+ grounded obligations</b>, each tied to its provision</span></p>
+      </div>
+      <div class="node" style="left:1270px;top:76px;width:330px">
+        <p class="node__k">Code, not the model</p>
+        <p class="node__t">Citation guardrail</p>
+        <p class="node__d">Every cited id, in the verdict and its obligations, must be a real provision</p>
+      </div>
+      <div class="arch-tag" style="position:absolute;left:1270px;top:368px">
+        <div class="tag" data-state="result" data-tier="high-risk">
+          <div class="tag__body">
+            <span class="tag__ring"></span>
+            <div class="tag__top"><span class="tag__brand">AI Act Triage</span><span class="tag__no">No. 3C3A</span></div>
+            <div class="tag__main">
+              <span class="tag__glyph"><svg class="g"><use href="#g-triangle"/></svg></span>
+              <div><p class="tag__tier">High-risk</p><p class="tag__meaning">Allowed, with strict obligations before launch.</p></div>
+            </div>
+            <dl class="tag__meta">
+              <div><dt>Confidence</dt><dd><span class="pips" data-level="3"><i></i><i></i><i></i></span>High</dd></div>
+              <div><dt>Basis</dt><dd class="mono">Annex III(4)(a) · Art 6(2)</dd></div>
+            </dl>
+          </div>
+          <ol class="tag__strips">
+            <li class="tag__strip" data-level="4"><span>Prohibited</span><span>Art 5</span></li>
+            <li class="tag__strip" data-level="3"><span>High-risk</span><span>Art 6</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="added">
+        <span class="tool node--loopchip" style="left:330px;top:4px;border-color:color-mix(in srgb,var(--t-info) 55%,transparent);background:var(--bg)"><span style="color:var(--t-info-fg);font-family:var(--font-ui);font-weight:650">Clarify loop</span><small>needs info → one question → answer → re-assess</small></span>
+        <div class="node node--added" style="left:870px;top:368px;width:300px">
+          <p class="node__k">Advisory critic</p>
+          <p class="node__t" style="font-size:27px">Checks grounding</p>
+          <p class="node__d">Each obligation against its cited text. It flags; it never blocks.</p>
+        </div>
+      </div>
+      <span class="fragment step" data-build="added" data-step="added"></span>
+
+      <div class="l3 fragment rise" data-build="l3" style="left:0;right:auto;top:368px;bottom:auto;width:300px;padding:18px 20px">
+        <p><span class="badge">L3, not L4</span></p>
+        <p style="margin-top:10px"><b>One task, one role.</b> A team adds cost and failure modes.</p>
+        <p>One agent already scores <b>20/20</b> dev, <b>12/12</b> held-out: no headroom.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="B"></b> · slide 6 · 1:45 · clock at 7:15 · start of your block</p>
+    <ul>
+      <li>Agentic RAG, ladder level 3: one agent (Pydantic AI), a retrieval tool over the full Act, a typed verdict, a citation guardrail.</li>
+      <li>The description is passed as data, never as instructions. That is the prompt-injection defence.</li>
+      <li>Two tools: <code>search_ai_act</code>, hybrid dense + BM25 over 1,246 provision-level chunks, and <code>get_provision</code>, exact lookup by id. The model decides when to search and what to read.</li>
+      <li>The guardrail is code, not the model: every cited id, in the verdict and in its obligations, must be a real provision.</li>
+      <li>Click: what we added. The clarify loop (needs info, ask, update), grounded obligations, and an advisory critic that checks grounding.</li>
+      <li>Click: why L3 and not an L4 team. One task, one role: more agents add cost and failure modes.</li>
+      <li><b>Be precise if asked:</b> we did not build a multi-agent version. The evidence is that the single agent is already at ceiling (20/20 dev, 12/12 held-out), and the ablation shows even a smaller model matches it, so there is nothing for a team to add.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 07 METHODS -->
+<section class="s-methods" data-id="methods" data-part="III" data-timing="75">
+  <div class="frame">
+    <p class="eyebrow" data-in>Methodology · course methods</p>
+    <h2 class="h1" data-split>What we used, and what we left out</h2>
+    <div class="methods">
+      <div>
+        <p class="caps" data-in>Used, deliberately</p>
+        <ul class="used">
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>RAG</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Structured output</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Guardrails</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>The agentic loop</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Dev / held-out evaluation</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Contamination analysis</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>LLM-as-judge critic</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Model-size ablation</li>
+          <li data-in><svg class="g"><use href="#g-tick"/></svg>Prompt-injection defence</li>
+        </ul>
+      </div>
+      <div class="fragment cutcol" data-build="cut">
+        <p class="caps">Deliberately not added</p>
+        <ul class="cut">
+          <li><svg class="g"><use href="#g-minus"/></svg><span>A router with per-tier specialist agents</span></li>
+          <li><svg class="g"><use href="#g-minus"/></svg><span>Fine-tuning</span></li>
+          <li><svg class="g"><use href="#g-minus"/></svg><span>A multi-agent team</span></li>
+          <li><svg class="g"><use href="#g-minus"/></svg><span>A second, bigger RAG</span></li>
+        </ul>
+        <p class="cut-why">Each would be complexity with no measured payoff.</p>
+      </div>
+    </div>
+    <p class="motto fragment rise" data-build="motto">Every component earns its place, or it’s cut.<span class="rule"></span></p>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="B"></b> · slide 7 · 1:15 · clock at 8:30</p>
+    <ul>
+      <li>Nine course methods, used deliberately: RAG, structured output, guardrails, the agentic loop, dev/held-out evaluation, contamination analysis, an LLM-as-judge critic, a model-size ablation, prompt-injection defence.</li>
+      <li>Click: deliberately not added. A router with per-tier specialists, fine-tuning, a multi-agent team, a second or bigger RAG. Each would be complexity with no measured payoff.</li>
+      <li>Click: "Every component earns its place, or it's cut."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 08 EVALUATION -->
+<section class="s-eval" data-id="eval" data-part="III" data-timing="80">
+  <div class="frame">
+    <p class="eyebrow" data-in>Methodology · how we evaluate</p>
+    <h2 class="h1" data-split>Four case sets, one scoring rule</h2>
+    <div class="evalg">
+      <div class="sets">
+        <div class="set" data-in>
+          <p class="set__t">Development set<span class="mono">20 cases</span></p>
+          <p class="set__d">Typical, edge, critic-catchable and attack cases</p>
+          <div class="set__cells" style="grid-template-columns:repeat(10,22px)" data-cells="20"></div>
+        </div>
+        <div class="set set--sealed" data-in>
+          <p class="set__t">Held-out set<span class="mono">12 cases</span><span class="seal"><svg class="g"><use href="#g-lock"/></svg>Run once</span></p>
+          <p class="set__d">Written independently, never used for tuning</p>
+          <div class="set__cells" style="grid-template-columns:repeat(6,22px)" data-cells="12"></div>
+        </div>
+        <div class="set" data-in>
+          <p class="set__t">Minimal pairs<span class="mono">3 × (1 + 2)</span></p>
+          <p class="set__d">An ambiguous input, then two resolutions where one fact changes</p>
+          <div class="set__cells"><div class="pairs"><div class="pair"><span class="u"></span><span class="u"></span><span class="u"></span></div><div class="pair"><span class="u"></span><span class="u"></span><span class="u"></span></div><div class="pair"><span class="u"></span><span class="u"></span><span class="u"></span></div></div></div>
+        </div>
+        <div class="set" data-in>
+          <p class="set__t">Passage gold standard<span class="mono">6 cases</span></p>
+          <p class="set__d">Expected provision and supporting passage, written before running</p>
+          <div class="set__cells" style="grid-template-columns:repeat(6,22px)" data-cells="6"></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div class="card idtree fragment rise" data-build="idtree">
+          <h3>Citations scored by an id tree</h3>
+          <p>A more specific sub-point counts as correct. A parent does not.</p>
+          <div class="tree"><div>Annex III</div><div>Annex III(4)</div><div>Annex III(4)(a)</div></div>
+          <div class="verdicts">
+            <div class="vrow"><span class="u on"></span><span>Expected <span class="idchip">Annex III(4)</span>, cited <span class="idchip">Annex III(4)(a)</span>: <b>correct</b></span></div>
+            <div class="vrow"><span class="u fail"></span><span>Expected <span class="idchip">Art 5(1)(h)</span>, cited <span class="idchip">Art 5(1)</span>: <b>wrong</b>, too broad</span></div>
+          </div>
+        </div>
+        <p class="quote fragment rise" data-build="quote" style="margin-top:34px;font-size:36px">“Architecture is a hypothesis. We measured whether each layer earned its place.”</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="B"></b> · slide 8 · 1:20 · clock at 9:50</p>
+    <ul>
+      <li>A 20-case development set (8 typical, 6 edge, 2 critic-catchable, 4 attack) and a separate 12-case held-out set, written independently and run once.</li>
+      <li>Targeted sets: 3 minimal pairs (an ambiguous input plus two resolutions differing by one fact) and a 6-case passage-level gold standard (expected provision and supporting passage, written before running).</li>
+      <li>Click: the id-tree rule. A cited id counts if it equals the expected id or is a descendant of it. Both examples are real: PG1 cited Annex III(4)(a) for Annex III(4) and was correct; an early Sonnet run cited Art 5(1) instead of Art 5(1)(h) and was scored wrong.</li>
+      <li>Click: "Architecture is a hypothesis: we measured whether each layer earned its place."</li>
+      <li>Handoff: "<b data-speaker="C"></b> has the results."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 09 HEADLINE EXPERIMENT -->
+<section class="s-exp" data-id="exp" data-part="IV" data-timing="120">
+  <div class="frame">
+    <p class="eyebrow" data-in>Results · the headline experiment</p>
+    <h2 class="h1" data-split>Does reading the Act change the label?</h2>
+    <div class="score">
+      <div class="score__h"></div>
+      <p class="score__h caps" data-in><svg class="g"><use href="#g-read"/></svg>With retrieval</p>
+      <p class="score__h caps fragment" data-build="param" data-fragment-index="1">Without retrieval</p>
+
+      <div class="score__lab">Keyword baseline<small>no LLM · 20 dev cases</small></div>
+      <div class="score__cell"><span class="ubar" data-n="20" data-on="9"></span><span class="score__n" data-count="9">9<small>/20</small></span></div>
+      <div class="score__cell"><span class="score__na fragment" data-fragment-index="1">n/a</span></div>
+
+      <div class="score__lab">Our agent<small>20 dev cases</small></div>
+      <div class="score__cell"><span class="ubar" data-n="20" data-on="20"></span><span class="score__n" data-count="20">20<small>/20</small></span></div>
+      <div class="score__cell"><div class="fragment score__pair" data-build="bars" data-fragment-index="1" style="display:flex;align-items:center;gap:22px"><span class="ubar" data-n="20" data-on="20"></span><span class="score__n" data-count="20">20<small>/20</small></span></div></div>
+
+      <div class="score__lab">Our agent<small>12 held-out cases</small></div>
+      <div class="score__cell"><span class="ubar" data-n="12" data-on="12"></span><span class="score__n" data-count="12">12<small>/12</small></span></div>
+      <div class="score__cell"><div class="fragment score__pair" data-build="bars" data-fragment-index="1" style="display:flex;align-items:center;gap:22px"><span class="ubar" data-n="12" data-on="12"></span><span class="score__n" data-count="12">12<small>/12</small></span></div></div>
+    </div>
+
+    <div class="exp-low">
+      <div class="card abl fragment rise" data-build="abl" data-fragment-index="2">
+        <p class="caps">And a much smaller model matches the frontier one</p>
+        <div class="abl__grid">
+          <div class="hd caps" style="font-size:18px">Tier accuracy</div><div class="hd caps" style="font-size:18px">With retrieval</div><div class="hd caps" style="font-size:18px">Without</div>
+          <div class="abl__m">Sonnet<small>frontier model</small></div>
+          <div class="abl__v"><span class="ubar" data-n="20" data-on="18"></span><b>18/20</b></div>
+          <div class="abl__v"><span class="ubar" data-n="20" data-on="18"></span><b>18/20</b></div>
+          <div class="abl__m">Haiku<small>much smaller</small></div>
+          <div class="abl__v"><span class="ubar" data-n="20" data-on="18"></span><b>18/20</b></div>
+          <div class="abl__v"><span class="ubar" data-n="20" data-on="18"></span><b>18/20</b></div>
+        </div>
+        <p class="abl__foot">Ablation on the 20 dev cases, before the needs-info tier existed. Full pass (tier and citation) was 16/20 with retrieval and 18/20 without, for both models: the gap is citations, not tiers.</p>
+      </div>
+      <div class="verdict fragment" data-build="verdict" data-fragment-index="3">
+        <span class="stamp">Contamination</span>
+        <p>The EU AI Act is in the models’ training data. <b>Benchmark contamination (L17), live.</b></p>
+        <p class="so">So retrieval does not improve the label.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="C"></b> · slide 9 · 2:00 · clock at 11:50 · start of your block · <b data-speaker="E"></b> backstops the "why" in Q&amp;A</p>
+    <ul>
+      <li>On enter: the keyword baseline scores 9/20 on the dev set. Our agent: 20/20 on dev and 12/12 on the held-out set.</li>
+      <li>Click: switch retrieval off. The same agent with no access to the Act's text also gets 20/20 and 12/12. Identical.</li>
+      <li>Click: the model-size ablation on the 20 dev cases. Sonnet and Haiku, with and without retrieval: tier accuracy is 18/20 in all four.</li>
+      <li>Click: why. The Act is in the models' training data. This is benchmark contamination (L17), live in our own project. So retrieval does not improve the label.</li>
+      <li><b>If asked "but 16 vs 18?":</b> that is the full pass, tier and citation. The ablation ran before the needs-info tier existed, so E1 and N7 failed in all four configs (that is the 2/20 tier miss). The 16 vs 18 gap is citations: N6 and A1 were citation-rule gaps later fixed; N5 was one Haiku content error.</li>
+      <li><b>If asked "is the comparison fair?":</b> yes. With and without retrieval were run on the same commit: dev at <code>c12784a</code>, held-out at <code>7a55f85</code>. The held-out set was run once.</li>
+      <li><b>If asked "how do you know it's contamination?":</b> no retrieval matches retrieval, and the smaller model matches the larger. Both point to the knowledge already being in the weights. We can't prove which documents were in training. We show it behaviourally.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 10 SAME SCORE, DIFFERENT MISTAKES -->
+<section class="s-agree" data-id="agree" data-part="IV" data-timing="75">
+  <div class="frame">
+    <p class="eyebrow" data-in>Results · agreement analysis</p>
+    <h2 class="h1" data-split>Same score, different mistakes</h2>
+    <div class="agree">
+      <div class="agree-cap" data-in>
+        <span>All four configs agree on <b>17 of 20</b> cases: 15 all pass, 2 all fail.</span>
+        <span class="agree-legend"><span><span class="u on"></span>pass</span><span><span class="u fail"></span>fail</span></span>
+      </div>
+      <div class="agrid" data-agrid></div>
+      <span class="fragment step st-split" data-step="split" data-fragment-index="1"></span>
+      <span class="fragment step st-rag" data-step="rag" data-fragment-index="2"></span>
+      <div class="whys fragment" data-build="whys" data-fragment-index="2">
+        <svg viewBox="0 0 1696 60" preserveAspectRatio="none" aria-hidden="true"><path data-lead="N6" pathLength="1" d=""/><path data-lead="N5" pathLength="1" d=""/><path data-lead="A1" pathLength="1" d=""/></svg>
+        <div class="why" data-why-for="N6"><p class="why__k">N6 <em>both RAG runs · structural</em></p><p>A rule said “cite nothing” on minimal-risk, so <span class="mono">Art 6(3)</span> was dropped.</p></div>
+        <div class="why" data-why-for="N5"><p class="why__k">N5 <em>Haiku RAG · content error</em></p><p>Cited <span class="mono">Art 50(2)</span> on a minimal-risk verdict.</p></div>
+        <div class="why" data-why-for="A1"><p class="why__k">A1 <em>Sonnet RAG · structural</em></p><p>Cited the parent <span class="mono">Art 5(1)</span>, not the point <span class="mono">Art 5(1)(h)</span>.</p></div>
+      </div>
+    </div>
+    <p class="lesson fragment rise" data-build="lesson" data-fragment-index="3">A single accuracy number is not enough.</p>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="C"></b> · slide 10 · 1:15 · clock at 13:05</p>
+    <ul>
+      <li>Every cell is one case. Rows are the four configs of the ablation: Sonnet and Haiku, with and without retrieval.</li>
+      <li>All four agree on 17 of 20: 15 pass everywhere, 2 fail everywhere (E1 and N7, because the needs-info tier didn't exist yet).</li>
+      <li>Click: the three disagreements, N6, N5 and A1.</li>
+      <li>Click: the two retrieval runs both score 16/20, but they fail differently. They share N6 (a structural rule). Under it, Haiku made a genuine content error on N5 that Sonnet didn't; Sonnet's other miss, A1, was a citation-depth gap.</li>
+      <li>N6 was later fixed by the derogation citation rule, A1 by the point-level citation rule. N5 was Haiku RAG only.</li>
+      <li>Click: a single accuracy number is not enough, which is exactly the professor's point.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 11 WHERE IT ADDS VALUE -->
+<section class="s-value" data-id="value" data-part="IV" data-timing="75">
+  <div class="frame">
+    <p class="eyebrow" data-in>Results · where the tool actually adds value</p>
+    <h2 class="h1" data-split>The question, the passage, the check</h2>
+    <div class="value">
+      <div class="card" data-in>
+        <p class="v__k">Clarify loop · minimal pairs</p>
+        <div class="v__nums">
+          <div class="v__num"><b data-count="3">3/3</b><span>ambiguous inputs asked how the output is used</span></div>
+          <div class="v__num"><b data-count="6">6/6</b><span>resolutions updated correctly</span></div>
+        </div>
+        <div class="fork">
+          <p class="fork__in">“We use AI to summarise job applications.”</p>
+          <p class="fork__q"><span class="tchip" data-tier="needs-info"><svg class="g"><use href="#g-question"/></svg>Needs info</span><span>How is the output used, and who acts on it?</span></p>
+          <div class="fork__b">
+            <p>A recruiter reads every application</p><span class="tchip" data-tier="minimal-risk"><svg class="g"><use href="#g-check"/></svg>Minimal-risk</span><span class="idchip">Art 6(3)</span>
+          </div>
+          <div class="fork__b">
+            <p>It ranks; only the top ten are reviewed</p><span class="tchip" data-tier="high-risk"><svg class="g"><use href="#g-triangle"/></svg>High-risk</span><span class="idchip">Annex III(4)(a)</span>
+          </div>
+          <p class="fork__mp3">Or the tier holds and the reasoning changes: MP3 is high-risk both ways, on <span class="mono">Annex III(4)(a)</span> vs <span class="mono">(4)(b)</span>.</p>
+        </div>
+      </div>
+      <div class="card fragment rise" data-build="panel">
+        <p class="v__k">Grounding · passage eval</p>
+        <div class="v__nums">
+          <div class="v__num"><b data-count="6">6/6</b><span>cited the right provision</span></div>
+          <div class="v__num"><b data-count="6">6/6</b><span>and the cited text supports the claim</span></div>
+        </div>
+        <div class="v__law">
+          <p class="law">“AI systems intended to be used to <mark>evaluate the creditworthiness of natural persons or establish their credit score</mark>…”</p>
+          <p class="note"><span class="mono">Annex III(5)(b)</span> · cited for credit scoring (PG4)</p>
+        </div>
+        <p class="v__foot">8 of 8 cited provisions read and checked against the Act’s text.</p>
+      </div>
+      <div class="card fragment rise" data-build="panel">
+        <p class="v__k">Verification · the critic</p>
+        <div class="v__nums">
+          <div class="v__num"><b>~50%</b><span style="max-width:none">precision: 2&nbsp;true, 2&nbsp;false flags</span></div>
+        </div>
+        <div class="flags">
+          <div class="flag"><span class="u on"></span><span><b>True</b> · PG3: added “develop”; the text doesn’t say it</span></div>
+          <div class="flag"><span class="u on"></span><span><b>True</b> · PG5: the text bans only “the use of”</span></div>
+          <div class="flag"><span class="u fail"></span><span><b>False</b> · PG1: Art 43(2) timing</span></div>
+          <div class="flag"><span class="u fail"></span><span><b>False</b> · PG4: same timing point</span></div>
+        </div>
+        <p class="v__foot">Too noisy for a gate, so it stays advisory. But its true flags exposed a real defect in the prohibited-tier obligations, which <b>we then fixed</b>.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="C"></b> · slide 11 · 1:15 · clock at 14:20</p>
+    <ul>
+      <li>Clarify loop, measured with minimal pairs: 3/3 ambiguous inputs asked the right "how is the output used, who acts on it" question; 6/6 resolutions updated correctly. One changed fact can flip the tier (MP1, MP2), or keep the tier and change the reasoning (MP3: Annex III(4)(a) recruitment vs (4)(b) workers' management).</li>
+      <li>Click: grounding. 6/6 cited the right provision and the cited text actually supports the claim (8 of 8 cited provisions checked by reading the chunk text).</li>
+      <li>Click: the critic. About 50% precision: 2 true flags, 2 false. Too noisy as a gate, so it's advisory. Its true flags exposed the prohibited-tier obligation wording (adding "develop", and Art 5(1)(h) banning only "the use of"). That led to the Phase 9.1 fix.</li>
+      <li>If pressed: after the fix, "develop" is gone from every prohibited obligation; one residual verb error remains on A1. Recall of the critic was not measured.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 12 LIMITATIONS -->
+<section class="s-limits" data-id="limits" data-part="IV" data-timing="50">
+  <div class="frame">
+    <div class="limits">
+      <div class="limits__l">
+        <p class="eyebrow" data-in>Results · limitations</p>
+        <h2 class="h1" data-split>What failed, and what we haven’t proven</h2>
+        <p data-in>Stated plainly, the way the tool lists what you still need to confirm.</p>
+      </div>
+      <ul class="lim">
+        <li data-in><span class="ring"></span><p>Retrieval did not improve classification accuracy<small>The models already know the Act: contamination.</small></p></li>
+        <li data-in><span class="ring"></span><p>The critic is too noisy to be a gate<small>We keep it as advisory.</small></p></li>
+        <li data-in><span class="ring"></span><p>Our passage cases overlap the dev set<small>So that check isn’t fully independent.</small></p></li>
+        <li data-in><span class="ring"></span><p>We measured the verifier’s precision, not its recall<small>Errors the critic missed were not counted.</small></p></li>
+        <li data-in><span class="ring"></span><p>Generated obligations can drift run to run<small>Pinning them to a verified template is future work.</small></p></li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="C"></b> · slide 12 · 0:50 · clock at 15:10 · end of your block</p>
+    <ul>
+      <li>Present this with confidence, not apology. Honesty is the point.</li>
+      <li>Retrieval did not improve classification accuracy (contamination). The critic is too noisy to be a gate, so it stays advisory. The passage cases are close rewordings of dev cases, so that check isn't fully independent. We measured the verifier's precision but not its recall. Generated obligations can drift run to run; pinning them to a verified template is future work.</li>
+      <li>Handoff: "Back to <b data-speaker="E"></b> for the live demo."</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 13 LIVE DEMO -->
+<section class="s-demo" data-id="demo" data-part="V" data-timing="210">
+  <div class="frame">
+    <div class="demo">
+      <div>
+        <p class="eyebrow live" data-in><i aria-hidden="true"></i>Live · running locally</p>
+        <h2 class="display" data-split>Live demo</h2>
+        <ol class="steps">
+          <li data-in><span>Describe: <q>We use AI to summarise job applications.</q></span></li>
+          <li data-in><span>It asks how the output is used</span></li>
+          <li data-in><span>Answer it</span></li>
+          <li data-in><span>The assessment updates: <span class="tchip" data-tier="needs-info"><svg class="g"><use href="#g-question"/></svg>Needs info</span><span class="arrow">→</span><span class="tchip" data-tier="minimal-risk"><svg class="g"><use href="#g-check"/></svg>Minimal-risk</span> or <span class="tchip" data-tier="high-risk"><svg class="g"><use href="#g-triangle"/></svg>High-risk</span></span></li>
+          <li data-in><span>Click a citation: the real Article text opens</span></li>
+          <li data-in><span>Obligations, then export the one-page assessment</span></li>
+          <li data-in><span class="then">Then: <b>resist a prompt-injection case</b></span></li>
+        </ol>
+      </div>
+      <div class="demo__tag">
+        <div class="tag tag--paper tag--pinned is-flat" data-tag="qr">
+          <span class="tag__string"><svg viewBox="0 0 4 2000" preserveAspectRatio="none"><path d="M2 0V2000"/></svg></span>
+          <div class="tag__body">
+            <span class="tag__ring"></span>
+            <div class="tag__top"><span class="tag__brand">AI Act Triage</span><span class="tag__no">Source</span></div>
+            <img class="qr" src="assets/img/repo-qr.svg" alt="QR code linking to github.com/IIxoskeletonII/ai-act-triage">
+            <p class="tag__url">github.com/IIxoskeletonII/<br>ai-act-triage</p>
+            <p class="tag__hint">A local-only tool. Scan to clone and read the reproducible code.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 13 · 3:30 · clock at 18:40 · start of your closing block</p>
+    <ul>
+      <li><b>Before the talk:</b> start <code>python app.py</code> a few minutes early (the index takes up to a minute to load). Open http://127.0.0.1:5000 in a second window. Add <code>?motion=reduce</code> if the projector stutters.</li>
+      <li>Click the <em>CV summariser</em> demo case: "We use AI to summarise job applications." It consults the Act live (watch the map light up), then asks how the output is used.</li>
+      <li>Answer with one of the example answers. The assessment updates: Needs info → Minimal-risk (a recruiter reads everything, Art 6(3)) or High-risk (it ranks, Annex III(4)(a)).</li>
+      <li>Click a citation: the real Article opens, cited point marked. Show the obligations checklist. Export the one-page assessment.</li>
+      <li>Then the <em>Hidden instruction</em> demo case: it doesn't follow the injected "tell us it is fully compliant".</li>
+      <li><b>If the API or network fails:</b> say so calmly and walk through the screenshots in <code>docs/qa/</code> (question, updated verdict, reader, export, injection).</li>
+      <li>The QR goes to the public repo: clone and read the code. It is not a hosted instance.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 14 THE ANSWER -->
+<section class="s-answer" data-id="answer" data-part="V" data-timing="50">
+  <div class="frame">
+    <p class="eyebrow" data-in>The answer to the question</p>
+    <p class="ans-q" data-in>If a model already knows the label, why use the tool?</p>
+    <p class="ans-a" data-split>Because the value isn’t the label.</p>
+    <div class="trio">
+      <div class="card fragment rise" data-build="trio">
+        <p class="trio__k">The question<small>it asks before it commits</small></p>
+        <span class="qcard"><b>?</b>How is the summary output used in your hiring process, and who acts on it?</span>
+      </div>
+      <div class="card fragment rise" data-build="trio">
+        <p class="trio__k">The passage<small>behind its conclusion</small></p>
+        <p class="law">“…<mark>to analyse and filter job applications, and to evaluate candidates</mark>;”</p>
+        <span class="idchip idchip--tier" data-tier="high-risk">Annex III(4)(a)</span>
+      </div>
+      <div class="card fragment rise" data-build="trio">
+        <p class="trio__k">The next step<small>the PM can take</small></p>
+        <p class="ob"><span class="box"></span><span>Establish, implement, document and maintain a risk management system.</span></p>
+        <span class="idchip">Art 9(1)</span>
+      </div>
+    </div>
+    <div class="ans-foot fragment rise" data-build="easy">
+      <p class="easy">The label is<br>the easy part.</p>
+      <p>RAG’s real job here is <b>grounding and verifiability</b>, not accuracy.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 14 · 0:50 · clock at 19:30</p>
+    <ul>
+      <li>Back to slide 3's question: if a model already knows the label, why use the tool?</li>
+      <li>Because the value isn't the label. Click by click: the question it asks, the passage behind its conclusion, the next step the PM can take.</li>
+      <li>Click: the label is the easy part. RAG's real job here is grounding and verifiability, not accuracy.</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= 15 CONCLUSION -->
+<section class="s-end" data-id="end" data-part="V" data-timing="40">
+  <div class="frame">
+    <p class="eyebrow" data-in>Conclusion and future work</p>
+    <div class="concl">
+      <div>
+        <h3 data-in>Contribution</h3>
+        <p class="concl__c" data-in>A <b>grounded, interrogable</b> AI Act triage tool, and a rigorous, honest evaluation of <b>whether each layer earned its place</b>.</p>
+        <h3 data-in style="margin-top:44px">Future work</h3>
+        <ul class="fw">
+          <li data-in><svg class="g"><use href="#g-shield"/></svg>Pin obligations to a verified template</li>
+          <li data-in><svg class="g"><use href="#g-lock"/></svg>A genuinely independent, hard held-out set</li>
+          <li data-in><svg class="g"><use href="#g-rocket"/></svg>Deployment</li>
+        </ul>
+      </div>
+      <div class="end-tag">
+        <div class="tag tag--paper tag--pinned is-flat" data-tag="qr" style="width:360px;--string:120px">
+          <span class="tag__string"><svg viewBox="0 0 4 2000" preserveAspectRatio="none"><path d="M2 0V2000"/></svg></span>
+          <div class="tag__body" style="padding:50px 28px 26px">
+            <span class="tag__ring"></span>
+            <div class="tag__top"><span class="tag__brand">AI Act Triage</span><span class="tag__no">Source</span></div>
+            <img class="qr" src="assets/img/repo-qr.svg" alt="QR code linking to github.com/IIxoskeletonII/ai-act-triage" style="width:210px;height:210px;margin-top:22px">
+            <p class="tag__url" style="font-size:18px;margin-top:18px">github.com/IIxoskeletonII/<br>ai-act-triage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="thanks">
+      <h2 class="display" data-split>Thank you.</h2>
+      <p data-in>Questions?</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p class="sp"><b data-speaker="E"></b> · slide 15 · 0:40 · clock at 20:10 · then Q&amp;A</p>
+    <ul>
+      <li>Contribution: a grounded, interrogable AI Act triage tool, and a rigorous, honest evaluation of whether each layer earned its place.</li>
+      <li>Future work: pin obligations to a verified template; a genuinely independent hard held-out set; deployment.</li>
+      <li>"Thank you. Questions?" The appendix (keep pressing →) holds the full tables, the architecture in detail, the complexity ledger and provenance.</li>
+      <li>Q&amp;A routing: <b data-speaker="A"></b> related work and the user journey; <b data-speaker="B"></b> architecture and evaluation design; <b data-speaker="C"></b> results; <b data-speaker="E"></b> the deep "why", especially contamination (slides 9–10).</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ======================================================= APPENDIX -->
+<section class="s-divider" data-id="apx" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow" data-in>Appendix · backup for Q&amp;A</p>
+    <h2 class="display" data-split>Appendix</h2>
+    <p data-in>Full evaluation tables, the architecture in detail, the id-tree scorer, the complexity ledger and provenance. Every figure comes from <span class="mono" style="font-size:28px">eval/</span> in the repo.</p>
+  </div>
+  <aside class="notes"><p class="sp">Appendix, not presented. Jump here for Q&amp;A.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-scores" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix A · scores</p>
+    <h2 class="h1" style="font-size:60px">Development, held-out and the ablation</h2>
+    <div class="apx">
+      <div>
+        <h3>Final system (Sonnet) vs the keyword baseline</h3>
+        <table class="tbl">
+          <thead><tr><th>Run</th><th>Set</th><th class="num">Passed</th><th class="num">Tier</th><th class="num">Citation</th></tr></thead>
+          <tbody>
+            <tr><td>Keyword baseline</td><td>dev</td><td class="num">9/20</td><td class="num">50%</td><td class="num">50%</td></tr>
+            <tr><td>Agent, with retrieval</td><td>dev</td><td class="num">20/20</td><td class="num">100%</td><td class="num">100%</td></tr>
+            <tr><td>Agent, no retrieval</td><td>dev</td><td class="num">20/20</td><td class="num">100%</td><td class="num">100%</td></tr>
+            <tr><td>Agent, with retrieval</td><td>held-out</td><td class="num">12/12</td><td class="num">100%</td><td class="num">100%</td></tr>
+            <tr><td>Agent, no retrieval</td><td>held-out</td><td class="num">12/12</td><td class="num">100%</td><td class="num">100%</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Files: <span class="mono">results_baseline_v2</span>, <span class="mono">results_agent_v2_rag</span>, <span class="mono">results_agent_v2_parametric</span>, <span class="mono">results_test_rag</span>, <span class="mono">results_test_parametric</span>. Phase 9.1 dev check after the prohibited-obligation fix: 20/20, and all 75 obligation citations are valid Act ids.</p>
+      </div>
+      <div>
+        <h3>Model × retrieval ablation · 20 dev cases, de-leaked</h3>
+        <table class="tbl">
+          <thead><tr><th>Config</th><th class="num">Passed</th><th class="num">Tier</th><th class="num">Citation</th></tr></thead>
+          <tbody>
+            <tr><td>Sonnet, RAG</td><td class="num">16/20</td><td class="num">90%</td><td class="num">85%</td></tr>
+            <tr><td>Sonnet, parametric</td><td class="num">18/20</td><td class="num">90%</td><td class="num">100%</td></tr>
+            <tr><td>Haiku, RAG</td><td class="num">16/20</td><td class="num">90%</td><td class="num">85%</td></tr>
+            <tr><td>Haiku, parametric</td><td class="num">18/20</td><td class="num">90%</td><td class="num">95%</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Run before the needs-info tier existed: E1 and N7 fail in every config. Agreement on 17 of 20 (15 all pass, 2 all fail). Disagreements: N6 and A1 structural (fixed in Phase 4), N5 a Haiku RAG content error. Source: <span class="mono">phase9_report.md</span> §1, <span class="mono">results_agreement.json</span>.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix A. Scores. Any presenter.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-pairs" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix B · minimal pairs and passages</p>
+    <h2 class="h1" style="font-size:60px">The clarify loop and grounding, case by case</h2>
+    <div class="apx">
+      <div>
+        <h3>Minimal pairs · 3/3 asked, 6/6 resolved</h3>
+        <table class="tbl tbl--tight">
+          <thead><tr><th>Case</th><th>Expected</th><th>Predicted</th><th>Cited</th></tr></thead>
+          <tbody>
+            <tr><td>MP1-A</td><td>minimal · <span class="mono">Art 6(3)</span></td><td>minimal-risk</td><td class="mono">Annex III(4)(a), Art 6(3)</td></tr>
+            <tr><td>MP1-B</td><td>high · <span class="mono">Annex III(4)</span></td><td>high-risk</td><td class="mono">Art 6(2), Annex III(4)(a)</td></tr>
+            <tr><td>MP2-A</td><td>minimal · <span class="mono">Art 6(3)</span></td><td>minimal-risk</td><td class="mono">Art 6(3)</td></tr>
+            <tr><td>MP2-B</td><td>high · <span class="mono">Annex III(5)</span></td><td>high-risk</td><td class="mono">Art 6(2), Annex III(5)(b)</td></tr>
+            <tr><td>MP3-A</td><td>high · <span class="mono">Annex III(4)</span></td><td>high-risk</td><td class="mono">Art 6(2), Annex III(4)(a)</td></tr>
+            <tr><td>MP3-B</td><td>high · <span class="mono">Annex III(4)</span></td><td>high-risk</td><td class="mono">Annex III(4)(b), Art 6(2)</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Ambiguous inputs: summarise job applications, review loan applications, workforce management. All three returned needs-info with a question probing use and actor.</p>
+      </div>
+      <div>
+        <h3>Passage gold · found 6/6, supports 6/6</h3>
+        <table class="tbl tbl--tight">
+          <thead><tr><th>Case</th><th>Expected</th><th>Tier</th><th>Cited</th></tr></thead>
+          <tbody>
+            <tr><td>PG1</td><td class="mono">Annex III(4)</td><td>high-risk</td><td class="mono">Annex III(4)(a), Art 6(2)</td></tr>
+            <tr><td>PG2</td><td class="mono">Art 50(1)</td><td>limited-risk</td><td class="mono">Art 50(1)</td></tr>
+            <tr><td>PG3</td><td class="mono">Art 5(1)(c)</td><td>prohibited</td><td class="mono">Art 5(1)(c)</td></tr>
+            <tr><td>PG4</td><td class="mono">Annex III(5)</td><td>high-risk</td><td class="mono">Art 6(2), Annex III(5)(b)</td></tr>
+            <tr><td>PG5</td><td class="mono">Art 5(1)(h)</td><td>prohibited</td><td class="mono">Art 5(1)(h)</td></tr>
+            <tr><td>PG6</td><td class="mono">Art 2</td><td>out-of-scope</td><td class="mono">Art 2(8)</td></tr>
+          </tbody>
+        </table>
+        <p class="note">8 of 8 cited provisions support the claim; 0 missed core obligations (PG1, PG4: all 9 present). Caveat: the PG cases are close rewordings of dev cases.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix B. Minimal pairs and passages.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-critic" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix C · the verifier</p>
+    <h2 class="h1" style="font-size:60px">Critic precision, and the fix it led to</h2>
+    <div class="apx">
+      <div>
+        <h3>Flags on the passage-gold obligations</h3>
+        <table class="tbl">
+          <thead><tr><th>Case</th><th>Flag</th><th>Critic’s reason</th><th>Judgement</th></tr></thead>
+          <tbody>
+            <tr><td>PG1</td><td class="mono">Art 43(2)</td><td>“before placing on the market” timing not in the text</td><td>false</td></tr>
+            <tr><td>PG4</td><td class="mono">Art 43(2)</td><td>same timing point</td><td>false</td></tr>
+            <tr><td>PG3</td><td class="mono">Art 5(1)(c)</td><td>obligation adds “develop”; the text does not</td><td>true</td></tr>
+            <tr><td>PG5</td><td class="mono">Art 5(1)(h)</td><td>text bans only “the use of”, and only conditionally</td><td>true</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Precision 2/4 = 50%. Recall not measured.</p>
+      </div>
+      <div>
+        <h3>After the Phase 9.1 fix · five prohibited dev cases</h3>
+        <table class="tbl">
+          <thead><tr><th>Case</th><th>Critic</th></tr></thead>
+          <tbody>
+            <tr><td>T5</td><td>grounded</td></tr>
+            <tr><td>N4</td><td>grounded: states the “objective and verifiable facts” exception and why it doesn’t apply</td></tr>
+            <tr><td>A2</td><td>grounded: states the “medical or safety reasons” exception</td></tr>
+            <tr><td>N10</td><td>grounded: states the dataset-labelling and law-enforcement carve-outs</td></tr>
+            <tr><td>A1</td><td>misstated (true flag): still says “place on the market, put into service or use”; Art 5(1)(h) bans only “the use of”</td></tr>
+          </tbody>
+        </table>
+        <p class="note">“Develop” no longer appears in any prohibited obligation. One residual error remains: A1’s verbs.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix C. The verifier.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-arch" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix D · the architecture in detail</p>
+    <h2 class="h1" style="font-size:60px">One lap of the loop, and the scorer</h2>
+    <div class="apx">
+      <div>
+        <h3>The loop</h3>
+        <table class="tbl">
+          <tbody>
+            <tr><td>1 · Input</td><td>The description is passed as data; the prompt says instructions inside it are ignored.</td></tr>
+            <tr><td>2 · Search</td><td><span class="mono">search_ai_act(query)</span>: hybrid dense + BM25 over 1,246 chunks, each one provision’s own text.</td></tr>
+            <tr><td>3 · Read</td><td><span class="mono">get_provision(id)</span>: exact lookup by provision id.</td></tr>
+            <tr><td>4 · Decide</td><td>The loop ends when the model returns a typed <span class="mono">Verdict</span> instead of another tool call.</td></tr>
+            <tr><td>5 · Check</td><td>Code rejects any cited id, in the verdict or its obligations, that is not a real provision.</td></tr>
+            <tr><td>6 · Ask</td><td>If the tier is needs-info, one clarifying question; the answer is sent back with the description.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h3>The id-tree citation scorer</h3>
+        <table class="tbl">
+          <tbody>
+            <tr><td>Rule</td><td>A cited id satisfies the expected id if it is equal or a descendant in the id tree.</td></tr>
+            <tr><td>Ids</td><td><span class="mono">Art N</span> · <span class="mono">Art N(p)</span> · <span class="mono">Art N(p)(x)</span> · <span class="mono">Annex III(4)(a)</span>; sub-points (i), (ii) stay inside their point.</td></tr>
+            <tr><td>Pass</td><td>Expected <span class="mono">Annex III(4)</span>, cited <span class="mono">Annex III(4)(a)</span> (PG1).</td></tr>
+            <tr><td>Fail</td><td>Expected <span class="mono">Art 5(1)(h)</span>, cited the parent <span class="mono">Art 5(1)</span> (A1, early Sonnet RAG run).</td></tr>
+            <tr><td>Null</td><td>No expected id: passes when it cites nothing unfounded (minimal-risk) or asks a question (needs-info).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix D. Architecture and scorer.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-ledger" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix E · the complexity ledger</p>
+    <h2 class="h1" style="font-size:60px">Every component, and why it earns its place</h2>
+    <div class="apx apx--one">
+      <table class="tbl ledger">
+        <thead><tr><th>Component</th><th>What it does</th><th>The evidence</th></tr></thead>
+        <tbody>
+          <tr><td>Retrieval over the full Act</td><td>Grounds each citation in the real text</td><td>Passage eval: 6/6 found, 6/6 text supports. Not needed for the label (contamination).</td></tr>
+          <tr><td>Typed verdict</td><td>Tier, facts, citations, obligations as data</td><td>Drives the interface and the scorer; nothing parsed from prose.</td></tr>
+          <tr><td>Citation guardrail</td><td>Rejects ids that are not real provisions</td><td>Phase 9.1 dev check: all 75 obligation citations valid.</td></tr>
+          <tr><td>Clarify loop (needs-info)</td><td>Asks one question when use is ambiguous</td><td>E1 and N7 failed in every config before it existed; minimal pairs 3/3 and 6/6 after.</td></tr>
+          <tr><td>Grounded obligations</td><td>Next steps, each tied to a provision</td><td>0 missed core obligations on the high-risk passage cases.</td></tr>
+          <tr><td>Advisory critic</td><td>Checks obligations against cited text</td><td>50% precision: advisory, not a gate. Its true flags led to the Phase 9.1 fix.</td></tr>
+          <tr><td>Injection defence</td><td>The description is data, not orders</td><td>4 attack cases in the 20-case dev set, all passed in the final run.</td></tr>
+          <tr><td>Keyword baseline</td><td>The number to beat, no LLM</td><td>9/20 on dev.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix E. Complexity ledger.</p></aside>
+</section>
+
+<section class="s-apx" data-id="apx-prov" data-part="Anx" data-timing="20">
+  <div class="frame">
+    <p class="eyebrow">Appendix F · provenance</p>
+    <h2 class="h1" style="font-size:60px">The full Act, from the official source, reproducible</h2>
+    <div class="prov">
+      <div class="card"><dl><dt>Source</dt><dd>Regulation (EU) 2024/1689, OJ L, English XHTML, fetched from the EU Publications Office<br><span class="mono">publications.europa.eu/resource/celex/32024R1689</span></dd></dl></div>
+      <div class="card"><dl><dt>Integrity</dt><dd>XHTML sha256, recorded at ingestion and kept byte-exact on checkout<br><span class="hash">8f0b656302f9864cc87e040c371f209a9d65ae1a6cecc25ca5eb737e872d721a</span></dd></dl></div>
+      <div class="card"><dl><dt>Chunking</dt><dd>Deterministic parser; text is copied, never generated. <b>1,246</b> chunks: 113 articles, 13 annexes, one per provision id.</dd></dl></div>
+      <div class="card"><dl><dt>Reproduce</dt><dd><span class="mono">scripts/to_text.py</span> → <span class="mono">scripts/chunk.py</span> → <span class="mono">scripts/build_embeddings.py</span>. Results, traces and reports committed in <span class="mono">eval/</span>.</dd></dl></div>
+    </div>
+  </div>
+  <aside class="notes"><p class="sp">Appendix F. Provenance.</p></aside>
+</section>
+
+</div>
+</div>
+
+<script src="team.js"></script>
+<script src="assets/js/act-outline.js"></script>
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/SplitText.min.js"></script>
+<script src="vendor/gsap/CustomEase.min.js"></script>
+<script src="vendor/gsap/ScrambleTextPlugin.min.js"></script>
+<script src="vendor/reveal/reveal.js"></script>
+<script src="vendor/reveal/plugin/notes.js"></script>
+<script src="assets/js/deck.js"></script>
+</body>
+</html>
