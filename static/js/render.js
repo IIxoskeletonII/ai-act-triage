@@ -121,7 +121,7 @@ export function tag(state, r, caseNo) {
       </dl>
     </div>
     <ol class="tag__strips" aria-hidden="true">${STRIPS.map((s) => `<li class="tag__strip" data-level="${s.level}"><span>${s.label}</span><span>${s.ref}</span></li>`).join("")}</ol>
-    <p class="sr-only">${state === "result" ? `Severity ${t.level === null ? "undetermined" : `${t.level} of 4`}.` : ""}</p>
+    <p class="sr-only">${state === "result" ? (t.level === 0 ? "Outside the Act, so no severity rank." : `Severity ${t.level === null ? "undetermined" : `${t.level} of 4`}.`) : ""}</p>
   </div>`;
 }
 

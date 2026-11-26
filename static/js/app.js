@@ -14,7 +14,7 @@ const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
 const el = {
   stage: $("#stage"), intro: $("#intro"), composer: $("#composer"), card: $("#composerForm"),
   field: $("#description"), assess: $("#assess"), edit: $(".composer__edit"), brief: $("#brief"),
-  briefText: $("#briefText"), briefNote: $("#briefNote"), thread: $("#thread"), aside: $("#aside"),
+  briefText: $("#briefText"), briefMore: $("#briefMore"), briefNote: $("#briefNote"), thread: $("#thread"), aside: $("#aside"),
   tagSlot: $("#tagSlot"), asideActions: $("#asideActions"), actCard: $("#actCard"), newCase: $("#newCase"),
   notice: $("#notice"), memo: $("#memo"), toast: $("#toast"), announcer: $("#announcer"),
   masthead: $(".masthead"), theme: $("#themeToggle"),
@@ -85,6 +85,28 @@ function autosize(t) { t.style.height = "auto"; t.style.height = `${Math.min(t.s
 
 // ---------------------------------------------------------------- mode changes
 
+// A long description is set smaller and clamped to a few lines, so the verdict stays near the top.
+const BRIEF_LONG = 280;
+function showBrief(long) {
+  el.briefText.classList.toggle("is-long", long);
+  el.briefText.classList.remove("is-open");
+  el.briefMore.setAttribute("aria-expanded", "false");
+  el.briefMore.textContent = "Show all";
+  fitBrief();
+}
+function fitBrief() {
+  const t = el.briefText;
+  if (!t.classList.contains("is-long")) { el.briefMore.hidden = true; return; }
+  if (t.classList.contains("is-open")) { el.briefMore.hidden = false; return; }
+  el.briefMore.hidden = t.scrollHeight <= t.clientHeight + 2;
+}
+el.briefMore.addEventListener("click", () => {
+  const open = el.briefText.classList.toggle("is-open");
+  el.briefMore.setAttribute("aria-expanded", String(open));
+  el.briefMore.textContent = open ? "Show less" : "Show all";
+});
+if ("ResizeObserver" in window) new ResizeObserver(fitBrief).observe(el.briefText);
+
 function setMode(mode) {
   const targets = [el.card, el.aside, el.actCard, $("#actMap"), el.composer];
   M.morph(targets, () => {
@@ -127,6 +149,7 @@ function start(description) {
     preset: PRESETS.find((p) => p.text === description) || null,
   });
   el.briefText.innerHTML = R.briefHtml(description);
+  showBrief(description.length > BRIEF_LONG);
   const injected = splitInjected(description).some((p) => p.injected);
   el.briefNote.hidden = !injected;
   if (injected) el.briefNote.innerHTML = `${glyph("shield")}<span>The underlined part reads like an instruction to the assessor. The agent treats your whole description as data about the product, so it does not follow instructions inside it.</span>`;

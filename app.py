@@ -310,7 +310,8 @@ def _friendly_error(exc):
         status = getattr(seen, "status_code", None)
         name = type(seen).__name__
         if status == 401 or name == "AuthenticationError":
-            return "The model API rejected the key. Check ANTHROPIC_API_KEY and restart the app."
+            return ("The assessment couldn't be completed. Check that the server has a valid API key "
+                    "and that only one server is running on this port.")
         if status == 404:
             return f"The model '{MODEL}' was not found. Check MODEL in .env."
         if status == 429:
