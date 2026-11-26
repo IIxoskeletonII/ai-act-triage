@@ -26,17 +26,18 @@ straight from the interface.
 Motion respects the system's *reduce motion* setting. To turn it off regardless, open
 `index.html?motion=reduce` (the same switch the tool uses). Builds still step in, without movement.
 
-**Team names**: edit `deck/team.js`. They appear on the title slide and in every speaker note.
+**Team**: names and matricolas live in `deck/team.js`. They appear on the title slide and in every
+speaker note.
 
 ## Who presents what (about 20 minutes)
 
 | Slides | Speaker | Block | Time |
 |--------|---------|-------|------|
-| 1–3 | Eliya | Intro and the framing question | 2:30 |
-| 4–5 | Teammate A | What it does, related work | 3:00 |
-| 6–8 | Teammate B | Architecture, methods, evaluation design | 4:20 |
-| 9–12 | Teammate C | Results and limitations | 5:20 |
-| 13–15 | Eliya | Live demo, the answer, conclusion; Q&A backstop | 5:00 |
+| 1–3 | Eliya Allam | Intro and the framing question | 2:30 |
+| 4–5 | Kamila Dochshanova | What it does, related work | 3:00 |
+| 6–8 | Lukas Haertig | Architecture, methods, evaluation design | 4:20 |
+| 9–12 | Léo Pierre Darimont-Nicolau | Results and limitations | 5:20 |
+| 13–15 | Eliya Allam | Live demo, the answer, conclusion; Q&A backstop | 5:00 |
 
 Each slide's note carries the speaker, the slide's time and the target clock at its end.
 

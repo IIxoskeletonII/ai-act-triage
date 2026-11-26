@@ -29,12 +29,19 @@
   }
 
   // ---------------------------------------------------------------- names
-  const TEAM = window.DECK_TEAM || { E: "Eliya Allam" };
-  const isPlaceholder = (n) => /^teammate\b/i.test(n || "");
-  $$("[data-speaker]").forEach((el) => { el.textContent = TEAM[el.dataset.speaker] || el.dataset.speaker; });
+  // Each member is { name, id } (id: matricola); a plain string is accepted as a name.
+  const TEAM = window.DECK_TEAM || { E: { name: "Eliya Allam" } };
+  const member = (k) => {
+    const m = TEAM[k];
+    return typeof m === "string" ? { name: m } : (m || { name: k });
+  };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  $$("[data-speaker]").forEach((el) => { el.textContent = member(el.dataset.speaker).name; });
   $$("[data-team]").forEach((ul) => {
-    ul.innerHTML = ["E", "A", "B", "C"].filter((k) => TEAM[k])
-      .map((k) => `<li${isPlaceholder(TEAM[k]) ? ' class="is-placeholder"' : ""}>${TEAM[k]}</li>`).join("");
+    ul.innerHTML = ["E", "A", "B", "C"].filter((k) => TEAM[k]).map((k) => {
+      const m = member(k);
+      return `<li><span class="team__name">${esc(m.name)}</span>${m.id ? `<span class="team__id">${esc(m.id)}</span>` : ""}</li>`;
+    }).join("");
   });
 
   // ---------------------------------------------------------------- generated visuals

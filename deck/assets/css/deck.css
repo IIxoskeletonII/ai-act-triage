@@ -270,10 +270,11 @@ section[data-chrome="none"] .chrome, .chrome.is-hidden { opacity: 0; }
 .wordmark .mark::before { top: 16px; width: 20px; height: 20px; margin-left: -10px; }
 .display { font: 790 176px/0.86 var(--font-ui); font-stretch: 125%; letter-spacing: -0.045em; }
 .title-sub { margin-top: 44px; font: 480 46px/1.25 var(--font-ui); color: var(--ink-2); max-width: 22ch; letter-spacing: -0.01em; }
-.team { display: flex; flex-wrap: wrap; gap: 14px 0; margin-top: 70px; font: 560 30px/1.2 var(--font-ui); color: var(--ink); }
-.team li { display: inline-flex; align-items: center; }
-.team li + li::before { content: ""; width: 7px; height: 7px; margin: 0 22px; border-radius: 50%; background: var(--line-2); }
-.team .is-placeholder { color: var(--ink-3); font-style: italic; font-weight: 450; }
+.team { display: grid; grid-template-columns: repeat(2, max-content); gap: 22px 64px; margin-top: 64px; }
+.team li { display: grid; gap: 6px; padding-left: 20px; border-left: 2px solid var(--line-2); }
+.team li:first-child { border-left-color: var(--ink-2); }
+.team__name { font: 600 29px/1.15 var(--font-ui); color: var(--ink); letter-spacing: -0.005em; }
+.team__id { font: 400 20px/1 var(--font-id); color: var(--ink-3); }
 .course { margin-top: 22px; font-size: 25px; color: var(--ink-3); }
 
 /* 02 problem */
