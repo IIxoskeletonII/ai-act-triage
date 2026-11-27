@@ -47,3 +47,22 @@ A plausible explanation is that the models already know the Act and familiar exa
 Our defensible conclusion is narrow: retrieval did not earn its place through better label accuracy on these recorded cases. Its contribution has to be assessed through the evidence and assistance around the label, including access to the statutory wording, clarification and obligations.
 
 Sources: [Sonnet RAG](../eval/results_sonnet_rag.json), [Sonnet without retrieval](../eval/results_sonnet_parametric.json), [Haiku RAG](../eval/results_haiku_rag.json), [Haiku without retrieval](../eval/results_haiku_parametric.json), and the [Phase 9 analysis](../eval/phase9_report.md).
+
+## Same score, different mistakes
+
+The two older RAG configurations both passed 16/20 cases, but their failure sets were different. Sonnet failed E1, N7, N6 and A1; Haiku failed E1, N7, N6 and N5. Three failures were shared and one was unique to each model. Equal totals therefore hid different weaknesses.
+
+| Case | Sonnet with RAG | Haiku with RAG | What the failure means |
+| --- | --- | --- | --- |
+| E1 and N7 | Fail | Fail | Both returned out-of-scope when needs-info was expected. The agent did not yet support asking for missing facts through that response. |
+| N6 | Fail | Fail | Both correctly predicted minimal-risk but omitted Art 6(3), following the earlier rule to cite nothing for minimal-risk cases. |
+| N5 | Pass | Fail | Haiku correctly predicted minimal-risk but added Art 50(2), which the evaluation did not accept for this case. This is a content error in the supporting legal basis, not a wrong risk label. |
+| A1 | Fail | Pass | Sonnet correctly predicted prohibited but cited Art 5(1) and Art 5(2), omitting the expected specific point Art 5(1)(h). This is a citation-depth failure. |
+
+The distinction matters when deciding what to improve. The missing needs-info response called for a clarification mechanism. N6 called for a better rule about citing a derogation. A1 called for point-level citation precision. N5 called for checking whether the cited provision actually belongs in the explanation. Treating every failed case as a classification error would send us toward the wrong fixes.
+
+Across all four configurations, the Phase 9 report records agreement on pass/fail outcomes for 17/20 cases: 15 passed everywhere and two failed everywhere. That is agreement under the evaluation rule, not proof that all rationales, citations or obligations were identical.
+
+These examples come from the older comparison runs, not from the later 20/20 development result. The report records that the N6 and A1 citation rules were subsequently corrected. The lesson remains useful: we should inspect the tier, the cited provision and the obligation wording separately, rather than selecting a system from one aggregate score.
+
+Evidence: the failed rows in [Sonnet RAG results](../eval/results_sonnet_rag.json) and [Haiku RAG results](../eval/results_haiku_rag.json), interpreted alongside the [Phase 9 agreement analysis](../eval/phase9_report.md).
