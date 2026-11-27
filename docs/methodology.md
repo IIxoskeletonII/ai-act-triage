@@ -131,3 +131,85 @@ What retrieval adds is **grounding**. Every citation the PM sees can be opened a
 text, inside its article, and that text came from a tool call rather than from the model's
 memory. In the passage-level check (`eval/passage_gold.json`), the cited passage was found in
 6 of 6 cases, and the retrieved text supported all 8 cited provisions.
+
+## 3. The structured answer and the citation check
+
+### A typed verdict instead of free text
+
+The agent does not return prose. Pydantic AI forces its final answer into a `Verdict` object
+(`src/agent.py`), and an answer that does not fit the schema is sent back to the model to be fixed
+before it reaches the code. The fields:
+
+| Field | What it holds |
+|---|---|
+| `tier` | one of six fixed values: `prohibited`, `high-risk`, `limited-risk`, `minimal-risk`, `out-of-scope`, `needs-info` |
+| `key_facts` | only facts the description itself states that drove the tier, lightly paraphrased |
+| `rationale` | two or three plain-English sentences |
+| `citations` | provision ids, e.g. `Art 6(2)`, `Annex III(4)(a)` |
+| `confidence` | `high`, `medium` or `low` |
+| `clarifying_question` | set only for `needs-info` (section 4) |
+| `obligations` | a list of `{text, citation}`: one concrete duty and the provision that imposes it |
+| `to_confirm` | open points or assumptions the PM should still check |
+
+A typed answer is what makes the rest of the method possible. Because `tier` can only be one of
+six values, the eval can score it exactly. Because citations are ids rather than sentences, code
+can check them. Because every obligation carries its own citation, both the interface and the
+critic can pair each duty with the text it relies on.
+
+`key_facts` has a strict rule: it may contain only what the description says, never conclusions
+or legal labels ("is high-risk" belongs in the rationale). That keeps the "what in your
+description led to this" panel honest. The PM can see which of their own words decided the tier.
+
+### Rules for what may be cited
+
+The prompt sets three citation rules:
+
+- **Cite only what the tools returned**, either a result's own id or an id in its parent chain.
+  This applies to obligation citations too.
+- **Cite the most specific operative provision**: the point that states the rule, not its parent.
+  `Art 5(1)(h)`, not `Art 5(1)`, and `Annex III(4)(a)`, not `Annex III`. This rule was added after
+  case A1 failed by citing only the parent paragraph (`eval/phase9_report.md`, section 1).
+- **Cite `Art 6(3)` only for the derogation**, that is only when it is the reason an Annex III
+  system is minimal-risk. The first version of the rule only said when to cite it; the final
+  version also forbids it on every other verdict, so a high-risk answer never cites an exception
+  it does not meet.
+
+### The citation guardrail (code, not model)
+
+After the model answers, `check_citations` collects every cited id, in the verdict and in all
+obligations, and compares it with the index of the 1,246 real provision ids
+(`data/ai_act_index.json`). Any id that is not in the Act, for example a misnumbered paragraph
+or an invented point, comes back in `invalid_citations`.
+
+The guardrail flags; it does not block. The interface shows a warning naming the bad ids, and
+the one-page export says which ids failed the check. When everything passes, the page states
+*"All N cited ids are real provisions of the Act"*. Blocking would hide the rest of a mostly useful
+answer, while flagging keeps it visible and marks exactly what not to trust. On the final dev run
+all 75 obligation citations were valid Act ids and the guardrail flagged nothing
+(`eval/phase9_report.md`, section 5).
+
+### What the guardrail does not check
+
+The guardrail proves that a citation *exists*, not that it *says* what the answer claims. Two
+gaps remain, and other parts of the method address them:
+
+- "Cite only what the tools returned" is a prompt rule, not enforced in code. An id the model
+  remembers from training would pass the guardrail as long as it exists.
+- An existing id can still be the wrong provision, or an obligation can misstate what its
+  provision says. The critic (section 4) and the passage-level eval check this, and a sample
+  of the tool's citations is checked by hand against the Official Journal text in
+  `docs/contributions/lukas/citation-verification.md`.
+
+### How citations are scored
+
+In the eval (`eval/run_eval.py`) a citation counts as correct when it equals the expected id or
+is a *descendant* of it in the id tree (`src/provision_ids.py`). If the expected answer is
+`Annex III(4)`, then citing `Annex III(4)(a)` passes, because being more specific is never wrong.
+Citing the parent `Annex III` fails, because it does not identify the rule.
+
+### Every citation opens the law
+
+For each cited id, the web app attaches the verbatim text (`provisions`) and the title
+(`citation_details`). The reader opens the whole article or annex with the cited point marked,
+and it renders statutory text in serif type, so serif always means verbatim law and the
+tool's own words never look like the Act.
