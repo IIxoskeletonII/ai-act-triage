@@ -213,3 +213,96 @@ For each cited id, the web app attaches the verbatim text (`provisions`) and the
 (`citation_details`). The reader opens the whole article or annex with the cited point marked,
 and it renders statutory text in serif type, so serif always means verbatim law and the
 tool's own words never look like the Act.
+
+## 4. The clarifying question, obligations and the critic
+
+### Asking before classifying
+
+Many real descriptions do not decide the tier. *"We use AI to summarise job applications"* is
+minimal-risk if a recruiter still reads every application, and high-risk under
+`Annex III(4)(a)` if the summaries rank or filter candidates. Guessing either way would be
+wrong half the time, so the tool has a sixth outcome, `needs-info`.
+
+The prompt allows `needs-info` only when the intended purpose is genuinely unspecified, so a
+classifiable description is classified straight away. In a `needs-info` verdict the agent cites
+nothing and asks **one** specific question. When the ambiguity is about how the output is used,
+as in employment or credit, the question must ask exactly that: *how is the output used and who
+acts on it?* That is the fact the Act turns on, because the `Art 6(3)` derogation depends on
+whether the system materially influences a decision.
+
+The PM answers inline. The app sends the original description and the answer together
+(`classify(description, clarification=...)`), and the agent returns a full, updated verdict on
+the combined facts. Key facts that came from the answer are marked as such, so the PM can see
+what their answer changed. The `to_confirm` list works the same way on a smaller scale: each
+open point has a shortcut to answer it and reassess.
+
+**How it was tested: minimal pairs** (`eval/minimal_pairs.json`). Three ambiguous inputs (job
+applications, loan applications, workforce management) each come with two answers that should
+lead to different results:
+
+| Input | Answer A | Answer B |
+|---|---|---|
+| summarise job applications | recruiter reads everything, no ranking: **minimal-risk**, `Art 6(3)` | ranks candidates, only the top ten are seen: **high-risk**, `Annex III(4)(a)` |
+| review loan applications | plain summary, the officer decides: **minimal-risk**, `Art 6(3)` | assigns a credit score that decides approval: **high-risk**, `Annex III(5)(b)` |
+| workforce management | screens external applicants: **high-risk**, `Annex III(4)(a)` | evaluates staff for promotion: **high-risk**, `Annex III(4)(b)` |
+
+All 3 inputs triggered a question that asks about use and who acts, and all 6 answers produced
+the expected tier and citation. The third pair matters because the tier stays the same but the
+legal basis changes, and the key facts and citation follow it.
+
+### Obligations: the next steps
+
+A tier on its own does not tell a PM what to do. Each verdict therefore lists obligations, one
+concrete duty per line, each citing the provision that imposes it. The prompt fixes what is
+expected per tier:
+
+- **prohibited**: one obligation that mirrors the cited `Art 5` point's own scope and exceptions;
+- **high-risk**: the core requirements, one each: risk management (`Art 9`), data governance
+  (`Art 10`), technical documentation (`Art 11`), logging (`Art 12`), transparency split into
+  `Art 13(1)` and `Art 13(2)`, human oversight (`Art 14`), accuracy and robustness (`Art 15`),
+  conformity assessment (`Art 43`) and EU database registration (`Art 49`);
+- **limited-risk**: the transparency duty that applies, e.g. `Art 50(1)` for a chatbot;
+- **minimal-risk**: no mandatory duties, optionally AI literacy (`Art 4`) and voluntary codes;
+- **out-of-scope** and **needs-info**: none.
+
+The agent must read each provision with `get_provision` before it writes the obligation, and the
+obligation citations go through the same guardrail as the verdict's (section 3). In the
+interface they are a checklist, and the export carries them into the memo.
+
+### The critic: a second model that checks the obligations
+
+The guardrail checks that a cited id exists. The critic (`src/critic.py`) checks whether the
+obligation actually **says what the cited text says**. It is deliberately independent:
+
+- it never searches. Code fetches the exact text of each cited provision and passes it in next to
+  the obligation;
+- it must judge only from that text, never from memory, and it labels each obligation
+  `grounded`, `misstated` (right topic, wrong who, what, when or scope) or `ungrounded`;
+- for a high-risk verdict it also lists any of the nine core obligations that nothing covers.
+
+**What it found.** Over the passage-gold run it raised four flags. Two were false: it objected
+to "before placing on the market" for `Art 43(2)`, a point that is substantively correct. Two were
+true: prohibited-tier obligations said "develop" or "place on the market" where `Art 5(1)(c)` and
+`Art 5(1)(h)` do not say that. That is a **precision of 2/4 = 50%**; recall was not measured
+(`eval/phase9_report.md`, section 4).
+
+The true flags led to a real fix. The prohibited obligation now names exactly the activities the
+cited point prohibits, never adds development, and states the point's exceptions and whether
+they apply. After the fix the critic judged four of the five prohibited dev cases grounded and
+flagged one remaining error: `Art 5(1)(h)` bans only "the use of" real-time remote biometric
+identification. A further prompt change addressed it, and in the latest dev run (20/20) that
+obligation now reads *"Do not use the real-time remote biometric identification system..."*
+(`eval/results_agent_v2_rag.json`, case A1).
+
+**Where it sits.** Because half its flags were false, the critic is an **advisory check, not a
+gate**. It runs in the evaluation (`eval/run_critic.py`), not in the live app, and every flag is
+reviewed by a person. It earned its place by exposing a defect that the tier score, the citation
+score and the guardrail all missed: every one of those cases already passed.
+
+**Strong vs weak.** Run over a strong configuration (Sonnet with retrieval) and a weak one (Haiku
+with no tools), the critic flagged about the same share of obligations as misstated: 7 of 54
+and 6 of 55 (`eval/results_critic_demo.json`). This fits the project's main finding. Model size
+and retrieval do not change the label much, and they do not much change the obligation quality
+that the critic can see either. What improved the obligations was tightening the rules for
+writing them. After the transparency duty was split into `Art 13(1)` and `Art 13(2)`, the strong
+run dropped to 5 misstated out of 60 (`eval/results_critic_strong_fixed.json`).
