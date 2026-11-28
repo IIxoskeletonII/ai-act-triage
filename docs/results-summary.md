@@ -66,3 +66,25 @@ Across all four configurations, the Phase 9 report records agreement on pass/fai
 These examples come from the older comparison runs, not from the later 20/20 development result. The report records that the N6 and A1 citation rules were subsequently corrected. The lesson remains useful: we should inspect the tier, the cited provision and the obligation wording separately, rather than selecting a system from one aggregate score.
 
 Evidence: the failed rows in [Sonnet RAG results](../eval/results_sonnet_rag.json) and [Haiku RAG results](../eval/results_haiku_rag.json), interpreted alongside the [Phase 9 agreement analysis](../eval/phase9_report.md).
+
+## Where the tool adds value: the question, the passage and the next step
+
+The experiments shift the product claim away from guessing a tier. A product manager needs to understand which facts determine the assessment, inspect the evidence and know what to do next. The prototype supports those tasks; our small evaluations provide examples of that support, rather than proof of time savings or better launch decisions.
+
+### Ask for the missing fact
+
+In the recorded minimal-pair evaluation, all three ambiguous descriptions triggered a needs-info response, and all six clarified versions passed the expected tier and citation checks. For the job-application summariser, the distinction was how its output affected recruitment: a preparatory summary with full independent review led to the expected minimal-risk assessment under the derogation, while ranking candidates so that only the top ten were reviewed led to high-risk. The question exposed a decisive fact that the original description did not supply. These are outcomes for the specified test scenarios, not a general rule that human review alone removes high-risk status.
+
+The workforce-management pair illustrates another benefit: both clarified versions remained high-risk, but one concerned recruitment and the other current employees’ performance. Clarification improved the legal basis even when it did not change the label.
+
+### Make the legal basis inspectable
+
+The interface opens a cited provision in its surrounding article or annex and displays statutory text from the stored source. This lets a reviewer compare the explanation with the actual passage instead of relying on a model’s remembered paraphrase. In the six-case passage evaluation, the expected passage was found in 6/6 cases and the team judged all eight cited provisions to support the assessments. Those cases were close rewordings of development examples, so this demonstrates the mechanism on familiar scenarios rather than independent generalisation.
+
+### Turn the assessment into next steps
+
+The obligations checklist links proposed actions to provisions and keeps unresolved points visible. In the two high-risk passage cases, the evaluation found all nine obligations in its core checklist. That is a useful completeness check against the project’s rubric, not certification of an exhaustive compliance plan. A correct tier and a real provision ID can still accompany an overstated obligation, so the wording and applicability need review.
+
+The practical value is an assessment a PM and reviewer can discuss: the stated facts behind it, the passage to check, the actions to consider and the information still missing. The label is the easy part; the contribution is making the reasoning and follow-up visible.
+
+Evidence: [minimal-pair results](../eval/results_minimal_pairs.json), [passage results](../eval/results_passages.json), [Phase 9 report, sections 2–3](../eval/phase9_report.md), and [interface workflow](../README.md#using-it).
