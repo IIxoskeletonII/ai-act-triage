@@ -39,3 +39,26 @@ Obligations are generated text rather than a fixed, reviewed checklist. Their wo
 The present tool is first-pass triage. It helps organise a review; its scores and critic output do not justify treating an assessment as launch approval.
 
 Source: [Phase 9 / 9.1 report](../eval/phase9_report.md), especially the passage overlap caveat, verifier precision and obligation-scope findings.
+
+
+## Future work: make the next version more reproducible and easier to evaluate
+
+### 1. Use reviewed obligation templates
+
+Replace freely generated obligation wording with a versioned set of reviewed templates. Each entry should identify the supporting provision, the actor it concerns, the triggering facts, the action and timing, and relevant exceptions. The model can propose which entries apply and explain the connection to the description; unresolved applicability should remain an open question rather than being silently assumed. A fixed template alone cannot determine whether it applies.
+
+Test the same descriptions repeatedly and compare selected obligations, missing duties and unsupported additions. Include cases that differ only in actor or exception, and preserve the model, prompt, template and statutory-source versions with each result. This would directly test whether a correct tier also produces a stable, appropriately scoped checklist.
+
+### 2. Build a larger independent test set
+
+Keep development examples separate from a frozen test set written and labelled independently of prompt tuning. Include unfamiliar sectors, genuinely incomplete descriptions, scope exclusions, exceptions, adversarial instructions and minimal pairs where a single fact changes the assessment. Ask a qualified reviewer to check the expected legal basis and document disputed cases rather than forcing uncertain answers into a single label.
+
+Evaluate tier accuracy, appropriate requests for clarification, provision relevance and specificity, obligation completeness and scope, and repeated-run consistency separately. Compare retrieval and no-retrieval settings under the same prompt and model version. For the critic, label errors as well as correct statements so both precision and recall can be measured. Record latency and cost too: added complexity should have a measurable benefit for the task it serves.
+
+### 3. Host the prototype online and test the workflow
+
+Deploy a shared version so testers can use the same application without local setup. Keep model credentials on the server, define handling and retention of submitted descriptions, and show the statutory-source version and assessment date. The interface should continue to distinguish quoted law from generated interpretation and preserve the first-pass status of its output.
+
+Use the hosted version for a small PM workflow study: can a user identify the decisive missing fact, locate the supporting passage and explain the next action? Measure task completion, time and unsupported conclusions against a simple chat-only comparison. This would test the claimed product value directly, rather than assuming that a higher benchmark score or a more elaborate architecture makes the tool more useful.
+
+These are proposed improvements, not capabilities or validation results already delivered. The priorities follow from the observed gap between correct labels, inspectable evidence and reliable obligations.
